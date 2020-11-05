@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-struct ContentView: View {
+struct HomeView: View {
     let menu = Bundle.main.decode([Book].self, from: "menu.json")
     var body: some View {
         NavigationView {
@@ -29,6 +29,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }

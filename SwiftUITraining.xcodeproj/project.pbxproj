@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B128B255089EF00B8A9CB /* BookDetailView.swift */; };
+		0C5B129825508BA400B8A9CB /* BookMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B129725508BA400B8A9CB /* BookMocks.swift */; };
 		0C78E1132539DB750000E671 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C78E1122539DB750000E671 /* BookCellView.swift */; };
 		0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E20D2538EFD500F9BEB4 /* SwiftUITrainingApp.swift */; };
-		0CF3E2102538EFD500F9BEB4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E20F2538EFD500F9BEB4 /* ContentView.swift */; };
+		0CF3E2102538EFD500F9BEB4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E20F2538EFD500F9BEB4 /* HomeView.swift */; };
 		0CF3E2122538EFD700F9BEB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3E2112538EFD700F9BEB4 /* Assets.xcassets */; };
 		0CF3E2152538EFD700F9BEB4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3E2142538EFD700F9BEB4 /* Preview Assets.xcassets */; };
 		0CF3E2202538EFD700F9BEB4 /* SwiftUITrainingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E21F2538EFD700F9BEB4 /* SwiftUITrainingTests.swift */; };
@@ -37,10 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C5B128B255089EF00B8A9CB /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		0C5B129725508BA400B8A9CB /* BookMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMocks.swift; sourceTree = "<group>"; };
 		0C78E1122539DB750000E671 /* BookCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellView.swift; sourceTree = "<group>"; };
 		0CF3E20A2538EFD500F9BEB4 /* SwiftUITraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF3E20D2538EFD500F9BEB4 /* SwiftUITrainingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITrainingApp.swift; sourceTree = "<group>"; };
-		0CF3E20F2538EFD500F9BEB4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0CF3E20F2538EFD500F9BEB4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0CF3E2112538EFD700F9BEB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF3E2142538EFD700F9BEB4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0CF3E2162538EFD700F9BEB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +84,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C5B1280255088EF00B8A9CB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0C5B128A255089D300B8A9CB /* BookDetail */,
+				0C5B1289255089B500B8A9CB /* BookCell */,
+				0CF3E20F2538EFD500F9BEB4 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0C5B12842550893100B8A9CB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0CF3E2452538FB0E00F9BEB4 /* Helper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0C5B12852550895C00B8A9CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0CF3E23B2538F81B00F9BEB4 /* menu.json */,
+				0CF3E2402538F88E00F9BEB4 /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C5B1289255089B500B8A9CB /* BookCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C78E1122539DB750000E671 /* BookCellView.swift */,
+			);
+			path = BookCell;
+			sourceTree = "<group>";
+		};
+		0C5B128A255089D300B8A9CB /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0C5B128B255089EF00B8A9CB /* BookDetailView.swift */,
+			);
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
+		0C5B129625508B8D00B8A9CB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0C5B129725508BA400B8A9CB /* BookMocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		0CF3E2012538EFD500F9BEB4 = {
 			isa = PBXGroup;
 			children = (
@@ -103,15 +158,14 @@
 		0CF3E20C2538EFD500F9BEB4 /* SwiftUITraining */ = {
 			isa = PBXGroup;
 			children = (
+				0C5B129625508B8D00B8A9CB /* Mocks */,
+				0C5B12852550895C00B8A9CB /* Models */,
+				0C5B12842550893100B8A9CB /* Utils */,
+				0C5B1280255088EF00B8A9CB /* Home */,
 				0CF3E20D2538EFD500F9BEB4 /* SwiftUITrainingApp.swift */,
-				0CF3E2452538FB0E00F9BEB4 /* Helper.swift */,
-				0CF3E20F2538EFD500F9BEB4 /* ContentView.swift */,
 				0CF3E2112538EFD700F9BEB4 /* Assets.xcassets */,
-				0CF3E23B2538F81B00F9BEB4 /* menu.json */,
 				0CF3E2162538EFD700F9BEB4 /* Info.plist */,
 				0CF3E2132538EFD700F9BEB4 /* Preview Content */,
-				0CF3E2402538F88E00F9BEB4 /* Book.swift */,
-				0C78E1122539DB750000E671 /* BookCellView.swift */,
 			);
 			path = SwiftUITraining;
 			sourceTree = "<group>";
@@ -272,8 +326,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CF3E2102538EFD500F9BEB4 /* ContentView.swift in Sources */,
+				0CF3E2102538EFD500F9BEB4 /* HomeView.swift in Sources */,
 				0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */,
+				0C5B129825508BA400B8A9CB /* BookMocks.swift in Sources */,
+				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
 				0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */,
 				0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */,
 				0C78E1132539DB750000E671 /* BookCellView.swift in Sources */,
