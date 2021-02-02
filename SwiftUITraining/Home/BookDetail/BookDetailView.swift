@@ -19,7 +19,7 @@ struct BookDetailView: View {
                         
                     VStack(alignment: .leading) {
                         Text(book.title).font(.title2)
-                        Text("UNAVAILABLE").font(.headline)
+                        Text(book.status.uppercased()).font(.headline)
                             .foregroundColor(Color(hex: 0xD0021B))
                         Text(book.author).foregroundColor(Color(hex: 0x4A4A4A))
                         Text(book.year).foregroundColor(Color(hex: 0x4A4A4A))

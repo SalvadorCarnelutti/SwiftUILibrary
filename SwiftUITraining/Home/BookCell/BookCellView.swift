@@ -18,8 +18,10 @@ struct BookCellView: View {
                     .padding(.leading, 30)
                 
                 VStack(alignment: .leading) {
-                    Text(book.title).font(.system(size: 17, weight: .bold, design: .default)).foregroundColor(Color(hex: 0x4A4A4A))
-                    Text(book.author).font(.system(size: 15, weight: .light, design: .default)).foregroundColor(Color(hex: 0x4A4A4A))
+                    Text(book.title).font(.system(size: 17, weight: .bold, design: .default))
+                        .foregroundColor(Color(hex: 0x4A4A4A))
+                    Text(book.author).font(.system(size: 15, weight: .light, design: .default))
+                        .foregroundColor(Color(hex: 0x4A4A4A))
                 }
                 Spacer()
             }

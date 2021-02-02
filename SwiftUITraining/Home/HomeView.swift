@@ -1,29 +1,34 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  SwiftUITraining
 //
 //  Created by Diego Quiros on 15/10/2020.
 //
 
 import SwiftUI
-import Foundation
+import Combine
 
 struct HomeView: View {
-    let menu = Bundle.main.decode([Book].self, from: "menu.json")
+    @ObservedObject var homeViewModel = HomeViewModel()
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack {
                     Color.clear.padding(.bottom, 20)
-                    ForEach(menu) { book in
+                    ForEach(homeViewModel.books) { book in
                         BookCellView(book: book)
+                            .padding(.bottom, 5)
                     }
                     Color.clear.padding(.bottom, 10)
                 }.padding(.horizontal, 20)
-            }.background(Color(hex: 0xEAF6FA).edgesIgnoringSafeArea(.bottom))
+            }
+            .background(Color(hex: 0xEAF6FA).edgesIgnoringSafeArea(.bottom))
             .navigationTitle("Library")
+            .onAppear {
+                        self.homeViewModel.getBooks()
+            }
         }
-            
     }
 }
 

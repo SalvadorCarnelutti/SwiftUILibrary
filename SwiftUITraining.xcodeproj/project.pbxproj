@@ -19,6 +19,7 @@
 		0CF3E23C2538F81B00F9BEB4 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3E23B2538F81B00F9BEB4 /* menu.json */; };
 		0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2402538F88E00F9BEB4 /* Book.swift */; };
 		0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2452538FB0E00F9BEB4 /* Helper.swift */; };
+		A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0CF3E23B2538F81B00F9BEB4 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		0CF3E2402538F88E00F9BEB4 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		0CF3E2452538FB0E00F9BEB4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				0C5B128A255089D300B8A9CB /* BookDetail */,
 				0C5B1289255089B500B8A9CB /* BookCell */,
 				0CF3E20F2538EFD500F9BEB4 /* HomeView.swift */,
+				A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				0CF3E2102538EFD500F9BEB4 /* HomeView.swift in Sources */,
 				0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */,
 				0C5B129825508BA400B8A9CB /* BookMocks.swift in Sources */,
+				A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
 				0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */,
 				0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */,
