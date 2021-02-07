@@ -19,7 +19,9 @@
 		0CF3E23C2538F81B00F9BEB4 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3E23B2538F81B00F9BEB4 /* menu.json */; };
 		0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2402538F88E00F9BEB4 /* Book.swift */; };
 		0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2452538FB0E00F9BEB4 /* Helper.swift */; };
+		A0791C9625CF57230069BA2A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0791C9525CF57230069BA2A /* LoginView.swift */; };
 		A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */; };
+		A0E85CCC25CF4E700014D575 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85CCB25CF4E700014D575 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +60,9 @@
 		0CF3E23B2538F81B00F9BEB4 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		0CF3E2402538F88E00F9BEB4 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		0CF3E2452538FB0E00F9BEB4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A0791C9525CF57230069BA2A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A0E85CCB25CF4E700014D575 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 		0C5B1280255088EF00B8A9CB /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A0791C8925CF56D20069BA2A /* LoginView */,
 				0C5B128A255089D300B8A9CB /* BookDetail */,
 				0C5B1289255089B500B8A9CB /* BookCell */,
 				0CF3E20F2538EFD500F9BEB4 /* HomeView.swift */,
@@ -100,6 +105,7 @@
 		0C5B12842550893100B8A9CB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A0E85CBF25CF4E460014D575 /* Extensions */,
 				0CF3E2452538FB0E00F9BEB4 /* Helper.swift */,
 			);
 			path = Utils;
@@ -197,6 +203,22 @@
 				0CF3E22C2538EFD700F9BEB4 /* Info.plist */,
 			);
 			path = SwiftUITrainingUITests;
+			sourceTree = "<group>";
+		};
+		A0791C8925CF56D20069BA2A /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				A0791C9525CF57230069BA2A /* LoginView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		A0E85CBF25CF4E460014D575 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0E85CCB25CF4E700014D575 /* UIColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,9 +355,11 @@
 				0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */,
 				0C5B129825508BA400B8A9CB /* BookMocks.swift in Sources */,
 				A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */,
+				A0E85CCC25CF4E700014D575 /* UIColor.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
 				0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */,
 				0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */,
+				A0791C9625CF57230069BA2A /* LoginView.swift in Sources */,
 				0C78E1132539DB750000E671 /* BookCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

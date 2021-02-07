@@ -21,9 +21,9 @@ struct BookDetailView: View {
                         Text(book.title).font(.title2)
                         Text(book.status.uppercased()).font(.headline)
                             .foregroundColor(Color(hex: 0xD0021B))
-                        Text(book.author).foregroundColor(Color(hex: 0x4A4A4A))
-                        Text(book.year).foregroundColor(Color(hex: 0x4A4A4A))
-                        Text(book.genre).foregroundColor(Color(hex: 0x4A4A4A))
+                        Text(book.author).foregroundColor(Color.charcoal)
+                        Text(book.year).foregroundColor(Color.charcoal)
+                        Text(book.genre).foregroundColor(Color.charcoal)
                     }
                     .padding(.leading, 20)
                     Spacer()
@@ -31,12 +31,12 @@ struct BookDetailView: View {
                 Button(action: {
                     // TODO: add to wishlist
                 }) {
-                    Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color(hex: 0x00ADEE))
+                    Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color.deepSkyBlue)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
                 .clipShape(Capsule())
-                .overlay(Capsule().stroke(Color(hex: 0x00ADEE), lineWidth: 2))
+                .overlay(Capsule().stroke(Color.deepSkyBlue, lineWidth: 2))
                 .padding(.vertical, 12)
                 Button(action: {
                     // TODO: add to wishlist
@@ -54,7 +54,7 @@ struct BookDetailView: View {
             .padding()
             Spacer()
         }
-        .background(Color.init(hex: 0xEAF6FA))
+        .background(Color.lavender)
         .navigationBarTitle(Text(book.title), displayMode: .inline)
         .edgesIgnoringSafeArea(.bottom)
     }

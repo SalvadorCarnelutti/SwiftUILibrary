@@ -11,7 +11,23 @@ import SwiftUI
 struct SwiftUITrainingApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            LoginView()
         }
     }
 }
+
+/*
+ TabView  {
+ HomeView()
+         .tabItem {
+             Image(systemName: "list.dash")
+             Text("Library")
+         }
+     WishlistView()
+         .tabItem {
+             Image(systemName: "square.and.pencil")
+             Text("Wishlist")
+         }
+     ...
+ }
+ */
