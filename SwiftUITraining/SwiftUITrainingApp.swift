@@ -15,19 +15,3 @@ struct SwiftUITrainingApp: App {
         }
     }
 }
-
-/*
- TabView  {
- HomeView()
-         .tabItem {
-             Image(systemName: "list.dash")
-             Text("Library")
-         }
-     WishlistView()
-         .tabItem {
-             Image(systemName: "square.and.pencil")
-             Text("Wishlist")
-         }
-     ...
- }
- */

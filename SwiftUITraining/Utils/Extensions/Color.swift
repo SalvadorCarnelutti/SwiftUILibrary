@@ -1,5 +1,5 @@
 //
-//  UIColor.swift
+//  Color.swift
 //  SwiftUITraining
 //
 //  Created by Salvador Carnelutti on 06/02/2021.
@@ -18,5 +18,17 @@ extension Color {
     
     public static var deepSkyBlue: Color {
         return Color(hex: 0x00ADEE)
+    }
+    
+    public static var atlantis: Color {
+        return Color(hex: 0xA5CD39)
+    }
+    
+    public static var venetianRed: Color {
+        return Color(hex: 0xD0021B)
+    }
+    
+    public static var gainsboro: Color {
+        return Color(hex: 0xDDDDDD)
     }
 }

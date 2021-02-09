@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct BookDetailView: View {
-    var book: Book
+    @State private var unavailableIsPresented = false
+    @StateObject var bookDetailViewModel: BookDetailViewModel
+    
     var body: some View {
         VStack {
             VStack {
@@ -18,12 +20,12 @@ struct BookDetailView: View {
                         .frame(width: 70, height: 105)
                         
                     VStack(alignment: .leading) {
-                        Text(book.title).font(.title2)
-                        Text(book.status.uppercased()).font(.headline)
-                            .foregroundColor(Color(hex: 0xD0021B))
-                        Text(book.author).foregroundColor(Color.charcoal)
-                        Text(book.year).foregroundColor(Color.charcoal)
-                        Text(book.genre).foregroundColor(Color.charcoal)
+                        Text(bookDetailViewModel.getBookTitle).font(.title2)
+                        Text(bookDetailViewModel.getBookStatus.uppercased()).font(.headline)
+                            .foregroundColor(statusColor)
+                        Text(bookDetailViewModel.getBookAuthor).foregroundColor(Color.charcoal)
+                        Text(bookDetailViewModel.getBookYear).foregroundColor(Color.charcoal)
+                        Text(bookDetailViewModel.getBookGenre).foregroundColor(Color.charcoal)
                     }
                     .padding(.leading, 20)
                     Spacer()
@@ -39,13 +41,17 @@ struct BookDetailView: View {
                 .overlay(Capsule().stroke(Color.deepSkyBlue, lineWidth: 2))
                 .padding(.vertical, 12)
                 Button(action: {
-                    // TODO: add to wishlist
+                    if bookDetailViewModel.bookIsAvailable {
+                        bookDetailViewModel.rentBook()
+                    } else {
+                        unavailableIsPresented.toggle()
+                    }
                 }) {
                     Text("RENT").font(.headline).foregroundColor(Color.white)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
-                .background(Color(hex: 0xDDDDDD))
+                .background(Color.gainsboro)
                 .clipShape(Capsule())
                 
             }
@@ -55,15 +61,31 @@ struct BookDetailView: View {
             Spacer()
         }
         .background(Color.lavender)
-        .navigationBarTitle(Text(book.title), displayMode: .inline)
+        .navigationBarTitle(Text(bookDetailViewModel.getBookTitle), displayMode: .inline)
         .edgesIgnoringSafeArea(.bottom)
+        .alert(isPresented: $unavailableIsPresented, content: {
+            Alert(title: Text("Sorry, this curent book is unavailable at the moment"),
+                  message: Text("Try again later"),
+                  dismissButton: .default(Text("Ok")))
+        })
     }
+    
+    var statusColor: Color {
+        return bookDetailViewModel.bookIsAvailable ? Color.atlantis : Color.venetianRed
+    }
+    
+    /*
+     // TO DO: Add when gradient color is done
+     var rentButtonColor: Color {
+         return bookDetailViewModel.bookIsAvailable ? GRADIENT : Color.gainsboro
+     }
+     */
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BookDetailView(book: Book.getMockBook())
+            BookDetailView(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()))
         }
     }
 }

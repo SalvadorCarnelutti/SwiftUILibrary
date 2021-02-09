@@ -29,7 +29,7 @@ struct HomeView: View {
         .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Library")
-        .onAppear {
+        .onAppear() {
                     self.homeViewModel.getBooks()
         }
     }

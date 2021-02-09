@@ -7,7 +7,7 @@
 
 import Foundation
 extension Book {
-    static func getMockBook() -> Book {
+    static func getMockedBook() -> Book {
         return Book(id: 123, author: "Diego", title: "El señor de los anillos", genre: "misterio", year: "1999", image: "", status: "")
     }
 }

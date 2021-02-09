@@ -19,9 +19,13 @@
 		0CF3E23C2538F81B00F9BEB4 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3E23B2538F81B00F9BEB4 /* menu.json */; };
 		0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2402538F88E00F9BEB4 /* Book.swift */; };
 		0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2452538FB0E00F9BEB4 /* Helper.swift */; };
+		A067B8D825D2F054005EDC6A /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8D725D2F054005EDC6A /* TabsView.swift */; };
+		A067B8DD25D2FB48005EDC6A /* Rent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8DC25D2FB48005EDC6A /* Rent.swift */; };
+		A067B8E825D32660005EDC6A /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8E725D32660005EDC6A /* BookDetailViewModel.swift */; };
+		A067B8ED25D334DF005EDC6A /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8EC25D334DF005EDC6A /* UserData.swift */; };
 		A0791C9625CF57230069BA2A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0791C9525CF57230069BA2A /* LoginView.swift */; };
 		A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */; };
-		A0E85CCC25CF4E700014D575 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85CCB25CF4E700014D575 /* UIColor.swift */; };
+		A0E85CCC25CF4E700014D575 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85CCB25CF4E700014D575 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +64,13 @@
 		0CF3E23B2538F81B00F9BEB4 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		0CF3E2402538F88E00F9BEB4 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		0CF3E2452538FB0E00F9BEB4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A067B8D725D2F054005EDC6A /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		A067B8DC25D2FB48005EDC6A /* Rent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rent.swift; sourceTree = "<group>"; };
+		A067B8E725D32660005EDC6A /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		A067B8EC25D334DF005EDC6A /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		A0791C9525CF57230069BA2A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		A0E85CCB25CF4E700014D575 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		A0E85CCB25CF4E700014D575 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +124,8 @@
 			children = (
 				0CF3E23B2538F81B00F9BEB4 /* menu.json */,
 				0CF3E2402538F88E00F9BEB4 /* Book.swift */,
+				A067B8DC25D2FB48005EDC6A /* Rent.swift */,
+				A067B8EC25D334DF005EDC6A /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5B128B255089EF00B8A9CB /* BookDetailView.swift */,
+				A067B8E725D32660005EDC6A /* BookDetailViewModel.swift */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 				0C5B12842550893100B8A9CB /* Utils */,
 				0C5B1280255088EF00B8A9CB /* Home */,
 				0CF3E20D2538EFD500F9BEB4 /* SwiftUITrainingApp.swift */,
+				A067B8D725D2F054005EDC6A /* TabsView.swift */,
 				0CF3E2112538EFD700F9BEB4 /* Assets.xcassets */,
 				0CF3E2162538EFD700F9BEB4 /* Info.plist */,
 				0CF3E2132538EFD700F9BEB4 /* Preview Content */,
@@ -216,7 +228,7 @@
 		A0E85CBF25CF4E460014D575 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A0E85CCB25CF4E700014D575 /* UIColor.swift */,
+				A0E85CCB25CF4E700014D575 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,13 +365,17 @@
 			files = (
 				0CF3E2102538EFD500F9BEB4 /* HomeView.swift in Sources */,
 				0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */,
+				A067B8ED25D334DF005EDC6A /* UserData.swift in Sources */,
 				0C5B129825508BA400B8A9CB /* BookMocks.swift in Sources */,
+				A067B8E825D32660005EDC6A /* BookDetailViewModel.swift in Sources */,
 				A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */,
-				A0E85CCC25CF4E700014D575 /* UIColor.swift in Sources */,
+				A067B8D825D2F054005EDC6A /* TabsView.swift in Sources */,
+				A0E85CCC25CF4E700014D575 /* Color.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
 				0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */,
 				0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */,
 				A0791C9625CF57230069BA2A /* LoginView.swift in Sources */,
+				A067B8DD25D2FB48005EDC6A /* Rent.swift in Sources */,
 				0C78E1132539DB750000E671 /* BookCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

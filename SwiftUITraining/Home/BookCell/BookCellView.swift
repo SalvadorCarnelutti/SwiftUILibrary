@@ -11,7 +11,7 @@ struct BookCellView: View {
     var book: Book
     
     var body: some View {
-        NavigationLink(destination: BookDetailView(book: book)) {
+        NavigationLink(destination: BookDetailView(bookDetailViewModel: BookDetailViewModel(book: book))) {
             HStack(alignment: .top) {
                 Image("img_book6")
                     .padding(.trailing, 20)
@@ -35,6 +35,6 @@ struct BookCellView: View {
 
 struct BookCellView_Previews: PreviewProvider {
     static var previews: some View {
-        BookCellView(book: Book.getMockBook())
+        BookCellView(book: Book.getMockedBook())
     }
 }

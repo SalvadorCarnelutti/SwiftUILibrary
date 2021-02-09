@@ -13,4 +13,8 @@ struct Book: Codable, Equatable, Identifiable {
     var year: String
     var image: String
     var status: String
+    
+    mutating func setAsUnavailable() {
+        self.status = "Unavailable"
+    }
 }
