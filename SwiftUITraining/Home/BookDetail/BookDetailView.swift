@@ -20,8 +20,12 @@ struct BookDetailView: View {
                         .frame(width: 70, height: 105)
                         
                     VStack(alignment: .leading) {
-                        Text(bookDetailViewModel.getBookTitle).font(.title2)
-                        Text(bookDetailViewModel.getBookStatus.uppercased()).font(.headline)
+                        Text(bookDetailViewModel.getBookTitle)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.title2)
+                            .lineLimit(nil)
+                        Text(bookDetailViewModel.getBookStatus.uppercased())
+                            .font(.headline)
                             .foregroundColor(statusColor)
                         Text(bookDetailViewModel.getBookAuthor).foregroundColor(Color.charcoal)
                         Text(bookDetailViewModel.getBookYear).foregroundColor(Color.charcoal)
@@ -58,7 +62,38 @@ struct BookDetailView: View {
             .padding()
             .background(Color.white.cornerRadius(5).shadow(radius: 2))
             .padding()
-            Spacer()
+            ScrollView {
+                LazyVStack {
+                    ForEach(bookDetailViewModel.bookComments.suffix(5)) { bookComment in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                VStack {
+                                    Image("img_user1")
+                                        .padding(5)
+                                    Spacer()
+                                }
+                                VStack {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Text(bookComment.user.username)
+                                            .font(.headline)
+                                        Text(bookComment.content)
+                                    }
+                                    .padding(.bottom, 20)
+                                    Divider()
+                                    if bookDetailViewModel.isLastBookComment(bookComment) {
+                                        Text("View All")
+                                            .foregroundColor(Color.deepSkyBlue)
+                                            .padding(5)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding()
+            }
+            .background(Color.white.cornerRadius(5).shadow(radius: 2))
+            .padding(.horizontal)
         }
         .background(Color.lavender)
         .navigationBarTitle(Text(bookDetailViewModel.getBookTitle), displayMode: .inline)
@@ -68,6 +103,10 @@ struct BookDetailView: View {
                   message: Text("Try again later"),
                   dismissButton: .default(Text("Ok")))
         })
+        .listStyle(GroupedListStyle())
+        .onAppear {
+            bookDetailViewModel.getBookComments()
+        }
     }
     
     var statusColor: Color {
@@ -85,7 +124,7 @@ struct BookDetailView: View {
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BookDetailView(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()))
+            BookDetailView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
         }
     }
 }

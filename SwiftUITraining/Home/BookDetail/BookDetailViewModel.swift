@@ -10,8 +10,17 @@ import Foundation
 
 class BookDetailViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
-    private lazy var _url = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/rents"
+    private lazy var _rentURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/rents"
+    private lazy var _commentsURL = "https://swift-training-backend.herokuapp.com/books/\(_book.id)/comments"
+    
     @Published private var _book: Book
+    @Published private(set) var bookComments: [BookComment] = [] {
+        didSet {
+            _lastBookComment = bookComments.suffix(5).last
+        }
+    }
+    private var _lastBookComment: BookComment?
+    private var _task: AnyCancellable?
 
     init(book: Book) {
         self._book = book
@@ -19,7 +28,7 @@ class BookDetailViewModel: ObservableObject {
    
     func rentBook() {
         guard let httpBody = getEncodedRentBody else { return }
-        var request =  URLRequest(url: URL(string: _url)!)
+        var request =  URLRequest(url: URL(string: _rentURL)!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -80,5 +89,25 @@ class BookDetailViewModel: ObservableObject {
     
     var getBookGenre: String {
         return _book.genre
+    }
+        
+    func getBookComments() {
+        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _commentsURL)!)
+            .map { $0.data }
+            .decode(type: [BookComment].self, decoder: JSONDecoder())
+            .replaceError(with: [])
+            .eraseToAnyPublisher()
+            .receive(on: RunLoop.main)
+            .assign(to: \BookDetailViewModel.bookComments, on: self)
+    }
+    
+    func isLastBookComment(_ bookComment: BookComment) -> Bool {
+        return bookComment == _lastBookComment
+    }
+        
+    static func getMockedViewModel() -> BookDetailViewModel {
+        let mockedViewModel = BookDetailViewModel(book: Book.getMockedBook())
+        mockedViewModel.bookComments = BookComment.getMockedBookComment()
+        return mockedViewModel
     }
 }
