@@ -12,7 +12,7 @@ struct TabsView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "list.dash")
+                    Image(systemName: "books.vertical")
                     Text("Library")
                 }
 //            WishlistView()
@@ -20,6 +20,10 @@ struct TabsView: View {
 //                    Image(systemName: "square.and.pencil")
 //                    Text("Wishlist")
 //                }
+            SuggestView().tabItem {
+                    Image(systemName: "plus.circle")
+                    Text("Suggest")
+                }
         }
     }
 }

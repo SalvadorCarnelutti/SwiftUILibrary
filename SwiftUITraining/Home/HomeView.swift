@@ -16,21 +16,22 @@ struct HomeView: View {
     @StateObject var homeViewModel = HomeViewModel()
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                Color.clear.padding(.bottom, 20)
-                ForEach(homeViewModel.books) { book in
-                    BookCellView(book: book)
-                        .padding(.bottom, 5)
-                }
-                Color.clear.padding(.bottom, 10)
-            }.padding(.horizontal, 20)
-        }
-        .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
-        .navigationBarBackButtonHidden(true)
-        .navigationTitle("Library")
-        .onAppear() {
-                    self.homeViewModel.getBooks()
+        NavigationView {
+            ScrollView {
+                LazyVStack {
+                    Color.clear.padding(.bottom, 20)
+                    ForEach(homeViewModel.books) { book in
+                        BookCellView(book: book)
+                            .padding(.bottom, 5)
+                    }
+                    Color.clear.padding(.bottom, 10)
+                }.padding(.horizontal, 20)
+            }
+            .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
+            .navigationTitle("LIBRARY")
+            .onAppear() {
+                        self.homeViewModel.getBooks()
+            }
         }
     }
 }

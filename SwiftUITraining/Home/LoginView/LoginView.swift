@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State private var loggedIn = false
+    
     var body: some View {
-        NavigationView {
+        if loggedIn {
+            TabsView()
+        } else {
             ZStack {
                 Image("bc_inicio").resizable()
                 VStack {
                     Spacer()
                     Image("Group")
                         .padding()
-                    NavigationLink(destination: HomeView()) {
-                            Text("INGRESAR CON GOOGLE").font(.headline).foregroundColor(Color.white)
-                    }
+                    Button(action: {
+                        loggedIn.toggle()
+                    }) {
+                        Text("INGRESAR CON GOOGLE").font(.headline).foregroundColor(Color.white)                    }
                     .padding(.vertical, 12)
                     .padding(.horizontal, 24)
                     .clipShape(Capsule())
