@@ -20,15 +20,10 @@ struct LoginView: View {
                     Spacer()
                     Image("Group")
                         .padding()
-                    Button(action: {
-                        loggedIn.toggle()
-                    }) {
-                        Text("INGRESAR CON GOOGLE").font(.headline).foregroundColor(Color.white)                    }
-                    .padding(.vertical, 12)
-                    .padding(.horizontal, 24)
-                    .clipShape(Capsule())
-                    .overlay(Capsule().stroke(Color.white, lineWidth: 2))
-                    .padding(.vertical, 12)
+                    CapsuleButton(buttonTitle: "INGRESAR CON GOOGLE",
+                                  buttonColor: Color.white,
+                                  enabled: true,
+                                  buttonAction: logIn)
                     Spacer()
                     Text("Designed, developed and used by woloxers")
                         .font(.footnote)
@@ -38,6 +33,10 @@ struct LoginView: View {
             }
             .edgesIgnoringSafeArea(.all)
         }
+    }
+    
+    private func logIn() {
+        loggedIn.toggle()
     }
 }
 

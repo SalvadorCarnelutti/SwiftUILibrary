@@ -15,14 +15,20 @@ struct TabsView: View {
                     Image(systemName: "books.vertical")
                     Text("Library")
                 }
-//            WishlistView()
-//                .tabItem {
-//                    Image(systemName: "square.and.pencil")
-//                    Text("Wishlist")
-//                }
-            SuggestView().tabItem {
+            WishlistView()
+                .tabItem {
+                    Image(systemName: "star.square")
+                    Text("Wishlist")
+                }
+            SuggestView()
+                .tabItem {
                     Image(systemName: "plus.circle")
                     Text("Suggest")
+                }
+            RentalsView()
+                .tabItem {
+                    Image(systemName: "checkmark.circle")
+                    Text("Rentals")
                 }
         }
     }

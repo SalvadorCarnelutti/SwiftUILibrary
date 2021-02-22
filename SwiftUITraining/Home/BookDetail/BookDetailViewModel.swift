@@ -26,7 +26,7 @@ class BookDetailViewModel: ObservableObject {
         self._book = book
     }
    
-    func rentBook() {
+    func postBookRent() {
         guard let httpBody = getEncodedRentBody else { return }
         var request =  URLRequest(url: URL(string: _rentURL)!)
         request.httpMethod = "POST"

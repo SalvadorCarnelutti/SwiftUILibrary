@@ -21,15 +21,20 @@ struct BookDetailView: View {
                         
                     VStack(alignment: .leading) {
                         Text(bookDetailViewModel.getBookTitle)
-                            .fixedSize(horizontal: false, vertical: true)
                             .font(.title2)
+                            .fixedSize(horizontal: false, vertical: true)
                             .lineLimit(nil)
                         Text(bookDetailViewModel.getBookStatus.uppercased())
                             .font(.headline)
                             .foregroundColor(statusColor)
-                        Text(bookDetailViewModel.getBookAuthor).foregroundColor(Color.charcoal)
-                        Text(bookDetailViewModel.getBookYear).foregroundColor(Color.charcoal)
-                        Text(bookDetailViewModel.getBookGenre).foregroundColor(Color.charcoal)
+                        Text(bookDetailViewModel.getBookAuthor)
+                            .foregroundColor(Color.charcoal)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(nil)
+                        Text(bookDetailViewModel.getBookYear)
+                            .foregroundColor(Color.charcoal)
+                        Text(bookDetailViewModel.getBookGenre)
+                            .foregroundColor(Color.charcoal)
                     }
                     .padding(.leading, 20)
                     Spacer()
@@ -46,7 +51,7 @@ struct BookDetailView: View {
                 .padding(.vertical, 12)
                 Button(action: {
                     if bookDetailViewModel.bookIsAvailable {
-                        bookDetailViewModel.rentBook()
+                        bookDetailViewModel.postBookRent()
                     } else {
                         unavailableIsPresented.toggle()
                     }
