@@ -11,6 +11,7 @@ import Foundation
 class BookDetailViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
     private lazy var _rentURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/rents"
+    private lazy var _wishURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/wishes"
     private lazy var _commentsURL = "https://swift-training-backend.herokuapp.com/books/\(_book.id)/comments"
     
     @Published private var _book: Book
@@ -37,6 +38,7 @@ class BookDetailViewModel: ObservableObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if response != nil {
+                // Publishing changes from background threads is not allowed; make sure to publish values from the main thread
                 DispatchQueue.main.async { [weak self] in
                     self?._book.setAsUnavailable()
                 }
@@ -47,6 +49,26 @@ class BookDetailViewModel: ObservableObject {
         }
         task.resume()
     }
+    
+    func postBookWish() {
+        guard let httpBody = getEncodedWishBody else { return }
+        var request =  URLRequest(url: URL(string: _wishURL)!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = httpBody
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if response != nil {
+                print("Finally, some fucking good food")
+            } else {
+                print("You messed something up, you fucking donkey")
+            }
+        }
+        task.resume()
+    }
+
     
     private var getEncodedRentBody: Data? {
         let today = Date()
@@ -61,6 +83,18 @@ class BookDetailViewModel: ObservableObject {
                              to: yearMonthDayFormat.string(from: tomorrow!))
         
         guard let encoded = try? encoder.encode(rentModel) else {
+            return nil
+        }
+        
+        return encoded
+    }
+    
+    private var getEncodedWishBody: Data? {
+        let encoder = JSONEncoder()
+        let wishModel = Wish(userID: _userData.id,
+                             bookID: _book.id)
+        
+        guard let encoded = try? encoder.encode(wishModel) else {
             return nil
         }
         
@@ -107,7 +141,7 @@ class BookDetailViewModel: ObservableObject {
         
     static func getMockedViewModel() -> BookDetailViewModel {
         let mockedViewModel = BookDetailViewModel(book: Book.getMockedBook())
-        mockedViewModel.bookComments = BookComment.getMockedBookComment()
+        mockedViewModel.bookComments = BookComment.getMockedBookComments()
         return mockedViewModel
     }
 }

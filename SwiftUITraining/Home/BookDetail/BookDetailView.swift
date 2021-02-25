@@ -40,7 +40,7 @@ struct BookDetailView: View {
                     Spacer()
                 }
                 Button(action: {
-                    // TODO: add to wishlist
+                    bookDetailViewModel.postBookWish()
                 }) {
                     Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color.deepSkyBlue)
                 }

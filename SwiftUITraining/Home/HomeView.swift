@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct HomeView: View {
     // For more about published values:
@@ -17,21 +16,11 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack {
-                    Color.clear.padding(.bottom, 20)
-                    ForEach(homeViewModel.books) { book in
-                        BookCellView(book: book)
-                            .padding(.bottom, 5)
-                    }
-                    Color.clear.padding(.bottom, 10)
-                }.padding(.horizontal, 20)
-            }
-            .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
-            .navigationTitle("LIBRARY")
-            .onAppear() {
-                        self.homeViewModel.getBooks()
-            }
+            BookTableView(books: homeViewModel.books)            .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
+                .navigationTitle("LIBRARY")
+                .onAppear {
+                    self.homeViewModel.getBooks()
+                }
         }
     }
 }

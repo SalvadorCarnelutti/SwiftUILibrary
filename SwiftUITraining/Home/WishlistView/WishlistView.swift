@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct WishlistView: View {
+    @StateObject var wishlistViewModel = WishlistViewModel()
+    
     var body: some View {
-        Text("Start wishing (?")
+        NavigationView {
+            BookTableView(books: wishlistViewModel.wishlistBooks.map {$0.book}) .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
+                .navigationTitle("WISHLIST")
+                .onAppear {
+                    wishlistViewModel.getWishlistBooks()
+                }
+        }
     }
 }
 

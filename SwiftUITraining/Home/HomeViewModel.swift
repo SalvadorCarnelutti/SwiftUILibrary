@@ -11,7 +11,7 @@ import Foundation
 final class HomeViewModel: ObservableObject {
     private let _url = "https://swift-training-backend.herokuapp.com/books"
     @Published var books: [Book] = []
-    // Publishers must be stored or otherwise ARC swoops by and deasllocates them immediately
+    // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
     private var _task: AnyCancellable?
     
     func getBooks() {

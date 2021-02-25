@@ -1,12 +1,12 @@
 //
-//  BookCommentMock.swift
+//  BookCommentMocks.swift
 //  SwiftUITraining
 //
 //  Created by Salvador Carnelutti on 13/02/2021.
 //
 
 extension BookComment {
-    static func getMockedBookComment() -> [BookComment] {
+    static func getMockedBookComments() -> [BookComment] {
         var mockedComments: [BookComment] = []
         let mockedUser = User(id: 1,
                               username: "juanrodriguez",

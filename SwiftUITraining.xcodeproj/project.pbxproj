@@ -19,6 +19,11 @@
 		0CF3E23C2538F81B00F9BEB4 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3E23B2538F81B00F9BEB4 /* menu.json */; };
 		0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2402538F88E00F9BEB4 /* Book.swift */; };
 		0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2452538FB0E00F9BEB4 /* Helper.swift */; };
+		A030002A25E75F2D00241D05 /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030002925E75F2D00241D05 /* Wish.swift */; };
+		A030003225E7611800241D05 /* BookTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003125E7611800241D05 /* BookTableView.swift */; };
+		A030003A25E764F800241D05 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003925E764F800241D05 /* WishlistViewModel.swift */; };
+		A030003F25E7682B00241D05 /* WishlistBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003E25E7682B00241D05 /* WishlistBook.swift */; };
+		A030004A25E7F42B00241D05 /* WishlistBookMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030004925E7F42B00241D05 /* WishlistBookMocks.swift */; };
 		A03FD2D125E024400004532F /* SuggestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03FD2D025E024400004532F /* SuggestView.swift */; };
 		A0615D4525E03600002B9400 /* SuggestionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0615D4425E03600002B9400 /* SuggestionTextField.swift */; };
 		A0615D5225E039E4002B9400 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0615D5125E039E4002B9400 /* String.swift */; };
@@ -33,7 +38,7 @@
 		A067B8ED25D334DF005EDC6A /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8EC25D334DF005EDC6A /* UserData.swift */; };
 		A067B8F225D8343F005EDC6A /* BookComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8F125D8343F005EDC6A /* BookComment.swift */; };
 		A067B8F725D83646005EDC6A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8F625D83646005EDC6A /* User.swift */; };
-		A067B8FC25D84799005EDC6A /* BookCommentMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8FB25D84799005EDC6A /* BookCommentMock.swift */; };
+		A067B8FC25D84799005EDC6A /* BookCommentMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067B8FB25D84799005EDC6A /* BookCommentMocks.swift */; };
 		A0791C9625CF57230069BA2A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0791C9525CF57230069BA2A /* LoginView.swift */; };
 		A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */; };
 		A0E85CCC25CF4E700014D575 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85CCB25CF4E700014D575 /* Color.swift */; };
@@ -75,6 +80,11 @@
 		0CF3E23B2538F81B00F9BEB4 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		0CF3E2402538F88E00F9BEB4 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		0CF3E2452538FB0E00F9BEB4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A030002925E75F2D00241D05 /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
+		A030003125E7611800241D05 /* BookTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableView.swift; sourceTree = "<group>"; };
+		A030003925E764F800241D05 /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
+		A030003E25E7682B00241D05 /* WishlistBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistBook.swift; sourceTree = "<group>"; };
+		A030004925E7F42B00241D05 /* WishlistBookMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistBookMocks.swift; sourceTree = "<group>"; };
 		A03FD2D025E024400004532F /* SuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestView.swift; sourceTree = "<group>"; };
 		A0615D4425E03600002B9400 /* SuggestionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionTextField.swift; sourceTree = "<group>"; };
 		A0615D5125E039E4002B9400 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -89,7 +99,7 @@
 		A067B8EC25D334DF005EDC6A /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		A067B8F125D8343F005EDC6A /* BookComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookComment.swift; sourceTree = "<group>"; };
 		A067B8F625D83646005EDC6A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A067B8FB25D84799005EDC6A /* BookCommentMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCommentMock.swift; sourceTree = "<group>"; };
+		A067B8FB25D84799005EDC6A /* BookCommentMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCommentMocks.swift; sourceTree = "<group>"; };
 		A0791C9525CF57230069BA2A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A0E85CCB25CF4E700014D575 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -128,7 +138,7 @@
 				A03FD2CF25E024340004532F /* SuggestView */,
 				A0791C8925CF56D20069BA2A /* LoginView */,
 				0C5B128A255089D300B8A9CB /* BookDetail */,
-				0C5B1289255089B500B8A9CB /* BookCell */,
+				0C5B1289255089B500B8A9CB /* BookTableView */,
 				0CF3E20F2538EFD500F9BEB4 /* HomeView.swift */,
 				A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */,
 			);
@@ -149,21 +159,24 @@
 			children = (
 				0CF3E23B2538F81B00F9BEB4 /* menu.json */,
 				0CF3E2402538F88E00F9BEB4 /* Book.swift */,
+				A030003E25E7682B00241D05 /* WishlistBook.swift */,
 				A0615D5B25E42611002B9400 /* BookSuggestion.swift */,
 				A067B8F125D8343F005EDC6A /* BookComment.swift */,
 				A067B8F625D83646005EDC6A /* User.swift */,
 				A067B8DC25D2FB48005EDC6A /* Rent.swift */,
+				A030002925E75F2D00241D05 /* Wish.swift */,
 				A067B8EC25D334DF005EDC6A /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0C5B1289255089B500B8A9CB /* BookCell */ = {
+		0C5B1289255089B500B8A9CB /* BookTableView */ = {
 			isa = PBXGroup;
 			children = (
 				0C78E1122539DB750000E671 /* BookCellView.swift */,
+				A030003125E7611800241D05 /* BookTableView.swift */,
 			);
-			path = BookCell;
+			path = BookTableView;
 			sourceTree = "<group>";
 		};
 		0C5B128A255089D300B8A9CB /* BookDetail */ = {
@@ -179,7 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				0C5B129725508BA400B8A9CB /* BookMocks.swift */,
-				A067B8FB25D84799005EDC6A /* BookCommentMock.swift */,
+				A067B8FB25D84799005EDC6A /* BookCommentMocks.swift */,
+				A030004925E7F42B00241D05 /* WishlistBookMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -260,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				A0615D6C25E44B1D002B9400 /* WishlistView.swift */,
+				A030003925E764F800241D05 /* WishlistViewModel.swift */,
 			);
 			path = WishlistView;
 			sourceTree = "<group>";
@@ -421,9 +436,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF3E2102538EFD500F9BEB4 /* HomeView.swift in Sources */,
+				A030004A25E7F42B00241D05 /* WishlistBookMocks.swift in Sources */,
 				A0615D5725E42463002B9400 /* SuggestViewModel.swift in Sources */,
 				A0615D5C25E42611002B9400 /* BookSuggestion.swift in Sources */,
 				0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */,
+				A030003F25E7682B00241D05 /* WishlistBook.swift in Sources */,
+				A030002A25E75F2D00241D05 /* Wish.swift in Sources */,
 				A067B8ED25D334DF005EDC6A /* UserData.swift in Sources */,
 				A067B8F225D8343F005EDC6A /* BookComment.swift in Sources */,
 				A067B8F725D83646005EDC6A /* User.swift in Sources */,
@@ -432,6 +450,8 @@
 				0C5B129825508BA400B8A9CB /* BookMocks.swift in Sources */,
 				A067B8E825D32660005EDC6A /* BookDetailViewModel.swift in Sources */,
 				A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */,
+				A030003A25E764F800241D05 /* WishlistViewModel.swift in Sources */,
+				A030003225E7611800241D05 /* BookTableView.swift in Sources */,
 				A067B8D825D2F054005EDC6A /* TabsView.swift in Sources */,
 				A0E85CCC25CF4E700014D575 /* Color.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
@@ -441,7 +461,7 @@
 				0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */,
 				A0791C9625CF57230069BA2A /* LoginView.swift in Sources */,
 				A067B8DD25D2FB48005EDC6A /* Rent.swift in Sources */,
-				A067B8FC25D84799005EDC6A /* BookCommentMock.swift in Sources */,
+				A067B8FC25D84799005EDC6A /* BookCommentMocks.swift in Sources */,
 				A0615D6425E436A1002B9400 /* CapsuleButton.swift in Sources */,
 				0C78E1132539DB750000E671 /* BookCellView.swift in Sources */,
 				A0615D5225E039E4002B9400 /* String.swift in Sources */,
