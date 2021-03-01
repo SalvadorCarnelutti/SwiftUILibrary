@@ -6,7 +6,7 @@
 //
 
 extension WishlistBook {
-    static func getMockedBookComments() -> [WishlistBook] {
+    static func getMockedWishlistBooks() -> [WishlistBook] {
         var mockedComments: [WishlistBook] = []
         let mockedUser = User(id: 1,
                               username: "juanrodriguez",

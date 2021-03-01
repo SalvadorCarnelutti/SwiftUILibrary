@@ -19,6 +19,7 @@
 		0CF3E23C2538F81B00F9BEB4 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3E23B2538F81B00F9BEB4 /* menu.json */; };
 		0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2402538F88E00F9BEB4 /* Book.swift */; };
 		0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3E2452538FB0E00F9BEB4 /* Helper.swift */; };
+		A0282DD825E8172E002A60A4 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0282DD725E8172E002A60A4 /* RemoteImage.swift */; };
 		A030002A25E75F2D00241D05 /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030002925E75F2D00241D05 /* Wish.swift */; };
 		A030003225E7611800241D05 /* BookTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003125E7611800241D05 /* BookTableView.swift */; };
 		A030003A25E764F800241D05 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003925E764F800241D05 /* WishlistViewModel.swift */; };
@@ -42,6 +43,8 @@
 		A0791C9625CF57230069BA2A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0791C9525CF57230069BA2A /* LoginView.swift */; };
 		A0E7DE3A25C9D1AD0059853C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */; };
 		A0E85CCC25CF4E700014D575 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85CCB25CF4E700014D575 /* Color.swift */; };
+		A0FB6DAF25ED680D00F4FCC8 /* SuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB6DAE25ED680D00F4FCC8 /* SuggestionView.swift */; };
+		A0FB6DBA25ED6B0C00F4FCC8 /* RentalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB6DB925ED6B0C00F4FCC8 /* RentalsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,7 @@
 		0CF3E23B2538F81B00F9BEB4 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		0CF3E2402538F88E00F9BEB4 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		0CF3E2452538FB0E00F9BEB4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A0282DD725E8172E002A60A4 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		A030002925E75F2D00241D05 /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
 		A030003125E7611800241D05 /* BookTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableView.swift; sourceTree = "<group>"; };
 		A030003925E764F800241D05 /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		A0791C9525CF57230069BA2A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A0E7DE3925C9D1AD0059853C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A0E85CCB25CF4E700014D575 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		A0FB6DAE25ED680D00F4FCC8 /* SuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionView.swift; sourceTree = "<group>"; };
+		A0FB6DB925ED6B0C00F4FCC8 /* RentalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 			children = (
 				A0E85CBF25CF4E460014D575 /* Extensions */,
 				0CF3E2452538FB0E00F9BEB4 /* Helper.swift */,
+				A0282DD725E8172E002A60A4 /* RemoteImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				A0615D6C25E44B1D002B9400 /* WishlistView.swift */,
+				A0FB6DAE25ED680D00F4FCC8 /* SuggestionView.swift */,
 				A030003925E764F800241D05 /* WishlistViewModel.swift */,
 			);
 			path = WishlistView;
@@ -283,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				A0615D7525E44C81002B9400 /* RentalsView.swift */,
+				A0FB6DB925ED6B0C00F4FCC8 /* RentalsViewModel.swift */,
 			);
 			path = RentalsView;
 			sourceTree = "<group>";
@@ -435,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0FB6DBA25ED6B0C00F4FCC8 /* RentalsViewModel.swift in Sources */,
 				0CF3E2102538EFD500F9BEB4 /* HomeView.swift in Sources */,
 				A030004A25E7F42B00241D05 /* WishlistBookMocks.swift in Sources */,
 				A0615D5725E42463002B9400 /* SuggestViewModel.swift in Sources */,
@@ -444,6 +454,7 @@
 				A030002A25E75F2D00241D05 /* Wish.swift in Sources */,
 				A067B8ED25D334DF005EDC6A /* UserData.swift in Sources */,
 				A067B8F225D8343F005EDC6A /* BookComment.swift in Sources */,
+				A0FB6DAF25ED680D00F4FCC8 /* SuggestionView.swift in Sources */,
 				A067B8F725D83646005EDC6A /* User.swift in Sources */,
 				A0615D7625E44C81002B9400 /* RentalsView.swift in Sources */,
 				A0615D6D25E44B1D002B9400 /* WishlistView.swift in Sources */,
@@ -454,6 +465,7 @@
 				A030003225E7611800241D05 /* BookTableView.swift in Sources */,
 				A067B8D825D2F054005EDC6A /* TabsView.swift in Sources */,
 				A0E85CCC25CF4E700014D575 /* Color.swift in Sources */,
+				A0282DD825E8172E002A60A4 /* RemoteImage.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
 				A0615D4525E03600002B9400 /* SuggestionTextField.swift in Sources */,
 				A03FD2D125E024400004532F /* SuggestView.swift in Sources */,

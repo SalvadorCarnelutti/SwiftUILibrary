@@ -12,11 +12,16 @@ struct WishlistView: View {
     
     var body: some View {
         NavigationView {
-            BookTableView(books: wishlistViewModel.wishlistBooks.map {$0.book}) .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
-                .navigationTitle("WISHLIST")
-                .onAppear {
-                    wishlistViewModel.getWishlistBooks()
-                }
+            BookTableView(books: wishlistViewModel.wishlistBooks.map { $0.book })
+            VStack {
+                SuggestionView(urlLinks: wishlistViewModel.wishlistBooks.map { $0.book.image })
+                Spacer()
+            }
+            .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
+            .navigationTitle("WISHLIST")
+            .onAppear {
+                wishlistViewModel.getWishlistBooks()
+            }
         }
     }
 }

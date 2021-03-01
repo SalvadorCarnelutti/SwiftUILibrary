@@ -60,7 +60,7 @@ struct BookDetailView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
-                .background(Color.gainsboro)
+                .background(rentButtonColor)
                 .clipShape(Capsule())
                 
             }
@@ -118,12 +118,13 @@ struct BookDetailView: View {
         return bookDetailViewModel.bookIsAvailable ? Color.atlantis : Color.venetianRed
     }
     
-    /*
-     // TO DO: Add when gradient color is done
-     var rentButtonColor: Color {
-         return bookDetailViewModel.bookIsAvailable ? GRADIENT : Color.gainsboro
+     var rentButtonColor: LinearGradient {
+        let availableGradient = LinearGradient(gradient: Gradient(colors: [Color.deepSkyBlue, Color.mediumTurquoise]),
+                                               startPoint: .leading, endPoint: .trailing)
+        let unavailableGradient = LinearGradient(gradient: Gradient(colors: [Color.gainsboro]),
+                                                 startPoint: .leading, endPoint: .trailing)
+        return bookDetailViewModel.bookIsAvailable ? availableGradient : unavailableGradient
      }
-     */
 }
 
 struct SwiftUIView_Previews: PreviewProvider {

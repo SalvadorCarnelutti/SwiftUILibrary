@@ -31,4 +31,8 @@ extension Color {
     public static var gainsboro: Color {
         return Color(hex: 0xDDDDDD)
     }
+
+    public static var mediumTurquoise: Color {
+        return Color(hex: 0x39CCCD)
+    }
 }

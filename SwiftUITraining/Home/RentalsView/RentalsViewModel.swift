@@ -1,23 +1,23 @@
 //
-//  WishlistViewModel.swift
+//  RentalsViewModel.swift
 //  SwiftUITraining
 //
-//  Created by Salvador Carnelutti on 25/02/2021.
+//  Created by Salvador Carnelutti on 01/03/2021.
 //
 
 import Combine
 import Foundation
 
-class WishlistViewModel: ObservableObject {
+class RentalsViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
-    private lazy var _wishlistURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/wishes"
+    private lazy var _rentalsURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/rents"
     
-    @Published var wishlistBooks: [WishlistBook] = []
+    @Published var rentalBooks: [WishlistBook] = []
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
     private var _task: AnyCancellable?
         
-    func getWishlistBooks() {
-        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _wishlistURL)!)
+    func getRentalBooks() {
+        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _rentalsURL)!)
             .map { $0.data }
             .decode(type: [WishlistBook].self, decoder: JSONDecoder())
             // Print is for debugging petition contents
@@ -25,6 +25,6 @@ class WishlistViewModel: ObservableObject {
             .replaceError(with: [])
             .eraseToAnyPublisher()
             .receive(on: RunLoop.main)
-            .assign(to: \WishlistViewModel.wishlistBooks, on: self)
+            .assign(to: \RentalsViewModel.rentalBooks, on: self)
     }
 }
