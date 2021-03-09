@@ -12,41 +12,43 @@ struct SuggestView: View {
     @StateObject private var _suggestViewModel = SuggestViewModel()
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    HStack {
-                        Image("ic_add photo")
-                        Spacer()
+        LoadingView(isShowing: $_suggestViewModel.loading) {
+            NavigationView {
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Image("ic_add photo")
+                            Spacer()
+                        }
+                        .padding(.bottom)
+                        SuggestionTextField(placeholderText: "Book's name", fieldBindString: $_suggestViewModel.bookName)
+                        SuggestionTextField(placeholderText: "Author", fieldBindString: $_suggestViewModel.bookAuthor)
+                        SuggestionTextField(placeholderText: "Year", fieldBindString: $_suggestViewModel.bookYear)
+                        SuggestionTextField(placeholderText: "Topic", fieldBindString: $_suggestViewModel.bookTopic)
+                        SuggestionTextField(placeholderText: "Description", fieldBindString: $_suggestViewModel.bookDescription)
                     }
-                    .padding(.bottom)
-                    SuggestionTextField(placeholderText: "Book's name", fieldBindString: $_suggestViewModel.bookName)
-                    SuggestionTextField(placeholderText: "Author", fieldBindString: $_suggestViewModel.bookAuthor)
-                    SuggestionTextField(placeholderText: "Year", fieldBindString: $_suggestViewModel.bookYear)
-                    SuggestionTextField(placeholderText: "Topic", fieldBindString: $_suggestViewModel.bookTopic)
-                    SuggestionTextField(placeholderText: "Description", fieldBindString: $_suggestViewModel.bookDescription)
-                }
-                .padding(20)
-                .navigationTitle("SUGGEST BOOK")
-                
-                Button(action: {
-                    _suggestViewModel.postBookSuggestion {
-                        _suggestionResponseIsPresented.toggle()
+                    .padding(20)
+                    .navigationTitle("SUGGEST BOOK")
+                    
+                    Button(action: {
+                        _suggestViewModel.postBookSuggestion {
+                            _suggestionResponseIsPresented.toggle()
+                        }
+                    }) {
+                        Text("SUBMIT").font(.headline)
                     }
-                }) {
-                    Text("SUBMIT").font(.headline)
+                    .padding(.bottom, 22)
+                    .disabled(allFieldsFilled)
                 }
-                .padding(.bottom, 22)
-                .disabled(allFieldsFilled)
+                .background(Color.white.cornerRadius(5).shadow(radius: 2))
+                .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+                .background(Color.lavender)
+                .alert(isPresented: $_suggestionResponseIsPresented, content: {
+                    Alert(title: Text(_suggestViewModel.alertTitle),
+                          message: Text(_suggestViewModel.alertMessage),
+                          dismissButton: .default(Text("Ok")))
+                })
             }
-            .background(Color.white.cornerRadius(5).shadow(radius: 2))
-            .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
-            .background(Color.lavender)
-            .alert(isPresented: $_suggestionResponseIsPresented, content: {
-                Alert(title: Text(_suggestViewModel.alertTitle),
-                      message: Text(_suggestViewModel.alertMessage),
-                      dismissButton: .default(Text("Ok")))
-            })
         }
     }
     

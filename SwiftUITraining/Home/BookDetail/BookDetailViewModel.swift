@@ -18,8 +18,10 @@ class BookDetailViewModel: ObservableObject {
     @Published private(set) var bookComments: [BookComment] = [] {
         didSet {
             _lastBookComment = bookComments.suffix(5).last
+            loading = false
         }
     }
+    @Published var loading: Bool = false
     private var _lastBookComment: BookComment?
     private var _task: AnyCancellable?
 
@@ -36,11 +38,17 @@ class BookDetailViewModel: ObservableObject {
         request.httpBody = httpBody
         
         let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
+        loading = true
+        let task = session.dataTask(with: request) { [weak self] data, response, error in
+            DispatchQueue.main.async { [weak self] in
+                self?.loading = false
+            }
+            
             if response != nil {
                 // Publishing changes from background threads is not allowed; make sure to publish values from the main thread
                 DispatchQueue.main.async { [weak self] in
                     self?._book.setAsUnavailable()
+                    self?.loading = false
                 }
                 print("Finally, some fucking good food")
             } else {
@@ -123,6 +131,10 @@ class BookDetailViewModel: ObservableObject {
     
     var getBookGenre: String {
         return _book.genre
+    }
+    
+    var getBookURL: String {
+        return _book.image
     }
         
     func getBookComments() {

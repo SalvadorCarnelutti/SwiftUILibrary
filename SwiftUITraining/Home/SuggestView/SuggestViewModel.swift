@@ -17,6 +17,7 @@ class SuggestViewModel: ObservableObject {
     @Published var bookYear = ""
     @Published var bookTopic = ""
     @Published var bookDescription = ""
+    @Published var loading: Bool = false
     
     func postBookSuggestion(completionHandler: @escaping () -> ()) {
         guard let httpBody = getEncodedRentBody else { return }
@@ -27,7 +28,12 @@ class SuggestViewModel: ObservableObject {
         request.httpBody = httpBody
         
         let session = URLSession.shared
+        loading = true
         let task = session.dataTask(with: request) { [weak self] data, response, error in
+            DispatchQueue.main.async { [weak self] in
+                self?.loading = false
+            }
+            
             completionHandler()
             self?._postResponseSuccessful = response != nil
         }

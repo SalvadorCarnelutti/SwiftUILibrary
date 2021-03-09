@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct WishlistView: View {
-    @StateObject var wishlistViewModel = WishlistViewModel()
+    @StateObject private var _wishlistViewModel = WishlistViewModel()
     
     var body: some View {
         NavigationView {
-            BookTableView(books: wishlistViewModel.wishlistBooks.map { $0.book })
+            BookTableView(books: _wishlistViewModel.wishlistBooks.map { $0.book })
             VStack {
-                SuggestionView(urlLinks: wishlistViewModel.wishlistBooks.map { $0.book.image })
+                SuggestionView(urlLinks: _wishlistViewModel.wishlistBooks.map { $0.book.image })
                 Spacer()
             }
             .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
             .navigationTitle("WISHLIST")
             .onAppear {
-                wishlistViewModel.getWishlistBooks()
+                _wishlistViewModel.getWishlistBooks()
             }
         }
     }

@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct RentalsView: View {
-    @StateObject var rentalsViewModel = RentalsViewModel()
+    @StateObject private var _rentalsViewModel = RentalsViewModel()
     
     var body: some View {
         NavigationView {
-            BookTableView(books: rentalsViewModel.rentalBooks.map { $0.book })
+            BookTableView(books: _rentalsViewModel.rentalBooks.map { $0.book })
             VStack {
-                SuggestionView(urlLinks: rentalsViewModel.rentalBooks.map { $0.book.image })
+                SuggestionView(urlLinks: _rentalsViewModel.rentalBooks.map { $0.book.image })
                 Spacer()
             }
             
             .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
             .navigationTitle("WISHLIST")
             .onAppear {
-                rentalsViewModel.getRentalBooks()
+                _rentalsViewModel.getRentalBooks()
             }
         }
     }

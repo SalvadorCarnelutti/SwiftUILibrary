@@ -13,7 +13,9 @@ struct BookCellView: View {
     var body: some View {
         NavigationLink(destination: BookDetailView(bookDetailViewModel: BookDetailViewModel(book: book))) {
             HStack(alignment: .top) {
-                Image("img_book6")
+                RemoteImage(url: book.image)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 55)
                     .padding(.trailing, 20)
                     .padding(.leading, 30)
                 

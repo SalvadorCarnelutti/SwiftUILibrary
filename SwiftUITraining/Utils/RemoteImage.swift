@@ -19,7 +19,8 @@ struct RemoteImage: View {
         init(url: String) {
             
             guard let parsedHTTPURL = URL(string: url), var comps = URLComponents(url: parsedHTTPURL, resolvingAgainstBaseURL: false) else {
-                fatalError("Invalid URL: \(url)")
+                self.state = .failure
+                return
             }
             
             comps.scheme = "https"
