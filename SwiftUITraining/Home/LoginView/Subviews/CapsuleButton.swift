@@ -27,8 +27,7 @@ struct CapsuleButton: View {
         .padding(.vertical, 12)
     } 
     
-    static func placeholderFunction() -> () {
-    }
+    static func placeholderFunction() -> () {}
 }
 
 struct CapsuleButton_Previews: PreviewProvider {

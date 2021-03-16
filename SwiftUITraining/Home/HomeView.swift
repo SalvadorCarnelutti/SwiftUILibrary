@@ -12,17 +12,17 @@ struct HomeView: View {
     /*
      https://levelup.gitconnected.com/state-vs-stateobject-vs-observedobject-vs-environmentobject-in-swiftui-81e2913d63f9
      */
-    @StateObject private var _homeViewModel = HomeViewModel()
+    @StateObject var homeViewModel: HomeViewModel
     
     var body: some View {
-        LoadingView(isShowing: $_homeViewModel.loading) {
+        LoadingView(isShowing: $homeViewModel.loading) {
             NavigationView {
-                BookTableView(books: _homeViewModel.books)
+                BookTableView(books: homeViewModel.books)
                     .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                     .navigationTitle("LIBRARY")
                     .onAppear {
-                        _homeViewModel.loading = true
-                        self._homeViewModel.getBooks()
+                        homeViewModel.loading = true
+                        self.homeViewModel.getBooks()
                     }
             }
         }
@@ -31,8 +31,10 @@ struct HomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        let mockViewModel = HomeViewModel(books: Book.getMockedBooks())
+        
         NavigationView {
-            HomeView()
+            HomeView(homeViewModel: mockViewModel)
         }
     }
 }
