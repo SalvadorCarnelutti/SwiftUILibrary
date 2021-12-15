@@ -15,17 +15,24 @@ struct LoginView: View {
             TabsView()
         } else {
             ZStack {
-                Image("bc_inicio").resizable()
+                LinearGradient(gradient: Gradient(colors: [.blue, .deepSkyBlue]), startPoint: .top, endPoint: .bottom)
                 VStack {
                     Spacer()
-                    Image("Group")
+                    Image(systemName: "character.book.closed.fill")
+                        .foregroundColor(.white)
+                        .font(.system(size: 100.0))
                         .padding()
-                    CapsuleButton(buttonTitle: "INGRESAR CON GOOGLE",
+                    Text("E-books")
+                        .font(.largeTitle)
+                        .foregroundColor(Color.white)
+                        .padding(.bottom)
+                    
+                    CapsuleButton(buttonTitle: "LOG IN WITH GOOGLE",
                                   buttonColor: Color.white,
                                   enabled: true,
                                   buttonAction: logIn)
                     Spacer()
-                    Text("Designed, developed and used by woloxers")
+                    Text("Work in progress")
                         .font(.footnote)
                         .foregroundColor(Color.black)
                         .padding()

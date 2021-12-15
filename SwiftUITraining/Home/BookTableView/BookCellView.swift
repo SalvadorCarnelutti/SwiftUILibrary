@@ -21,9 +21,11 @@ struct BookCellView: View {
                 
                 VStack(alignment: .leading) {
                     Text(book.title).font(.system(size: 17, weight: .bold, design: .default))
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(nil)
                         .foregroundColor(Color.charcoal)
-                    Text(book.author).font(.system(size: 15, weight: .light, design: .default))
-                        .foregroundColor(Color.charcoal)
+                    Text(book.author).font(.system(size: 15, weight: .light, design: .default)).foregroundColor(Color.charcoal)
                 }
                 Spacer()
             }

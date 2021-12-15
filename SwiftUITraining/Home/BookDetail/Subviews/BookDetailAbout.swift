@@ -15,7 +15,7 @@ struct BookDetailAbout: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .top) {
                 RemoteImage(url: bookDetailViewModel.getBookURL)
                     .frame(width: 70, height: 105)
                 

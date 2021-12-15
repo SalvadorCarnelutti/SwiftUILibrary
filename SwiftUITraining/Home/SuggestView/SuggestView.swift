@@ -43,6 +43,7 @@ struct SuggestView: View {
                 .background(Color.white.cornerRadius(5).shadow(radius: 2))
                 .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                 .background(Color.lavender)
+                // Maybe it would be nice that if post is successful, all fields are emptied?
                 .alert(isPresented: $_suggestionResponseIsPresented, content: {
                     Alert(title: Text(_suggestViewModel.alertTitle),
                           message: Text(_suggestViewModel.alertMessage),

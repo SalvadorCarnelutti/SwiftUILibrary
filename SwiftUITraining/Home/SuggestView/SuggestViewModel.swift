@@ -20,24 +20,24 @@ class SuggestViewModel: ObservableObject {
     @Published var loading: Bool = false
     
     func postBookSuggestion(completionHandler: @escaping () -> ()) {
-        guard let httpBody = getEncodedRentBody else { return }
-        var request =  URLRequest(url: URL(string: _suggestURL)!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = httpBody
-        
-        let session = URLSession.shared
-        loading = true
-        let task = session.dataTask(with: request) { [weak self] data, response, error in
-            DispatchQueue.main.async { [weak self] in
-                self?.loading = false
-            }
-            
-            completionHandler()
-            self?._postResponseSuccessful = response != nil
-        }
-        task.resume()
+//        guard let httpBody = getEncodedRentBody else { return }
+//        var request =  URLRequest(url: URL(string: _suggestURL)!)
+//        request.httpMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.httpBody = httpBody
+//
+//        let session = URLSession.shared
+//        loading = true
+//        let task = session.dataTask(with: request) { [weak self] data, response, error in
+//            DispatchQueue.main.async { [weak self] in
+//                self?.loading = false
+//            }
+//
+//            completionHandler()
+//            self?._postResponseSuccessful = response != nil
+//        }
+//        task.resume()
     }
     
     private var getEncodedRentBody: Data? {

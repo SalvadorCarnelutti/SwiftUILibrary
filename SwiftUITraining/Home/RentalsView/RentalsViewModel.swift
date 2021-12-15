@@ -17,14 +17,14 @@ class RentalsViewModel: ObservableObject {
     private var _task: AnyCancellable?
         
     func getRentalBooks() {
-        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _rentalsURL)!)
-            .map { $0.data }
-            .decode(type: [WishlistBook].self, decoder: JSONDecoder())
-            // Print is for debugging petition contents
-            .print()
-            .replaceError(with: [])
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .assign(to: \RentalsViewModel.rentalBooks, on: self)
+//        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _rentalsURL)!)
+//            .map { $0.data }
+//            .decode(type: [WishlistBook].self, decoder: JSONDecoder())
+//            // Print is for debugging petition contents
+//            .print()
+//            .replaceError(with: [])
+//            .eraseToAnyPublisher()
+//            .receive(on: RunLoop.main)
+//            .assign(to: \RentalsViewModel.rentalBooks, on: self)
     }
 }

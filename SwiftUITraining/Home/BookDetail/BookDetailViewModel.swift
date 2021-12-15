@@ -30,51 +30,51 @@ class BookDetailViewModel: ObservableObject {
     }
    
     func postBookRent() {
-        guard let httpBody = getEncodedRentBody else { return }
-        var request =  URLRequest(url: URL(string: _rentURL)!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = httpBody
-        
-        let session = URLSession.shared
-        loading = true
-        let task = session.dataTask(with: request) { [weak self] data, response, error in
-            DispatchQueue.main.async { [weak self] in
-                self?.loading = false
-            }
-            
-            if response != nil {
-                // Publishing changes from background threads is not allowed; make sure to publish values from the main thread
-                DispatchQueue.main.async { [weak self] in
-                    self?._book.setAsUnavailable()
-                    self?.loading = false
-                }
-                print("Finally, some fucking good food")
-            } else {
-                print("You messed something up, you fucking donkey")
-            }
-        }
-        task.resume()
+//        guard let httpBody = getEncodedRentBody else { return }
+//        var request =  URLRequest(url: URL(string: _rentURL)!)
+//        request.httpMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.httpBody = httpBody
+//
+//        let session = URLSession.shared
+//        loading = true
+//        let task = session.dataTask(with: request) { [weak self] data, response, error in
+//            DispatchQueue.main.async { [weak self] in
+//                self?.loading = false
+//            }
+//
+//            if response != nil {
+//                // Publishing changes from background threads is not allowed; make sure to publish values from the main thread
+//                DispatchQueue.main.async { [weak self] in
+//                    self?._book.setAsUnavailable()
+//                    self?.loading = false
+//                }
+//                print("Finally, some fucking good food")
+//            } else {
+//                print("You messed something up, you fucking donkey")
+//            }
+//        }
+//        task.resume()
     }
     
     func postBookWish() {
-        guard let httpBody = getEncodedWishBody else { return }
-        var request =  URLRequest(url: URL(string: _wishURL)!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = httpBody
-        
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if response != nil {
-                print("Finally, some fucking good food")
-            } else {
-                print("You messed something up, you fucking donkey")
-            }
-        }
-        task.resume()
+//        guard let httpBody = getEncodedWishBody else { return }
+//        var request =  URLRequest(url: URL(string: _wishURL)!)
+//        request.httpMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.httpBody = httpBody
+//
+//        let session = URLSession.shared
+//        let task = session.dataTask(with: request) { data, response, error in
+//            if response != nil {
+//                print("Finally, some fucking good food")
+//            } else {
+//                print("You messed something up, you fucking donkey")
+//            }
+//        }
+//        task.resume()
     }
 
     
@@ -138,13 +138,13 @@ class BookDetailViewModel: ObservableObject {
     }
         
     func getBookComments() {
-        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _commentsURL)!)
-            .map { $0.data }
-            .decode(type: [BookComment].self, decoder: JSONDecoder())
-            .replaceError(with: [])
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .assign(to: \BookDetailViewModel.bookComments, on: self)
+//        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _commentsURL)!)
+//            .map { $0.data }
+//            .decode(type: [BookComment].self, decoder: JSONDecoder())
+//            .replaceError(with: [])
+//            .eraseToAnyPublisher()
+//            .receive(on: RunLoop.main)
+//            .assign(to: \BookDetailViewModel.bookComments, on: self)
     }
     
     func isLastBookComment(_ bookComment: BookComment) -> Bool {

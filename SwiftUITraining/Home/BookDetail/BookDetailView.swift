@@ -33,7 +33,7 @@ struct BookDetailView: View {
         })
         .listStyle(GroupedListStyle())
         .onAppear {
-            bookDetailViewModel.loading = true
+//            bookDetailViewModel.loading = true
             bookDetailViewModel.getBookComments()
         }
     }
