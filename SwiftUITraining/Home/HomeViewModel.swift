@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 final class HomeViewModel: ObservableObject {
-    private let _url = "https://myjson.dit.upm.es/api/bins/cv21"
+    private let _url = "https://myjson.dit.upm.es/api/bins/450h"
     @Published var books: [Book] {
         didSet {
             loading = false
