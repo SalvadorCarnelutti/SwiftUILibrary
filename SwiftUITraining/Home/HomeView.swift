@@ -1,34 +1,40 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  SwiftUITraining
 //
 //  Created by Diego Quiros on 15/10/2020.
 //
 
 import SwiftUI
-import Foundation
 
 struct HomeView: View {
-    let menu = Bundle.main.decode([Book].self, from: "menu.json")
+    // For more about published values:
+    /*
+     https://levelup.gitconnected.com/state-vs-stateobject-vs-observedobject-vs-environmentobject-in-swiftui-81e2913d63f9
+     */
+    @StateObject var homeViewModel: HomeViewModel
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVStack {
-                    Color.clear.padding(.bottom, 20)
-                    ForEach(menu) { book in
-                        BookCellView(book: book)
+        LoadingView(isShowing: $homeViewModel.loading) {
+            NavigationView {
+                BookTableView(books: homeViewModel.books)
+                    .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
+                    .navigationTitle("LIBRARY")
+                    .onAppear {
+                        homeViewModel.loading = true
+                        self.homeViewModel.getBooks()
                     }
-                    Color.clear.padding(.bottom, 10)
-                }.padding(.horizontal, 20)
-            }.background(Color(hex: 0xEAF6FA).edgesIgnoringSafeArea(.bottom))
-            .navigationTitle("Library")
+            }
         }
-            
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        let mockViewModel = HomeViewModel(books: Book.getMockedBooks())
+        
+        NavigationView {
+            HomeView(homeViewModel: mockViewModel)
+        }
     }
 }
