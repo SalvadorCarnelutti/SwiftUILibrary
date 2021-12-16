@@ -37,12 +37,12 @@ extension Book {
     }
     
     static func getMockedWishlistBooks() -> [Book] {
-        var mockedBooks: [Book] = []
+        var mockedWishlistBooks: [Book] = []
         
         for _ in 1...2 {
-            mockedBooks.append(getMockedWishlistBook())
+            mockedWishlistBooks.append(getMockedWishlistBook())
         }
         
-        return mockedBooks
+        return mockedWishlistBooks
     }
 }

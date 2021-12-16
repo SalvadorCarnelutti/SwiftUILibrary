@@ -14,10 +14,10 @@ struct BookDetailComments: View {
         if !bookDetailViewModel.bookComments.isEmpty {
             ScrollView {
                 LazyVStack {
-                    ForEach(bookDetailViewModel.bookComments.suffix(5)) { bookComment in
-                        VStack(alignment: .leading) {
+                    ForEach(bookDetailViewModel.displayedBookComments) { bookComment in
+                        LazyVStack(alignment: .leading) {
                             HStack {
-                                VStack() {
+                                VStack {
                                     // Maybe switch for RemoteImage
                                     Image(systemName: "person.crop.circle")
                                         .foregroundColor(.blue)
@@ -27,16 +27,20 @@ struct BookDetailComments: View {
                                 }
                                 VStack {
                                     VStack(alignment: .leading, spacing: 5) {
-                                        Text(bookComment.user.username)
+                                        Text(bookComment.username)
+//                                        Text(bookComment.user.username)
                                             .font(.headline)
                                         Text(bookComment.content)
                                     }
-                                    .padding(.bottom, 20)
+                                    .padding(.bottom, 12)
                                     Divider()
-                                    if bookDetailViewModel.isLastBookComment(bookComment) {
-                                        Text("View All")
-                                            .foregroundColor(Color.deepSkyBlue)
-                                            .padding(5)
+                                        .opacity(bookDetailViewModel.commentHasDivider(bookComment) ? 1.0 : 0.0)
+                                    if bookDetailViewModel.canDisplayMore(bookComment) {
+                                        Button("View All") {
+                                            bookDetailViewModel.commentsFullyShown.toggle()
+                                        }
+                                        .foregroundColor(Color.deepSkyBlue)
+                                        .padding(5)
                                     }
                                 }
                             }

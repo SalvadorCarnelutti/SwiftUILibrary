@@ -12,18 +12,25 @@ class BookDetailViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
     private lazy var _rentURL = "https://...\(_userData.id)"
     private lazy var _wishURL = "https://...\(_userData.id)"
-    private lazy var _commentsURL = "https://...\(_book.id)"
+//    private lazy var _commentsURL = "https://...\(_book.id)"
+    private lazy var _commentsURL = "https://myjson.dit.upm.es/api/bins/hgy9"
+    private var _lastBookComment: BookComment?
+    private var _thirdBookComment: BookComment?
+    private var _task: AnyCancellable?
+
     
+    // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
     @Published private var _book: Book
     @Published private(set) var bookComments: [BookComment] = [] {
         didSet {
-            _lastBookComment = bookComments.suffix(5).last
+            _lastBookComment = bookComments.last
+            _thirdBookComment = Array(bookComments.prefix(3)).last
+            commentsFullyShown = bookComments.count <= 3
             loading = false
         }
     }
     @Published var loading: Bool = false
-    private var _lastBookComment: BookComment?
-    private var _task: AnyCancellable?
+    @Published var commentsFullyShown: Bool = false
 
     init(book: Book) {
         self._book = book
@@ -136,24 +143,42 @@ class BookDetailViewModel: ObservableObject {
     var getBookURL: String {
         return _book.image
     }
+    
+    var displayedBookComments: [BookComment] {
+        return commentsFullyShown ? bookComments : Array(bookComments.prefix(3))
+    }
         
     func getBookComments() {
-//        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _commentsURL)!)
-//            .map { $0.data }
-//            .decode(type: [BookComment].self, decoder: JSONDecoder())
-//            .replaceError(with: [])
-//            .eraseToAnyPublisher()
-//            .receive(on: RunLoop.main)
-//            .assign(to: \BookDetailViewModel.bookComments, on: self)
+        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _commentsURL)!)
+            .map { $0.data }
+            .decode(type: [BookComment].self, decoder: JSONDecoder())
+            .replaceError(with: [])
+            .eraseToAnyPublisher()
+            .receive(on: RunLoop.main)
+            .assign(to: \BookDetailViewModel.bookComments, on: self)
+    }
+
+    func commentHasDivider(_ bookComment: BookComment) -> Bool {
+        return (commentsFullyShown && !isLastBookComment(bookComment)) || !commentsFullyShown
     }
     
-    func isLastBookComment(_ bookComment: BookComment) -> Bool {
-        return bookComment == _lastBookComment
+    func canDisplayMore(_ bookComment: BookComment) -> Bool {
+        return isThirdBookComment(bookComment) && !commentsFullyShown
     }
         
     static func getMockedViewModel() -> BookDetailViewModel {
         let mockedViewModel = BookDetailViewModel(book: Book.getMockedBook())
         mockedViewModel.bookComments = BookComment.getMockedBookComments()
         return mockedViewModel
+    }
+}
+
+private extension BookDetailViewModel {
+    func isLastBookComment(_ bookComment: BookComment) -> Bool {
+        return bookComment == _lastBookComment
+    }
+    
+    func isThirdBookComment(_ bookComment: BookComment) -> Bool {
+        return bookComment == _thirdBookComment
     }
 }

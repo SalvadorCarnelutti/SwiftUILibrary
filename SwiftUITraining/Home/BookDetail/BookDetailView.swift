@@ -10,6 +10,7 @@ import SwiftUI
 struct BookDetailView: View {
     @State private var unavailableIsPresented = false
     @StateObject var bookDetailViewModel: BookDetailViewModel
+    @State var didAppear = false
     
     var body: some View {
         LoadingView(isShowing: $bookDetailViewModel.loading) {
@@ -21,20 +22,22 @@ struct BookDetailView: View {
                 .background(Color.white.cornerRadius(5).shadow(radius: 2))
                 .padding()
                 BookDetailComments(bookDetailViewModel: bookDetailViewModel)
+                    .padding(.bottom, 10)
             }
         }
         .background(Color.lavender)
         .navigationBarTitle(Text(bookDetailViewModel.getBookTitle), displayMode: .inline)
-        .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $unavailableIsPresented, content: {
-            Alert(title: Text("Sorry, this curent book is unavailable at the moment"),
+            Alert(title: Text("Sorry, this current book is unavailable at the moment"),
                   message: Text("Try again later"),
                   dismissButton: .default(Text("Ok")))
         })
         .listStyle(GroupedListStyle())
         .onAppear {
-//            bookDetailViewModel.loading = true
-            bookDetailViewModel.getBookComments()
+            if !didAppear {
+                bookDetailViewModel.getBookComments()
+                didAppear = true
+            }
         }
     }
     

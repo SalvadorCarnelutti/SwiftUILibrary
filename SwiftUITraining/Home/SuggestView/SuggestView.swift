@@ -21,6 +21,7 @@ struct SuggestView: View {
                                 Rectangle()
                                     .fill(Color.babyBlue)
                                     .frame(width: 94, height: 94)
+                                    .shadow(radius: 1.5)
                                 Image(systemName: "plus.circle")
                                     .foregroundColor(.white)
                                     .font(.system(size: 44.0, weight: .medium))
