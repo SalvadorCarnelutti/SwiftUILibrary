@@ -18,7 +18,7 @@ struct SuggestionView: View {
                     Spacer()
                 }
                 .padding(.leading)
-                .offset(x: 10, y: 10)
+                .offset(x: 10)
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         ForEach(0..<urlLinks.count) { index in
@@ -27,7 +27,7 @@ struct SuggestionView: View {
                                 .frame(width: 55)
                         }
                     }
-                    .padding(EdgeInsets(top: 40, leading: 20, bottom: 20, trailing: 20))
+                    .padding(EdgeInsets(top: 30, leading: 20, bottom: 10, trailing: 20))
                 }.frame(height: 120)
             }
         }
@@ -36,7 +36,7 @@ struct SuggestionView: View {
 
 struct SuggestionView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockedLinks = WishlistBook.getMockedWishlistBooks().map { $0.book.image }
+        let mockedLinks = Book.getMockedWishlistBooks().map { $0.image }
         
         SuggestionView(urlLinks: mockedLinks)
     }

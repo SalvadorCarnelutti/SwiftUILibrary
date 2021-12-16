@@ -7,19 +7,40 @@
 
 extension Book {
     static func getMockedBook() -> Book {
-        return Book(id: 123, author: "Diego Quiros",
-                    title: "The Lord of the Rings and so much more",
-                    genre: "High Fantasy",
-                    year: "1954",
-                    image: "http://wolox-training.s3.amazonaws.com/uploads/41DNuJfahyL._SX322_BO1_204_203_200_.jpg",
+        return Book(id: 1,
+                    author: "Don Norman",
+                    title: "The Design of Everyday Things",
+                    genre: "Thesis",
+                    year: "1998",
+                    image: "https://images-na.ssl-images-amazon.com/images/I/410RTQezHYL._SX326_BO1,204,203,200_.jpg",
                     status: "Available")
     }
     
     static func getMockedBooks() -> [Book] {
         var mockedBooks: [Book] = []
         
-        for _ in 0...8 {
+        for _ in 1...9 {
             mockedBooks.append(getMockedBook())
+        }
+        
+        return mockedBooks
+    }
+    
+    static func getMockedWishlistBook() -> Book {
+        return Book(id: 2,
+                    author: "Garcia Marquez",
+                    title: "100 Años de soledad",
+                    genre: "Magical Realism",
+                    year: "1967",
+                    image: "https://images-na.ssl-images-amazon.com/images/I/51egIZUl88L._SX336_BO1,204,203,200_.jpg",
+                    status: "Unavailable")
+    }
+    
+    static func getMockedWishlistBooks() -> [Book] {
+        var mockedBooks: [Book] = []
+        
+        for _ in 1...2 {
+            mockedBooks.append(getMockedWishlistBook())
         }
         
         return mockedBooks

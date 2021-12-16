@@ -17,7 +17,15 @@ struct SuggestView: View {
                 ScrollView {
                     VStack {
                         HStack {
-                            Image("ic_add photo")
+                            ZStack {
+                                Rectangle()
+                                    .fill(Color.babyBlue)
+                                    .frame(width: 94, height: 94)
+                                Image(systemName: "plus.circle")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 44.0, weight: .medium))
+                            }
+
                             Spacer()
                         }
                         .padding(.bottom)

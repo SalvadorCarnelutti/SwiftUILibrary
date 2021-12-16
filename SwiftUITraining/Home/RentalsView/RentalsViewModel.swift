@@ -10,7 +10,7 @@ import Foundation
 
 class RentalsViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
-    private lazy var _rentalsURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/rents"
+    private lazy var _rentalsURL = "https://...\(_userData.id)"
     
     @Published var rentalBooks: [WishlistBook] = []
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately

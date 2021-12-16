@@ -14,11 +14,6 @@ struct BookTableView: View {
         ScrollView {
             LazyVStack {
                 Color.clear.padding(.bottom, 20)
-                /* I need to do this because currently, the wishlist button lets the user wish for a book more than once
-                 and then there is no longer unique IDs...
-                 If not, it could simply be:
-                 ForEach(books) { book in
-                 */
                 ForEach(0..<books.count, id: \.self) { index in
                     BookCellView(book: books[index])
                         .padding(.bottom, 5)

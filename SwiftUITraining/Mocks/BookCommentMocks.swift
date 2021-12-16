@@ -10,7 +10,7 @@ extension BookComment {
         var mockedComments: [BookComment] = []
         let mockedUser = User(id: 1,
                               username: "juanrodriguez",
-                              image: "img_user1")
+                              image: "person.crop.circle")
         for _ in 0...2 {
             mockedComments.append(BookComment(id: 1,
                                               user: mockedUser,

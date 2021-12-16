@@ -21,7 +21,6 @@ struct HomeView: View {
                     .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                     .navigationTitle("LIBRARY")
                     .onAppear {
-                        homeViewModel.loading = true
                         self.homeViewModel.getBooks()
                     }
             }
@@ -33,8 +32,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let mockViewModel = HomeViewModel(books: Book.getMockedBooks())
         
-        NavigationView {
-            HomeView(homeViewModel: mockViewModel)
-        }
+        HomeView(homeViewModel: mockViewModel)
     }
 }

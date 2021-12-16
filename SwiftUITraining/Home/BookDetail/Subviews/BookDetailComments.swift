@@ -17,9 +17,11 @@ struct BookDetailComments: View {
                     ForEach(bookDetailViewModel.bookComments.suffix(5)) { bookComment in
                         VStack(alignment: .leading) {
                             HStack {
-                                VStack {
+                                VStack() {
                                     // Maybe switch for RemoteImage
-                                    Image("img_user1")
+                                    Image(systemName: "person.crop.circle")
+                                        .foregroundColor(.blue)
+                                        .font(.system(size: 44.0))
                                         .padding(5)
                                     Spacer()
                                 }

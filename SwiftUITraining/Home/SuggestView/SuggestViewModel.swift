@@ -10,7 +10,7 @@ import Combine
 
 class SuggestViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
-    private let _suggestURL = "https://swift-training-backend.herokuapp.com/books"
+    private let _suggestURL = "https://myjson.dit.upm.es/api/bins/450h"
     private var _postResponseSuccessful = false
     @Published var bookName = ""
     @Published var bookAuthor = ""

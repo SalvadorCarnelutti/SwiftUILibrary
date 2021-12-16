@@ -8,26 +8,31 @@
 import SwiftUI
 
 struct WishlistView: View {
-    @StateObject private var _wishlistViewModel = WishlistViewModel()
+    @StateObject var wishlistViewModel: WishlistViewModel
     
     var body: some View {
-        NavigationView {
-            BookTableView(books: _wishlistViewModel.wishlistBooks.map { $0.book })
-            VStack {
-                SuggestionView(urlLinks: _wishlistViewModel.wishlistBooks.map { $0.book.image })
-                Spacer()
-            }
-            .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
-            .navigationTitle("WISHLIST")
-            .onAppear {
-                _wishlistViewModel.getWishlistBooks()
+        LoadingView(isShowing: $wishlistViewModel.loading) {
+            NavigationView {
+                VStack {
+                    BookTableView(books: wishlistViewModel.wishlistBooks)
+                        .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
+                        .navigationTitle("WISHLIST")
+                        .onAppear {
+                            wishlistViewModel.getWishlistBooks()
+                        }
+                    SuggestionView(urlLinks: wishlistViewModel.wishlistBooks.map { $0.image })
+                    Spacer()
+                }
             }
         }
     }
 }
 
+
 struct WishlistView_Previews: PreviewProvider {
     static var previews: some View {
-        WishlistView()
+        let mockViewModel = WishlistViewModel(wishlistBooks: Book.getMockedWishlistBooks())
+        
+        WishlistView(wishlistViewModel: mockViewModel)
     }
 }

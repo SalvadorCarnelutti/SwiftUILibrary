@@ -10,9 +10,9 @@ import Foundation
 
 class BookDetailViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
-    private lazy var _rentURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/rents"
-    private lazy var _wishURL = "https://swift-training-backend.herokuapp.com/users/\(_userData.id)/wishes"
-    private lazy var _commentsURL = "https://swift-training-backend.herokuapp.com/books/\(_book.id)/comments"
+    private lazy var _rentURL = "https://...\(_userData.id)"
+    private lazy var _wishURL = "https://...\(_userData.id)"
+    private lazy var _commentsURL = "https://...\(_book.id)"
     
     @Published private var _book: Book
     @Published private(set) var bookComments: [BookComment] = [] {
@@ -50,9 +50,9 @@ class BookDetailViewModel: ObservableObject {
 //                    self?._book.setAsUnavailable()
 //                    self?.loading = false
 //                }
-//                print("Finally, some fucking good food")
+//                print("Successful")
 //            } else {
-//                print("You messed something up, you fucking donkey")
+//                print("Unsuccessful")
 //            }
 //        }
 //        task.resume()
@@ -69,9 +69,9 @@ class BookDetailViewModel: ObservableObject {
 //        let session = URLSession.shared
 //        let task = session.dataTask(with: request) { data, response, error in
 //            if response != nil {
-//                print("Finally, some fucking good food")
+//                print("Successful")
 //            } else {
-//                print("You messed something up, you fucking donkey")
+//                print("Unsuccessful")
 //            }
 //        }
 //        task.resume()

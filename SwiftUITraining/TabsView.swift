@@ -15,7 +15,7 @@ struct TabsView: View {
                     Image(systemName: "books.vertical")
                     Text("Library")
                 }
-            WishlistView()
+            WishlistView(wishlistViewModel: WishlistViewModel())
                 .tabItem {
                     Image(systemName: "star.square")
                     Text("Wishlist")

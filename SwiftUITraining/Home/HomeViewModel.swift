@@ -15,7 +15,7 @@ final class HomeViewModel: ObservableObject {
             loading = false
         }
     }
-    @Published var loading: Bool = false
+    @Published var loading: Bool = true
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
     private var _task: AnyCancellable?
     
