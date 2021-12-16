@@ -14,8 +14,8 @@ struct BookTableView: View {
         ScrollView {
             LazyVStack {
                 Color.clear.padding(.bottom, 20)
-                ForEach(0..<books.count, id: \.self) { index in
-                    BookCellView(book: books[index])
+                ForEach(books) { book in
+                    BookCellView(book: book)
                         .padding(.bottom, 5)
                 }
                 Color.clear.padding(.bottom, 10)

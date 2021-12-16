@@ -18,6 +18,7 @@ struct BookCellView: View {
                     .frame(width: 55)
                     .padding(.trailing, 20)
                     .padding(.leading, 30)
+                    .shadow(radius: 3.0)
                 
                 VStack(alignment: .leading) {
                     Text(book.title).font(.system(size: 17, weight: .bold, design: .default))

@@ -23,7 +23,6 @@
 		A030002A25E75F2D00241D05 /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030002925E75F2D00241D05 /* Wish.swift */; };
 		A030003225E7611800241D05 /* BookTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003125E7611800241D05 /* BookTableView.swift */; };
 		A030003A25E764F800241D05 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003925E764F800241D05 /* WishlistViewModel.swift */; };
-		A030003F25E7682B00241D05 /* WishlistBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030003E25E7682B00241D05 /* WishlistBook.swift */; };
 		A03FD2D125E024400004532F /* SuggestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03FD2D025E024400004532F /* SuggestView.swift */; };
 		A04366CC25F803F500EBFAD8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04366CB25F803F500EBFAD8 /* LoadingView.swift */; };
 		A0615D4525E03600002B9400 /* SuggestionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0615D4425E03600002B9400 /* SuggestionTextField.swift */; };
@@ -89,7 +88,6 @@
 		A030002925E75F2D00241D05 /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
 		A030003125E7611800241D05 /* BookTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableView.swift; sourceTree = "<group>"; };
 		A030003925E764F800241D05 /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
-		A030003E25E7682B00241D05 /* WishlistBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistBook.swift; sourceTree = "<group>"; };
 		A03FD2D025E024400004532F /* SuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestView.swift; sourceTree = "<group>"; };
 		A04366CB25F803F500EBFAD8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A0615D4425E03600002B9400 /* SuggestionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionTextField.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				0CF3E23B2538F81B00F9BEB4 /* menu.json */,
 				0CF3E2402538F88E00F9BEB4 /* Book.swift */,
-				A030003E25E7682B00241D05 /* WishlistBook.swift */,
 				A0615D5B25E42611002B9400 /* BookSuggestion.swift */,
 				A067B8F125D8343F005EDC6A /* BookComment.swift */,
 				A067B8F625D83646005EDC6A /* User.swift */,
@@ -487,7 +484,6 @@
 				A0615D5725E42463002B9400 /* SuggestViewModel.swift in Sources */,
 				A0615D5C25E42611002B9400 /* BookSuggestion.swift in Sources */,
 				0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */,
-				A030003F25E7682B00241D05 /* WishlistBook.swift in Sources */,
 				A030002A25E75F2D00241D05 /* Wish.swift in Sources */,
 				A067B8ED25D334DF005EDC6A /* UserData.swift in Sources */,
 				A067B8F225D8343F005EDC6A /* BookComment.swift in Sources */,

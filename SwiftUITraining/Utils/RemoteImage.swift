@@ -74,6 +74,6 @@ struct RemoteImage: View {
 
 struct RemoteImage_Previews: PreviewProvider {
     static var previews: some View {
-        RemoteImage(url: "http://wolox-training.s3.amazonaws.com/uploads/41DNuJfahyL._SX322_BO1_204_203_200_.jpg")
+        RemoteImage(url: "https://images-na.ssl-images-amazon.com/images/I/51egIZUl88L._SX336_BO1,204,203,200_.jpg")
     }
 }

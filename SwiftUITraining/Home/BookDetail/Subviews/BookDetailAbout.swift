@@ -18,6 +18,7 @@ struct BookDetailAbout: View {
             HStack(alignment: .top) {
                 RemoteImage(url: bookDetailViewModel.getBookURL)
                     .frame(width: 70, height: 105)
+                    .shadow(radius: 3.0)
                 
                 VStack(alignment: .leading) {
                     Text(bookDetailViewModel.getBookTitle)

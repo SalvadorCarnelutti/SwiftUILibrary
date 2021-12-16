@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct RentalsView: View {
-    @StateObject private var _rentalsViewModel = RentalsViewModel()
+    @StateObject var rentalsViewModel = RentalsViewModel()
     
     var body: some View {
-        NavigationView {
-            BookTableView(books: _rentalsViewModel.rentalBooks.map { $0.book })
-            VStack {
-                SuggestionView(urlLinks: _rentalsViewModel.rentalBooks.map { $0.book.image })
-                Spacer()
-            }
-            
-            .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
-            .navigationTitle("WISHLIST")
-            .onAppear {
-                _rentalsViewModel.getRentalBooks()
+        LoadingView(isShowing: $rentalsViewModel.loading) {
+            NavigationView {
+                VStack {
+                    BookTableView(books: rentalsViewModel.rentalBooks)
+                        .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
+                        .navigationTitle("RENTALS")
+                        .onAppear {
+                            rentalsViewModel.getRentalBooks()
+                        }
+                    SuggestionView(urlLinks: rentalsViewModel.rentalBooks.map { $0.image })
+                    Spacer()
+                }
             }
         }
     }
-    
 }
 
 struct RentalsView_Previews: PreviewProvider {

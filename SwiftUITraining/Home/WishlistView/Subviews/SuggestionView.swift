@@ -25,6 +25,7 @@ struct SuggestionView: View {
                             RemoteImage(url: urlLinks[index])
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 55)
+                                .shadow(radius: 3.0)
                         }
                     }
                     .padding(EdgeInsets(top: 30, leading: 20, bottom: 10, trailing: 20))
