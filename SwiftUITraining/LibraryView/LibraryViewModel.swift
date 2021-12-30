@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  LibraryViewModel.swift
 //  SwiftUITraining
 //
 //  Created by Salvador Carnelutti on 02/02/2021.
@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class HomeViewModel: ObservableObject {
+final class LibraryViewModel: ObservableObject {
     private let _url = "https://myjson.dit.upm.es/api/bins/450h"
     @Published var books: [Book] {
         didSet {
@@ -30,6 +30,6 @@ final class HomeViewModel: ObservableObject {
             .replaceError(with: [])
             .eraseToAnyPublisher()
             .receive(on: RunLoop.main)
-            .assign(to: \HomeViewModel.books, on: self)
+            .assign(to: \LibraryViewModel.books, on: self)
     }
 }

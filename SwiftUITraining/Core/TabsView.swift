@@ -10,7 +10,7 @@ import SwiftUI
 struct TabsView: View {
     var body: some View {
         TabView {
-            HomeView(homeViewModel: HomeViewModel())
+            LibraryView(libraryViewModel: LibraryViewModel())
                 .tabItem {
                     Image(systemName: "books.vertical")
                     Text("Library")

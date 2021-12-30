@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  LibraryView.swift
 //  SwiftUITraining
 //
 //  Created by Diego Quiros on 15/10/2020.
@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct LibraryView: View {
     // For more about published values:
     /*
      https://levelup.gitconnected.com/state-vs-stateobject-vs-observedobject-vs-environmentobject-in-swiftui-81e2913d63f9
      */
-    @StateObject var homeViewModel: HomeViewModel
+    @StateObject var libraryViewModel: LibraryViewModel
     
     var body: some View {
-        LoadingView(isShowing: $homeViewModel.loading) {
+        LoadingView(isShowing: $libraryViewModel.loading) {
             NavigationView {
-                BookTableView(books: homeViewModel.books)
+                BookTableView(books: libraryViewModel.books)
                     .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                     .navigationTitle("LIBRARY")
                     .onAppear {
-                        self.homeViewModel.getBooks()
+                        self.libraryViewModel.getBooks()
                     }
             }
         }
@@ -30,8 +30,8 @@ struct HomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockViewModel = HomeViewModel(books: Book.getMockedBooks())
+        let mockViewModel = LibraryViewModel(books: Book.getMockedBooks())
         
-        HomeView(homeViewModel: mockViewModel)
+        LibraryView(libraryViewModel: mockViewModel)
     }
 }

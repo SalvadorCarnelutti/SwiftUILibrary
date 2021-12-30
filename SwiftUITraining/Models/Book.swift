@@ -15,6 +15,6 @@ struct Book: Codable, Equatable, Identifiable {
     var status: String
     
     mutating func setAsUnavailable() {
-        self.status = "Unavailable"
+        status = "Unavailable"
     }
 }
