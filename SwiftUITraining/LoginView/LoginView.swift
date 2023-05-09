@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import GoogleSignInSwift
+import GoogleSignIn
 
 struct LoginView: View {
     @State private var loggedIn = false
@@ -27,10 +29,12 @@ struct LoginView: View {
                         .foregroundColor(Color.white)
                         .padding(.bottom)
                     
-                    CapsuleButton(buttonTitle: "LOG IN WITH GOOGLE",
-                                  buttonColor: Color.white,
-                                  enabled: true,
-                                  buttonAction: logIn)
+                    GoogleSignInButton(action: handleSignInButton)
+                    
+//                    CapsuleButton(buttonTitle: "LOG IN WITH GOOGLE",
+//                                  buttonColor: Color.white,
+//                                  enabled: true,
+//                                  buttonAction: logIn)
                     Spacer()
                     Text("Work in progress")
                         .font(.footnote)
@@ -42,8 +46,16 @@ struct LoginView: View {
         }
     }
     
-    private func logIn() {
-        loggedIn.toggle()
+    private func handleSignInButton() {
+        guard let rootViewController = UIApplication.shared.rootViewController else { return }
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { signInResult, error in
+            guard let result = signInResult else {
+                // Inspect error
+                return
+            }
+            // If sign in succeeded, display the app's main content View.
+            loggedIn.toggle()
+        }
     }
 }
 
@@ -51,4 +63,20 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
+}
+
+extension UIApplication {
+  var currentKeyWindow: UIWindow? {
+    UIApplication.shared.connectedScenes
+      .filter { $0.activationState == .foregroundActive }
+      .map { $0 as? UIWindowScene }
+      .compactMap { $0 }
+      .first?.windows
+      .filter { $0.isKeyWindow }
+      .first
+  }
+
+  var rootViewController: UIViewController? {
+    currentKeyWindow?.rootViewController
+  }
 }
