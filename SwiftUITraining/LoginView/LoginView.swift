@@ -30,6 +30,7 @@ struct LoginView: View {
                         .padding(.bottom)
                     
                     GoogleSignInButton(action: handleSignInButton)
+                        .padding(.horizontal, 40)
                     
                     Spacer()
                     Text("Work in progress")
@@ -45,6 +46,7 @@ struct LoginView: View {
     private func handleSignInButton() {
         let booksScope = "https://www.googleapis.com/auth/books"
         let grantedScopes = GIDSignIn.sharedInstance.currentUser?.grantedScopes
+        
         if grantedScopes == nil || !grantedScopes!.contains(booksScope) {
           // Request additional Drive scope.
             grantAdditionalScope()
@@ -58,7 +60,6 @@ struct LoginView: View {
         
         GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { signInResult, error in
             guard let result = signInResult else {
-                // Inspect error
                 return
             }
             loggedIn.toggle()
@@ -66,17 +67,16 @@ struct LoginView: View {
     }
     
     private func grantAdditionalScope() {
-        let additionalScopes = ["https://www.googleapis.com/auth/books"]
-        guard let currentUser = GIDSignIn.sharedInstance.currentUser else {
-            return ;  /* Not signed in. */
+        guard let currentUser = GIDSignIn.sharedInstance.currentUser,
+        let rootViewController = UIApplication.shared.rootViewController else {
+            return
         }
         
-        guard let rootViewController = UIApplication.shared.rootViewController else { return }
+        let additionalScopes = ["https://www.googleapis.com/auth/books"]
 
         currentUser.addScopes(additionalScopes, presenting: rootViewController) { signInResult, error in
-            guard error == nil else { return }
-            guard let signInResult = signInResult else { return }
-            // Check if the user granted access to the scopes you requested.
+            guard error == nil,
+            let signInResult = signInResult else { return }
             loggedIn.toggle()
         }
     }
@@ -86,20 +86,4 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
-}
-
-extension UIApplication {
-  var currentKeyWindow: UIWindow? {
-    UIApplication.shared.connectedScenes
-      .filter { $0.activationState == .foregroundActive }
-      .map { $0 as? UIWindowScene }
-      .compactMap { $0 }
-      .first?.windows
-      .filter { $0.isKeyWindow }
-      .first
-  }
-
-  var rootViewController: UIViewController? {
-    currentKeyWindow?.rootViewController
-  }
 }

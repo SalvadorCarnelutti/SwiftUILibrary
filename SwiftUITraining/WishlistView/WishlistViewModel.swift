@@ -11,7 +11,7 @@ import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
-    private lazy var _wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
+    private lazy var _wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/0/volumes"
     private var _task: AnyCancellable?
     
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
@@ -21,9 +21,7 @@ class WishlistViewModel: ObservableObject {
             loading = false
         }
     }
-    
-    @Published var wishlistBookz: Itemz = Itemz(kind: "", volumeCount: 0)
-    
+        
     init(wishlistBooks: [Book] = []) {
         self.wishlistBooks = wishlistBooks
     }

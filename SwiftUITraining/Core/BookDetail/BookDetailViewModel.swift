@@ -6,26 +6,24 @@
 //
 
 import Combine
-import Foundation
 import GoogleSignIn
 
 class BookDetailViewModel: ObservableObject {
-    private let _userData = UserDataSingleton.shared
-    private lazy var _rentURL = "https://...\(_userData.id)"
-    private lazy var _wishURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/addVolume"
+    private let userData = UserDataSingleton.shared
+    private lazy var rentURL = "https://...\(userData.id)"
+    private lazy var wishURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/4/addVolume"
 //    private lazy var _commentsURL = "https://...\(_book.id)"
-    private lazy var _commentsURL = "https://myjson.dit.upm.es/api/bins/hgy9"
-    private var _lastBookComment: BookComment?
-    private var _thirdBookComment: BookComment?
-    private var _task: AnyCancellable?
+    private lazy var commentsURL = "https://myjson.dit.upm.es/api/bins/hgy9"
+    private var lastBookComment: BookComment?
+    private var thirdBookComment: BookComment?
+    private var tasks: Set<AnyCancellable> = []
 
-    
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
-    @Published private var _book: Book
+    @Published private var book: Book
     @Published private(set) var bookComments: [BookComment] = [] {
         didSet {
-            _lastBookComment = bookComments.last
-            _thirdBookComment = Array(bookComments.prefix(3)).last
+            lastBookComment = bookComments.last
+            thirdBookComment = Array(bookComments.prefix(3)).last
             commentsFullyShown = bookComments.count <= 3
             loading = false
         }
@@ -34,7 +32,7 @@ class BookDetailViewModel: ObservableObject {
     @Published var commentsFullyShown: Bool = false
 
     init(book: Book) {
-        self._book = book
+        self.book = book
     }
    
     func postBookRent() {
@@ -67,57 +65,58 @@ class BookDetailViewModel: ObservableObject {
     }
     
     func postBookWish() {
-        GIDSignIn.sharedInstance.currentUser!.refreshTokensIfNeeded { user, error in
-            guard error == nil else { return }
-            guard let user = user else { return }
+        GIDSignIn.sharedInstance.currentUser!.refreshTokensIfNeeded { [weak self] user, error in
+            guard error == nil,
+            let user = user,
+            let self = self else { return }
 
             // Get the access token to attach it to a REST or gRPC request.
             let accessToken = user.accessToken.tokenString
             
-            var url = URLComponents(string: self._wishURL)!
-            url.queryItems = [URLQueryItem(name: "volumeId", value: self._book.id)]
+            var url = URLComponents(string: self.wishURL)!
+            url.queryItems = [URLQueryItem(name: "volumeId", value: self.book.id)]
             var request = URLRequest(url: url.url!)
             request.httpMethod = "POST"
             
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             
-            self._task = URLSession.shared.dataTaskPublisher(for: request)
+            URLSession.shared.dataTaskPublisher(for: request)
                 .map(\.data)
+                // Print is for debugging petition contents
+                .print()
                 .compactMap { String(data: $0, encoding:. utf8) }
-                .sink(receiveCompletion: { (error) in
-                    print("Image request failed: \(String(describing: error))")
-                }, receiveValue: { value in
-                    print(value == "204 No Content")
-                })
+                .sink(receiveCompletion: { error in },
+                      receiveValue: { value in })
+                .store(in: &self.tasks)
         }
     }
 
     
-    private var getEncodedRentBody: Data? {
-        let today = Date()
-        let yearMonthDayFormat = DateFormatter()
-        yearMonthDayFormat.dateFormat = "yyyy-MM-dd"
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
-        
-        let encoder = JSONEncoder()
-        let rentModel = Rent(userID: _userData.id,
-                             bookID: _book.id,
-                             from: yearMonthDayFormat.string(from: today),
-                             to: yearMonthDayFormat.string(from: tomorrow!))
-        
-        guard let encoded = try? encoder.encode(rentModel) else {
-            return nil
-        }
-        
-        return encoded
-    }
+//    private var getEncodedRentBody: Data? {
+//        let today = Date()
+//        let yearMonthDayFormat = DateFormatter()
+//        yearMonthDayFormat.dateFormat = "yyyy-MM-dd"
+//        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+//
+//        let encoder = JSONEncoder()
+//        let rentModel = Rent(userID: userData.id,
+//                             bookID: book.id,
+//                             from: yearMonthDayFormat.string(from: today),
+//                             to: yearMonthDayFormat.string(from: tomorrow!))
+//
+//        guard let encoded = try? encoder.encode(rentModel) else {
+//            return nil
+//        }
+//
+//        return encoded
+//    }
     
     var bookIsAvailable: Bool {
         return getBookStatus.lowercased() == "available"
     }
     
     var getBookTitle: String {
-        return _book.title
+        return book.title
     }
     
     var getBookStatus: String {
@@ -126,7 +125,7 @@ class BookDetailViewModel: ObservableObject {
     }
     
     var getBookAuthor: String {
-        return _book.author
+        return book.author
     }
     
     var getBookYear: String {
@@ -140,7 +139,7 @@ class BookDetailViewModel: ObservableObject {
     }
     
     var getBookURL: String {
-        return _book.image
+        return book.image
     }
     
     var displayedBookComments: [BookComment] {
@@ -148,13 +147,14 @@ class BookDetailViewModel: ObservableObject {
     }
         
     func getBookComments() {
-        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _commentsURL)!)
+        URLSession.shared.dataTaskPublisher(for: URL(string: commentsURL)!)
             .map { $0.data }
             .decode(type: [BookComment].self, decoder: JSONDecoder())
             .replaceError(with: [])
             .eraseToAnyPublisher()
             .receive(on: RunLoop.main)
             .assign(to: \BookDetailViewModel.bookComments, on: self)
+            .store(in: &tasks)
     }
 
     func commentHasDivider(_ bookComment: BookComment) -> Bool {
@@ -174,10 +174,10 @@ class BookDetailViewModel: ObservableObject {
 
 private extension BookDetailViewModel {
     func isLastBookComment(_ bookComment: BookComment) -> Bool {
-        return bookComment == _lastBookComment
+        return bookComment == lastBookComment
     }
     
     func isThirdBookComment(_ bookComment: BookComment) -> Bool {
-        return bookComment == _thirdBookComment
+        return bookComment == thirdBookComment
     }
 }

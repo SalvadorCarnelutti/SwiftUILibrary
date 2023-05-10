@@ -20,14 +20,13 @@ struct WishlistView: View {
                         .onAppear {
                             wishlistViewModel.getWishlistBooks()
                         }
-                    SuggestionView(urlLinks: wishlistViewModel.wishlistBooks.map { $0.image })
+                    SuggestionView(books: wishlistViewModel.wishlistBooks)
                     Spacer()
                 }
             }
         }
     }
 }
-
 
 //struct WishlistView_Previews: PreviewProvider {
 //    static var previews: some View {

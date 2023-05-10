@@ -31,8 +31,8 @@ struct LoadingView<Content>: View where Content: View {
             ZStack(alignment: .center) {
 
                 self.content()
-                    .disabled(self.isShowing)
-                    .blur(radius: self.isShowing ? 3 : 0)
+                    .disabled(isShowing)
+                    .blur(radius: isShowing ? 3 : 0)
 
                 VStack {
                     Text("Loading...")
@@ -43,7 +43,7 @@ struct LoadingView<Content>: View where Content: View {
                 .background(Color.secondary.colorInvert())
                 .foregroundColor(Color.primary)
                 .cornerRadius(20)
-                .opacity(self.isShowing ? 1 : 0)
+                .opacity(isShowing ? 1 : 0)
 
             }
         }

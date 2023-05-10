@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct SuggestionView: View {
-    var urlLinks: [String]
+    let books: [Book]
     
     var body: some View {
-        if !urlLinks.isEmpty {
+        if !books.isEmpty {
             ZStack(alignment: .topLeading) {
                 HStack {
-                    Text("Suggestions").font(.headline)
+                    Text("Recently viewed").font(.headline)
                     Spacer()
                 }
                 .padding(.leading)
                 .offset(x: 10)
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
-                        ForEach(0..<urlLinks.count) { index in
-                            RemoteImage(url: urlLinks[index])
+                        ForEach(books) { book in
+                            RemoteImage(url: book.image)
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 55)
                                 .shadow(radius: 3.0)

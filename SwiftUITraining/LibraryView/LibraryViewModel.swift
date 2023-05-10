@@ -17,14 +17,14 @@ final class LibraryViewModel: ObservableObject {
     }
     @Published var loading: Bool = true
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
-    private var _task: AnyCancellable?
+    private var tasks: Set<AnyCancellable> = []
     
     init(books: [Book] = []) {
         self.books = books
     }
     
     func getBooks() {
-        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _url)!)
+        URLSession.shared.dataTaskPublisher(for: URL(string: _url)!)
             .map { $0.data }
             .decode(type: Items.self, decoder: JSONDecoder())
 //            .sink(receiveCompletion: { (error) in
@@ -37,5 +37,6 @@ final class LibraryViewModel: ObservableObject {
             .eraseToAnyPublisher()
             .receive(on: RunLoop.main)
             .assign(to: \LibraryViewModel.books, on: self)
+            .store(in: &tasks)
     }
 }

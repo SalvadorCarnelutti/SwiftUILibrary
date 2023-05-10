@@ -20,7 +20,7 @@ struct RentalsView: View {
                         .onAppear {
                             rentalsViewModel.getRentalBooks()
                         }
-                    SuggestionView(urlLinks: rentalsViewModel.rentalBooks.map { $0.image })
+                    SuggestionView(books: rentalsViewModel.rentalBooks)
                     Spacer()
                 }
             }

@@ -47,6 +47,7 @@
 		A0E85CCC25CF4E700014D575 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85CCB25CF4E700014D575 /* Color.swift */; };
 		A0FB6DAF25ED680D00F4FCC8 /* SuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB6DAE25ED680D00F4FCC8 /* SuggestionView.swift */; };
 		A0FB6DBA25ED6B0C00F4FCC8 /* RentalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB6DB925ED6B0C00F4FCC8 /* RentalsViewModel.swift */; };
+		B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE972A0BE20900B992D6 /* UIApplication.swift */; };
 		B8CCCB1CB049EBF761753798 /* Pods_SwiftUITrainingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DF58273321A7456B0121CC /* Pods_SwiftUITrainingTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +119,7 @@
 		A0FB6DB925ED6B0C00F4FCC8 /* RentalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalsViewModel.swift; sourceTree = "<group>"; };
 		A4B0EC381020C1271E97B633 /* Pods_SwiftUITraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUITraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C3FF5415115141866ACE4F /* Pods-SwiftUITraining-SwiftUITrainingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITraining-SwiftUITrainingUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUITraining-SwiftUITrainingUITests/Pods-SwiftUITraining-SwiftUITrainingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B4FEBE972A0BE20900B992D6 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		C10E300739FE595136FCF756 /* Pods-SwiftUITraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITraining.release.xcconfig"; path = "Target Support Files/Pods-SwiftUITraining/Pods-SwiftUITraining.release.xcconfig"; sourceTree = "<group>"; };
 		C87C3EEBA64710C962CB2D9E /* Pods-SwiftUITraining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITraining.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUITraining/Pods-SwiftUITraining.debug.xcconfig"; sourceTree = "<group>"; };
 		FD4CD2CC1FEC12A6B1DCE71E /* Pods_SwiftUITraining_SwiftUITrainingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUITraining_SwiftUITrainingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -380,6 +382,7 @@
 			children = (
 				A0E85CCB25CF4E700014D575 /* Color.swift */,
 				A0615D5125E039E4002B9400 /* String.swift */,
+				B4FEBE972A0BE20900B992D6 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				A030002A25E75F2D00241D05 /* Wish.swift in Sources */,
 				A067B8ED25D334DF005EDC6A /* UserData.swift in Sources */,
 				A067B8F225D8343F005EDC6A /* BookComment.swift in Sources */,
+				B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */,
 				A0FB6DAF25ED680D00F4FCC8 /* SuggestionView.swift in Sources */,
 				A067B8F725D83646005EDC6A /* User.swift in Sources */,
 				A0615D7625E44C81002B9400 /* RentalsView.swift in Sources */,
