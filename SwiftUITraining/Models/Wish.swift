@@ -6,6 +6,6 @@
 //
 
 struct Wish: Codable, Equatable {
-    var userID: Int
-    var bookID: Int
+    var userID: String
+    var bookID: String
 }

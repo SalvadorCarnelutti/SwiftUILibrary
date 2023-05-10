@@ -55,8 +55,8 @@ struct BookDetailComments: View {
     }
 }
 
-struct BookDetailComments_Previews: PreviewProvider {
-    static var previews: some View {
-        BookDetailComments(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
-    }
-}
+//struct BookDetailComments_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookDetailComments(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
+//    }
+//}

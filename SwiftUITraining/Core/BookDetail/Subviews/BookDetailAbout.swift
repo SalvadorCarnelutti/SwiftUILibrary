@@ -40,9 +40,7 @@ struct BookDetailAbout: View {
                 .padding(.leading, 20)
                 Spacer()
             }
-            Button(action: {
-                addAction()
-            }) {
+            Button(action: { addAction()}) {
                 Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color.deepSkyBlue)
             }
             .frame(maxWidth: .infinity)
@@ -75,10 +73,10 @@ struct BookDetailAbout: View {
     }
 }
 
-struct BookDetailAbout_Previews: PreviewProvider {
-    static var previews: some View {
-        BookDetailAbout(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()),
-                        addAction: BookDetailAbout.mockVoidFunction,
-                        rentAction: BookDetailAbout.mockVoidFunction)
-    }
-}
+//struct BookDetailAbout_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookDetailAbout(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()),
+//                        addAction: BookDetailAbout.mockVoidFunction,
+//                        rentAction: BookDetailAbout.mockVoidFunction)
+//    }
+//}

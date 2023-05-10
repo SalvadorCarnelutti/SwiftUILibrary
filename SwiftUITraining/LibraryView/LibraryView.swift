@@ -2,7 +2,7 @@
 //  LibraryView.swift
 //  SwiftUITraining
 //
-//  Created by Diego Quiros on 15/10/2020.
+//  Created by Salvador Carnelutti on 15/10/2020.
 //
 
 import SwiftUI
@@ -28,10 +28,10 @@ struct LibraryView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let mockViewModel = LibraryViewModel(books: Book.getMockedBooks())
-        
-        LibraryView(libraryViewModel: mockViewModel)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let mockViewModel = LibraryViewModel(books: Book.getMockedBooks())
+//        
+//        LibraryView(libraryViewModel: mockViewModel)
+//    }
+//}

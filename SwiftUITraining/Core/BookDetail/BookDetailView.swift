@@ -2,7 +2,7 @@
 //  SwiftUIView.swift
 //  SwiftUITraining
 //
-//  Created by Diego Quiros on 02/11/2020.
+//  Created by Salvador Carnelutti on 02/11/2020.
 //
 
 import SwiftUI
@@ -63,10 +63,10 @@ struct BookDetailView: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            BookDetailView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
-        }
-    }
-}
+//struct SwiftUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            BookDetailView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
+//        }
+//    }
+//}

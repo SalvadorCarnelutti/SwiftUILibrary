@@ -35,10 +35,10 @@ struct SuggestionView: View {
     }
 }
 
-struct SuggestionView_Previews: PreviewProvider {
-    static var previews: some View {
-        let mockedLinks = Book.getMockedWishlistBooks().map { $0.image }
-        
-        SuggestionView(urlLinks: mockedLinks)
-    }
-}
+//struct SuggestionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let mockedLinks = Book.getMockedWishlistBooks().map { $0.image }
+//        
+//        SuggestionView(urlLinks: mockedLinks)
+//    }
+//}

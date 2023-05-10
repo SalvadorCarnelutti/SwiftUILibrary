@@ -31,10 +31,6 @@ struct LoginView: View {
                     
                     GoogleSignInButton(action: handleSignInButton)
                     
-//                    CapsuleButton(buttonTitle: "LOG IN WITH GOOGLE",
-//                                  buttonColor: Color.white,
-//                                  enabled: true,
-//                                  buttonAction: logIn)
                     Spacer()
                     Text("Work in progress")
                         .font(.footnote)
@@ -47,13 +43,40 @@ struct LoginView: View {
     }
     
     private func handleSignInButton() {
+        let booksScope = "https://www.googleapis.com/auth/books"
+        let grantedScopes = GIDSignIn.sharedInstance.currentUser?.grantedScopes
+        if grantedScopes == nil || !grantedScopes!.contains(booksScope) {
+          // Request additional Drive scope.
+            grantAdditionalScope()
+        } else {
+            signInUser()
+        }
+    }
+    
+    private func signInUser() {
         guard let rootViewController = UIApplication.shared.rootViewController else { return }
+        
         GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { signInResult, error in
             guard let result = signInResult else {
                 // Inspect error
                 return
             }
-            // If sign in succeeded, display the app's main content View.
+            loggedIn.toggle()
+        }
+    }
+    
+    private func grantAdditionalScope() {
+        let additionalScopes = ["https://www.googleapis.com/auth/books"]
+        guard let currentUser = GIDSignIn.sharedInstance.currentUser else {
+            return ;  /* Not signed in. */
+        }
+        
+        guard let rootViewController = UIApplication.shared.rootViewController else { return }
+
+        currentUser.addScopes(additionalScopes, presenting: rootViewController) { signInResult, error in
+            guard error == nil else { return }
+            guard let signInResult = signInResult else { return }
+            // Check if the user granted access to the scopes you requested.
             loggedIn.toggle()
         }
     }

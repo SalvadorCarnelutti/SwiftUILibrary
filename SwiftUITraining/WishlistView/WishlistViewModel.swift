@@ -7,11 +7,11 @@
 
 import Combine
 import Foundation
+import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
     private let _userData = UserDataSingleton.shared
-//    private lazy var _wishlistURL = "https://...\(_userData.id)"
-    private lazy var _wishlistURL = "https://myjson.dit.upm.es/api/bins/bg4p"
+    private lazy var _wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
     private var _task: AnyCancellable?
     
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
@@ -22,19 +22,33 @@ class WishlistViewModel: ObservableObject {
         }
     }
     
+    @Published var wishlistBookz: Itemz = Itemz(kind: "", volumeCount: 0)
+    
     init(wishlistBooks: [Book] = []) {
         self.wishlistBooks = wishlistBooks
     }
         
     func getWishlistBooks() {
-        _task = URLSession.shared.dataTaskPublisher(for: URL(string: _wishlistURL)!)
-            .map { $0.data }
-            .decode(type: [Book].self, decoder: JSONDecoder())
-            // Print is for debugging petition contents
-            .print()
-            .replaceError(with: [])
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .assign(to: \WishlistViewModel.wishlistBooks, on: self)
+        GIDSignIn.sharedInstance.currentUser!.refreshTokensIfNeeded { [self] user, error in
+            guard error == nil else { return }
+            guard let user = user else { return }
+
+            // Get the access token to attach it to a REST or gRPC request.
+            let accessToken = user.accessToken.tokenString
+            
+            var request =  URLRequest(url: URL(string: _wishlistURL)!)
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            
+            _task = URLSession.shared.dataTaskPublisher(for: request)
+                .map { $0.data }
+                .decode(type: Items.self, decoder: JSONDecoder())
+                .map(\.items)
+                // Print is for debugging petition contents
+                .print()
+                .replaceError(with: [])
+                .eraseToAnyPublisher()
+                .receive(on: RunLoop.main)
+                .assign(to: \WishlistViewModel.wishlistBooks, on: self)
+        }
     }
 }

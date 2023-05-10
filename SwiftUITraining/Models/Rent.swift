@@ -6,8 +6,8 @@
 //
 
 struct Rent: Codable, Equatable {
-    var userID: Int
-    var bookID: Int
+    var userID: String
+    var bookID: String
     var from: String
     var to: String
 }

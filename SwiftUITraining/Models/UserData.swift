@@ -15,11 +15,11 @@ struct UserDataSingleton {
 struct UserData {
     let username: String
     let password: String
-    let id: Int
+    let id: String
     
     init() {
         username = "salva"
         password = "salva"
-        id = 8
+        id = "8"
     }
 }

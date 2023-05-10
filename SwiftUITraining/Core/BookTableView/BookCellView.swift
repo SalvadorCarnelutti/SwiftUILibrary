@@ -2,7 +2,7 @@
 //  BookCellView.swift
 //  SwiftUITraining
 //
-//  Created by Diego Quiros on 16/10/2020.
+//  Created by Salvador Carnelutti on 16/10/2020.
 //
 
 import SwiftUI
@@ -26,7 +26,9 @@ struct BookCellView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(nil)
                         .foregroundColor(Color.charcoal)
-                    Text(book.author).font(.system(size: 15, weight: .light, design: .default)).foregroundColor(Color.charcoal)
+                    Text(book.author).font(.system(size: 15, weight: .light, design: .default))
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(Color.charcoal)
                 }
                 Spacer()
             }
@@ -38,8 +40,8 @@ struct BookCellView: View {
     }
 }
 
-struct BookCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookCellView(book: Book.getMockedBook())
-    }
-}
+//struct BookCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookCellView(book: Book.getMockedBook())
+//    }
+//}

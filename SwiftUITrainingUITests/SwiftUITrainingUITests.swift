@@ -2,7 +2,7 @@
 //  SwiftUITrainingUITests.swift
 //  SwiftUITrainingUITests
 //
-//  Created by Diego Quiros on 15/10/2020.
+//  Created by Salvador Carnelutti on 15/10/2020.
 //
 
 import XCTest
