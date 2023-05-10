@@ -20,8 +20,9 @@ struct WishlistView: View {
                         .navigationTitle("WISHLIST")
                         .onAppear {
                             wishlistViewModel.getWishlistBooks()
+                            wishlistViewModel.getRecentlyViewedBooks()
                         }
-                    SuggestionView(books: wishlistViewModel.wishlistBooks)
+                    RecentBooksView(books: wishlistViewModel.recentlyViewedBooks)
                     Spacer()
                         .toolbar {
                             LogoutButton(buttonAction: vm.signOut)

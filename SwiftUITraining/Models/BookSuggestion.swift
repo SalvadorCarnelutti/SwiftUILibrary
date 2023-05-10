@@ -10,6 +10,4 @@ struct BookSuggestion: Codable, Equatable {
     var title: String
     var image: String
     var year: String
-    var genre: String
-    var status: String = "Available"
 }

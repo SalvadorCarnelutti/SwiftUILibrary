@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SuggestionView: View {
+struct RecentBooksView: View {
     let books: [Book]
     
     var body: some View {
@@ -35,10 +35,10 @@ struct SuggestionView: View {
     }
 }
 
-//struct SuggestionView_Previews: PreviewProvider {
+//struct RecentBooksView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        let mockedLinks = Book.getMockedWishlistBooks().map { $0.image }
 //        
-//        SuggestionView(urlLinks: mockedLinks)
+//        RecentBooksView(books: mockedBooks)
 //    }
 //}

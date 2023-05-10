@@ -9,7 +9,8 @@ import Combine
 import GoogleSignIn
 
 class BookDetailViewModel: ObservableObject {
-    private static let wishURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/4/addVolume"
+    private static let wishURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/addVolume"
+    private static let viewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/addVolume"
 //    private lazy var _commentsURL = "https://...\(_book.id)"
     private static let commentsURL = "https://myjson.dit.upm.es/api/bins/hgy9"
     private var lastBookComment: BookComment?
@@ -31,10 +32,13 @@ class BookDetailViewModel: ObservableObject {
 
     init(book: Book) {
         self.book = book
+        postBookViewed()
     }
     
     func postBookWish() {
-        GIDSignIn.sharedInstance.currentUser!.refreshTokensIfNeeded { [weak self] user, error in
+        guard let currentUser = GIDSignIn.sharedInstance.currentUser else { return }
+        
+        currentUser.refreshTokensIfNeeded { [weak self] user, error in
             guard error == nil,
             let user = user,
             let self = self else { return }
@@ -42,9 +46,38 @@ class BookDetailViewModel: ObservableObject {
             // Get the access token to attach it to a REST or gRPC request.
             let accessToken = user.accessToken.tokenString
             
-            var url = URLComponents(string: Self.wishURL)!
-            url.queryItems = [URLQueryItem(name: "volumeId", value: self.book.id)]
-            var request = URLRequest(url: url.url!)
+            var urlComponets = URLComponents(string: Self.wishURL)!
+            urlComponets.queryItems = [URLQueryItem(name: "volumeId", value: self.book.id)]
+            var request = URLRequest(url: urlComponets.url!)
+            request.httpMethod = "POST"
+            
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            
+            URLSession.shared.dataTaskPublisher(for: request)
+                .map(\.data)
+                // Print is for debugging petition contents
+                .print()
+                .compactMap { String(data: $0, encoding:. utf8) }
+                .sink(receiveCompletion: { error in },
+                      receiveValue: { value in })
+                .store(in: &self.tasks)
+        }
+    }
+    
+    func postBookViewed() {
+        guard let currentUser = GIDSignIn.sharedInstance.currentUser else { return }
+        
+        currentUser.refreshTokensIfNeeded { [weak self] user, error in
+            guard error == nil,
+            let user = user,
+            let self = self else { return }
+
+            // Get the access token to attach it to a REST or gRPC request.
+            let accessToken = user.accessToken.tokenString
+            
+            var urlComponents = URLComponents(string: Self.viewedURL)!
+            urlComponents.queryItems = [URLQueryItem(name: "volumeId", value: self.book.id)]
+            var request = URLRequest(url: urlComponents.url!)
             request.httpMethod = "POST"
             
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
@@ -72,8 +105,7 @@ class BookDetailViewModel: ObservableObject {
         book.year
     }
     
-    var getBookGenre: String {
-//        return _book.genre
+    var getBookPageCount: String {
         book.pageCount
     }
     

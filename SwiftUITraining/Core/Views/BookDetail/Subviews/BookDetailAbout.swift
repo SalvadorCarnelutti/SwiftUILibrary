@@ -31,7 +31,7 @@ struct BookDetailAbout: View {
                         .lineLimit(nil)
                     Text(bookDetailViewModel.getBookYear)
                         .foregroundColor(Color.charcoal)
-                    Text(bookDetailViewModel.getBookGenre)
+                    Text(bookDetailViewModel.getBookPageCount)
                         .foregroundColor(Color.charcoal)
                 }
                 .padding(.leading, 20)
