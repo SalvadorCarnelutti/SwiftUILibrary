@@ -41,6 +41,9 @@
 		A0E7DE3A25C9D1AD0059853C /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7DE3925C9D1AD0059853C /* LibraryViewModel.swift */; };
 		A0E85CCC25CF4E700014D575 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85CCB25CF4E700014D575 /* Color.swift */; };
 		A0FB6DAF25ED680D00F4FCC8 /* SuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB6DAE25ED680D00F4FCC8 /* SuggestionView.swift */; };
+		B41862382A0C25A30029E5CD /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41862372A0C25A30029E5CD /* LogoutButton.swift */; };
+		B418623A2A0C28B80029E5CD /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41862392A0C28B80029E5CD /* LoginForm.swift */; };
+		B418623D2A0C29800029E5CD /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418623C2A0C29800029E5CD /* UserStateViewModel.swift */; };
 		B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE972A0BE20900B992D6 /* UIApplication.swift */; };
 		B4FEBE9A2A0C056200B992D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE992A0C056200B992D6 /* User.swift */; };
 		B8CCCB1CB049EBF761753798 /* Pods_SwiftUITrainingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DF58273321A7456B0121CC /* Pods_SwiftUITrainingTests.framework */; };
@@ -108,6 +111,9 @@
 		A0FB6DAE25ED680D00F4FCC8 /* SuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionView.swift; sourceTree = "<group>"; };
 		A4B0EC381020C1271E97B633 /* Pods_SwiftUITraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUITraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C3FF5415115141866ACE4F /* Pods-SwiftUITraining-SwiftUITrainingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITraining-SwiftUITrainingUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUITraining-SwiftUITrainingUITests/Pods-SwiftUITraining-SwiftUITrainingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B41862372A0C25A30029E5CD /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
+		B41862392A0C28B80029E5CD /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
+		B418623C2A0C29800029E5CD /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		B4FEBE972A0BE20900B992D6 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		B4FEBE992A0C056200B992D6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C10E300739FE595136FCF756 /* Pods-SwiftUITraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITraining.release.xcconfig"; path = "Target Support Files/Pods-SwiftUITraining/Pods-SwiftUITraining.release.xcconfig"; sourceTree = "<group>"; };
@@ -350,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				A0615D6325E436A1002B9400 /* CapsuleButton.swift */,
+				B41862392A0C28B80029E5CD /* LoginForm.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -364,12 +371,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		B41F1EEA277E0CFC00993B4B /* Core */ = {
+		B418623B2A0C29730029E5CD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B418623C2A0C29800029E5CD /* UserStateViewModel.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B418623E2A0C29870029E5CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A067B8D725D2F054005EDC6A /* TabsView.swift */,
+				B41862372A0C25A30029E5CD /* LogoutButton.swift */,
 				0C5B128A255089D300B8A9CB /* BookDetail */,
 				0C5B1289255089B500B8A9CB /* BookTableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B41F1EEA277E0CFC00993B4B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B418623B2A0C29730029E5CD /* Classes */,
+				B418623E2A0C29870029E5CD /* Views */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -630,9 +655,12 @@
 				A0E85CCC25CF4E700014D575 /* Color.swift in Sources */,
 				A04366CC25F803F500EBFAD8 /* LoadingView.swift in Sources */,
 				A0282DD825E8172E002A60A4 /* RemoteImage.swift in Sources */,
+				B41862382A0C25A30029E5CD /* LogoutButton.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
+				B418623D2A0C29800029E5CD /* UserStateViewModel.swift in Sources */,
 				A0615D4525E03600002B9400 /* SuggestionTextField.swift in Sources */,
 				A03FD2D125E024400004532F /* SuggestView.swift in Sources */,
+				B418623A2A0C28B80029E5CD /* LoginForm.swift in Sources */,
 				A07ABA2B260089850098B3C1 /* BookDetailComments.swift in Sources */,
 				0CF3E2412538F88E00F9BEB4 /* Book.swift in Sources */,
 				0CF3E2462538FB0E00F9BEB4 /* Helper.swift in Sources */,
@@ -803,7 +831,7 @@
 				DEVELOPMENT_TEAM = U9M8KR7NN5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUITraining/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -826,7 +854,7 @@
 				DEVELOPMENT_TEAM = U9M8KR7NN5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUITraining/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

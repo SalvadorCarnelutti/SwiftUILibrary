@@ -10,6 +10,7 @@ import SwiftUI
 struct SuggestView: View {
     @State private var suggestionResponseIsPresented = false
     @StateObject private var suggestViewModel = SuggestViewModel()
+    @EnvironmentObject var vm: UserStateViewModel
 
     var body: some View {
         LoadingView(isShowing: $suggestViewModel.loading) {
@@ -59,6 +60,9 @@ struct SuggestView: View {
                           message: Text(suggestViewModel.alertMessage),
                           dismissButton: .default(Text("Ok")))
                 })
+                .toolbar {
+                    LogoutButton(buttonAction: vm.signOut)
+                }
             }
         }
     }

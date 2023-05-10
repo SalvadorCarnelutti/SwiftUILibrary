@@ -12,6 +12,7 @@ struct LibraryView: View {
     /*
      https://levelup.gitconnected.com/state-vs-stateobject-vs-observedobject-vs-environmentobject-in-swiftui-81e2913d63f9
      */
+    @EnvironmentObject var vm: UserStateViewModel
     @StateObject var libraryViewModel: LibraryViewModel
     
     var body: some View {
@@ -22,6 +23,9 @@ struct LibraryView: View {
                     .navigationTitle("LIBRARY")
                     .onAppear {
                         libraryViewModel.getBooks()
+                    }
+                    .toolbar {
+                        LogoutButton(buttonAction: vm.signOut)
                     }
             }
         }

@@ -26,9 +26,12 @@ class WishlistViewModel: ObservableObject {
     }
         
     func getWishlistBooks() {
-        GIDSignIn.sharedInstance.currentUser!.refreshTokensIfNeeded { [self] user, error in
-            guard error == nil else { return }
-            guard let user = user else { return }
+        guard let currentUser = GIDSignIn.sharedInstance.currentUser else { return }
+        
+        currentUser.refreshTokensIfNeeded { [weak self] user, error in
+            guard error == nil,
+            let user = user,
+            let self = self else { return }
 
             // Get the access token to attach it to a REST or gRPC request.
             let accessToken = user.accessToken.tokenString
@@ -46,7 +49,7 @@ class WishlistViewModel: ObservableObject {
                 .eraseToAnyPublisher()
                 .receive(on: RunLoop.main)
                 .assign(to: \WishlistViewModel.wishlistBooks, on: self)
-                .store(in: &tasks)
+                .store(in: &self.tasks)
         }
     }
 }

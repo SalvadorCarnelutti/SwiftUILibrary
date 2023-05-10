@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WishlistView: View {
     @StateObject var wishlistViewModel: WishlistViewModel
+    @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
         LoadingView(isShowing: $wishlistViewModel.loading) {
@@ -22,6 +23,9 @@ struct WishlistView: View {
                         }
                     SuggestionView(books: wishlistViewModel.wishlistBooks)
                     Spacer()
+                        .toolbar {
+                            LogoutButton(buttonAction: vm.signOut)
+                        }
                 }
             }
         }

@@ -10,6 +10,8 @@ import GoogleSignIn
 
 @main
 struct SwiftUITrainingApp: App {
+    @StateObject var userStateViewModel = UserStateViewModel()
+
     var body: some Scene {
         WindowGroup {
             LoginView()
@@ -21,6 +23,7 @@ struct SwiftUITrainingApp: App {
                         // Check if `user` exists; otherwise, do something with `error`
                     }
                 }
+                .environmentObject(userStateViewModel)
         }
     }
 }
