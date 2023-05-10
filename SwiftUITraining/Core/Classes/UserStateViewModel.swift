@@ -10,26 +10,32 @@ import GoogleSignIn
 class UserStateViewModel: ObservableObject {
     @Published var loggedIn = false
     
-    func handleSignInCases() {
-//        let booksScope = "https://www.googleapis.com/auth/books"
-//        guard let grantedScopes = GIDSignIn.sharedInstance.currentUser?.grantedScopes,
-//        grantedScopes.contains(booksScope) else {
-//            grantAdditionalScope()
-//            return
-//        }
+    private var requiresBooksScope: Bool {
+        let booksScope = "https://www.googleapis.com/auth/books"
+        let grantedScopes = GIDSignIn.sharedInstance.currentUser?.grantedScopes
         
-        signInUser()
+        return grantedScopes == nil || !grantedScopes!.contains(booksScope)
     }
     
-    private func signInUser() {
+    func signInUser() {
+        handleSignInCases()
+    }
+    
+    private func handleSignInCases() {
         guard let rootViewController = UIApplication.shared.rootViewController else { return }
         
         GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [weak self] signInResult, error in
-            guard let result = signInResult else {
+            guard signInResult != nil,
+            let self = self else {
                 return
             }
             
-            self?.loggedIn.toggle()
+            guard !self.requiresBooksScope else {
+                self.grantAdditionalScope()
+                return
+            }
+            
+            self.loggedIn.toggle()
         }
     }
     
@@ -43,7 +49,7 @@ class UserStateViewModel: ObservableObject {
 
         currentUser.addScopes(additionalScopes, presenting: rootViewController) { [weak self] signInResult, error in
             guard error == nil,
-            let signInResult = signInResult else { return }
+            signInResult != nil else { return }
             
             self?.loggedIn.toggle()
         }

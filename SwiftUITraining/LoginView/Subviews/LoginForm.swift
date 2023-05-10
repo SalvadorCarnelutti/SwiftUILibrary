@@ -25,7 +25,7 @@ struct LoginForm: View {
                     .foregroundColor(Color.white)
                     .padding(.bottom)
                 
-                GoogleSignInButton(action: vm.handleSignInCases)
+                GoogleSignInButton(action: vm.signInUser)
                     .padding(.horizontal, 40)
                 
                 Spacer()
