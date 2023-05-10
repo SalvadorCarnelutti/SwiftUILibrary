@@ -21,7 +21,7 @@ struct LibraryView: View {
                     .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                     .navigationTitle("LIBRARY")
                     .onAppear {
-                        self.libraryViewModel.getBooks()
+                        libraryViewModel.getBooks()
                     }
             }
         }

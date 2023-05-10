@@ -10,9 +10,8 @@ import Foundation
 import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
-    private let _userData = UserDataSingleton.shared
-    private lazy var _wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/0/volumes"
-    private var _task: AnyCancellable?
+    private static var wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/0/volumes"
+    private var tasks: Set<AnyCancellable> = []
     
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
     @Published var loading: Bool = true
@@ -34,10 +33,10 @@ class WishlistViewModel: ObservableObject {
             // Get the access token to attach it to a REST or gRPC request.
             let accessToken = user.accessToken.tokenString
             
-            var request =  URLRequest(url: URL(string: _wishlistURL)!)
+            var request =  URLRequest(url: URL(string: Self.wishlistURL)!)
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             
-            _task = URLSession.shared.dataTaskPublisher(for: request)
+            URLSession.shared.dataTaskPublisher(for: request)
                 .map { $0.data }
                 .decode(type: Items.self, decoder: JSONDecoder())
                 .map(\.items)
@@ -47,6 +46,7 @@ class WishlistViewModel: ObservableObject {
                 .eraseToAnyPublisher()
                 .receive(on: RunLoop.main)
                 .assign(to: \WishlistViewModel.wishlistBooks, on: self)
+                .store(in: &tasks)
         }
     }
 }

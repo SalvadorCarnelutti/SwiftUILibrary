@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 final class LibraryViewModel: ObservableObject {
-    private let _url = "https://www.googleapis.com/books/v1/volumes?q=flowers&projection=lite"
+    private static let url = "https://www.googleapis.com/books/v1/volumes?q=flowers&By=newest"
     @Published var books: [Book] {
         didSet {
             loading = false
@@ -24,14 +24,10 @@ final class LibraryViewModel: ObservableObject {
     }
     
     func getBooks() {
-        URLSession.shared.dataTaskPublisher(for: URL(string: _url)!)
+        URLSession.shared.dataTaskPublisher(for: URL(string: Self.url)!)
             .map { $0.data }
             .decode(type: Items.self, decoder: JSONDecoder())
-//            .sink(receiveCompletion: { (error) in
-//                print("Image request failed: \(String(describing: error))")
-//            }, receiveValue: { value in
-//
-//            })
+            .print()
             .map(\.items)
             .replaceError(with: [])
             .eraseToAnyPublisher()

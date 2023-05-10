@@ -5,11 +5,6 @@
 //  Created by Salvador Carnelutti on 15/10/2020.
 //
 
-struct Itemz: Codable, Equatable {
-    var kind: String
-    var volumeCount: Int
-}
-
 struct Items: Codable, Equatable {
     var items: [Book]
 }
@@ -17,13 +12,6 @@ struct Items: Codable, Equatable {
 struct Book: Codable, Equatable, Identifiable {
     var id: String
     var volumeInfo: VolumeInfo
-//    var genre: String
-//    var image: String
-//    var status: String
-    
-    mutating func setAsUnavailable() {
-//        status = "Unavailable"
-    }
     
     var title: String {
         volumeInfo.title
@@ -38,7 +26,11 @@ struct Book: Codable, Equatable, Identifiable {
     }
     
     var year: String {
-        volumeInfo.publishedDate
+        String(volumeInfo.publishedDate.prefix(4))
+    }
+    
+    var pageCount: String {
+        "\(volumeInfo.pageCount) pages"
     }
     
     var image: String {
@@ -50,23 +42,10 @@ struct VolumeInfo: Codable, Equatable {
     var title: String
     var authors: [String]?
     var publishedDate: String
+    var pageCount: Int
     var imageLinks: ImageLinks
 }
 
 struct ImageLinks: Codable, Equatable {
     var thumbnail: String
 }
-
-//struct Book: Codable, Equatable, Identifiable {
-//    var id: Int
-//    var author: String
-//    var title: String
-//    var genre: String
-//    var year: String
-//    var image: String
-//    var status: String
-//
-//    mutating func setAsUnavailable() {
-//        status = "Unavailable"
-//    }
-//}

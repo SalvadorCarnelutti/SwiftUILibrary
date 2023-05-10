@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SuggestView: View {
-    @State private var _suggestionResponseIsPresented = false
-    @StateObject private var _suggestViewModel = SuggestViewModel()
+    @State private var suggestionResponseIsPresented = false
+    @StateObject private var suggestViewModel = SuggestViewModel()
 
     var body: some View {
-        LoadingView(isShowing: $_suggestViewModel.loading) {
+        LoadingView(isShowing: $suggestViewModel.loading) {
             NavigationView {
                 ScrollView {
                     VStack {
@@ -30,19 +30,20 @@ struct SuggestView: View {
                             Spacer()
                         }
                         .padding(.bottom)
-                        SuggestionTextField(placeholderText: "Book's name", fieldBindString: $_suggestViewModel.bookName)
-                        SuggestionTextField(placeholderText: "Author", fieldBindString: $_suggestViewModel.bookAuthor)
-                        SuggestionTextField(placeholderText: "Year", fieldBindString: $_suggestViewModel.bookYear)
-                        SuggestionTextField(placeholderText: "Topic", fieldBindString: $_suggestViewModel.bookTopic)
-                        SuggestionTextField(placeholderText: "Description", fieldBindString: $_suggestViewModel.bookDescription)
+                        SuggestionTextField(placeholderText: "Book's name", fieldBindString: $suggestViewModel.bookName)
+                        SuggestionTextField(placeholderText: "Author", fieldBindString: $suggestViewModel.bookAuthor)
+                        SuggestionTextField(placeholderText: "Year", fieldBindString: $suggestViewModel.bookYear)
+                        SuggestionTextField(placeholderText: "Topic", fieldBindString: $suggestViewModel.bookTopic)
+                        SuggestionTextField(placeholderText: "Description", fieldBindString: $suggestViewModel.bookDescription)
                     }
                     .padding(20)
                     .navigationTitle("SUGGEST BOOK")
                     
                     Button(action: {
-                        _suggestViewModel.postBookSuggestion {
-                            _suggestionResponseIsPresented.toggle()
-                        }
+                        // TODO: Present something
+//                        suggestViewModel.postBookSuggestion {
+//                            suggestionResponseIsPresented.toggle()
+//                        }
                     }) {
                         Text("SUBMIT").font(.headline)
                     }
@@ -53,9 +54,9 @@ struct SuggestView: View {
                 .padding(20)
                 .background(Color.lavender)
                 // Maybe it would be nice that if post is successful, all fields are emptied?
-                .alert(isPresented: $_suggestionResponseIsPresented, content: {
-                    Alert(title: Text(_suggestViewModel.alertTitle),
-                          message: Text(_suggestViewModel.alertMessage),
+                .alert(isPresented: $suggestionResponseIsPresented, content: {
+                    Alert(title: Text(suggestViewModel.alertTitle),
+                          message: Text(suggestViewModel.alertMessage),
                           dismissButton: .default(Text("Ok")))
                 })
             }
@@ -64,11 +65,11 @@ struct SuggestView: View {
     
     var allFieldsFilled: Bool {
         return
-            _suggestViewModel.bookName.isEmpty ||
-            _suggestViewModel.bookAuthor.isEmpty ||
-            _suggestViewModel.bookYear.isEmpty ||
-            _suggestViewModel.bookTopic.isEmpty ||
-            _suggestViewModel.bookDescription.isEmpty
+            suggestViewModel.bookName.isEmpty ||
+            suggestViewModel.bookAuthor.isEmpty ||
+            suggestViewModel.bookYear.isEmpty ||
+            suggestViewModel.bookTopic.isEmpty ||
+            suggestViewModel.bookDescription.isEmpty
     }
 }
 

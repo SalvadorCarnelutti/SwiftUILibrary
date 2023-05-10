@@ -16,8 +16,7 @@ struct BookDetailView: View {
         LoadingView(isShowing: $bookDetailViewModel.loading) {
             VStack {
                 BookDetailAbout(bookDetailViewModel: bookDetailViewModel,
-                                addAction: addAction,
-                                rentAction: rentAction)
+                                addAction: addAction)
                 .padding()
                 .background(Color.white.cornerRadius(5).shadow(radius: 2))
                 .padding()
@@ -35,31 +34,15 @@ struct BookDetailView: View {
         .listStyle(GroupedListStyle())
         .onAppear {
             if !didAppear {
-                bookDetailViewModel.getBookComments()
+                // TODO: Fetch comments
+//                bookDetailViewModel.getBookComments()
                 didAppear = true
             }
         }
     }
     
-    var statusColor: Color {
-        return bookDetailViewModel.bookIsAvailable ? Color.atlantis : Color.venetianRed
-    }
-    
-    var rentButtonColor: LinearGradient {
-        let availableGradient = LinearGradient(gradient: Gradient(colors: [Color.deepSkyBlue, Color.mediumTurquoise]),
-                                               startPoint: .leading, endPoint: .trailing)
-        let unavailableGradient = LinearGradient(gradient: Gradient(colors: [Color.gainsboro]),
-                                                 startPoint: .leading, endPoint: .trailing)
-        return bookDetailViewModel.bookIsAvailable ? availableGradient : unavailableGradient
-    }
-    
     func addAction() {
         bookDetailViewModel.postBookWish()
-    }
-    
-    func rentAction() {
-        bookDetailViewModel.bookIsAvailable ?
-            bookDetailViewModel.postBookRent() : unavailableIsPresented.toggle()
     }
 }
 

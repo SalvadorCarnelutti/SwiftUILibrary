@@ -25,11 +25,6 @@ struct TabsView: View {
                     Image(systemName: "plus.circle")
                     Text("Suggest")
                 }
-            RentalsView()
-                .tabItem {
-                    Image(systemName: "checkmark.circle")
-                    Text("Rentals")
-                }
         }
     }
 }
