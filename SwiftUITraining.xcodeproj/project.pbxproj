@@ -347,7 +347,6 @@
 		A07ABA3326008BE10098B3C1 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				A0615D6325E436A1002B9400 /* CapsuleButton.swift */,
 				B41862392A0C28B80029E5CD /* LoginForm.swift */,
 			);
 			path = Subviews;
@@ -377,6 +376,7 @@
 			children = (
 				A067B8D725D2F054005EDC6A /* TabsView.swift */,
 				B41862372A0C25A30029E5CD /* LogoutButton.swift */,
+				A0615D6325E436A1002B9400 /* CapsuleButton.swift */,
 				0C5B128A255089D300B8A9CB /* BookDetail */,
 				0C5B1289255089B500B8A9CB /* BookTableView */,
 			);

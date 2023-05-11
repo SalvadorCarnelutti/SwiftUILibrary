@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class SuggestViewModel: ObservableObject {
-    private var postResponseSuccessful = false
+    private var postResponseSuccessful = true
     @Published var bookImage = UIImage() {
         didSet {
             hasImage = true
@@ -25,45 +25,49 @@ class SuggestViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     
     init() {
-        publishIsSubmitDisabled()
-    }
-    
-    private var getEncodedRentBody: Data? {
-        let encoder = JSONEncoder()
-        let suggestionModel = BookSuggestion(author: bookAuthor,
-                                             title: bookName,
-                                             image: "",
-                                             year: bookYear)
-        
-        guard let encoded = try? encoder.encode(suggestionModel) else {
-            return nil
-        }
-        
-        return encoded
+        publishIsSubmitEnabled()
     }
     
     var alertTitle: String {
-        return postResponseSuccessful ?
-            "Your suggestion was submitted succesfully!" :
-            "Sorry, your suggestion couldn't be accepted at the moment"
+        "Work in progress"
     }
     
     var alertMessage: String {
-        postResponseSuccessful ? "" : "Try again later"
+        "There is no Google Books API endpoint for suggesting a new book"
     }
     
-    private func publishIsSubmitDisabled() {
+    func clearForm() {
+        bookImage = UIImage()
+        hasImage = false
+        bookName = ""
+        bookAuthor = ""
+        bookYear = ""
+    }
+    
+    private func publishIsSubmitEnabled() {
         /*
          .allSatisfy can't be used because Apple's documentation states:
          "If the predicate returns false, the publisher produces a false value and finishes."
-         And we wan't to continously keep the stream alive to notice further changes.
+         And we want to continously keep the stream alive to notice further changes.
          */
         Publishers.CombineLatest4($hasImage, $bookName, $bookAuthor, $bookYear)
             .map { b1, b2, b3, b4 in
-                b1 && !b2.isEmpty && !b3.isEmpty && !b4.isEmpty
+                b1 && Self.isAllowedName(b2.trimmed) && Self.isAllowedAuthor(b3.trimmed) && Self.isAllowedYear(b4)
             }
             .receive(on: RunLoop.main)
             .assign(to: \.isSubmitEnabled, on: self)
             .store(in: &cancellableSet)
+    }
+    
+    private static func isAllowedName(_ bookName: String) -> Bool {
+        bookName.isNotEmpty && bookName.onlyCharacters
+    }
+    
+    private static func isAllowedAuthor(_ bookAuthor: String) -> Bool {
+        bookAuthor.isNotEmpty && bookAuthor.onlyCharacters
+    }
+    
+    private static func isAllowedYear(_ bookYear: String) -> Bool {
+        bookYear.count == 4 && bookYear.onlyNumbers
     }
 }

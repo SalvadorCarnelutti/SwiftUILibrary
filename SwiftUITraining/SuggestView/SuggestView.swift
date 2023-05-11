@@ -39,15 +39,22 @@ struct SuggestView: View {
                         Spacer()
                     }
                     .padding(.bottom)
-                    SuggestionTextField(placeholderText: "Book's name", fieldBindString: $suggestViewModel.bookName)
-                    SuggestionTextField(placeholderText: "Author", fieldBindString: $suggestViewModel.bookAuthor)
-                    SuggestionTextField(placeholderText: "Year", fieldBindString: $suggestViewModel.bookYear)
+                    SuggestionTextField(placeholderText: "Book's name",
+                                        fieldBindString: $suggestViewModel.bookName)
+                    SuggestionTextField(placeholderText: "Author",
+                                        fieldBindString: $suggestViewModel.bookAuthor)
+                    SuggestionTextField(placeholderText: "Year",
+                                        fieldBindString: $suggestViewModel.bookYear)
                 }
                 .padding(20)
                 .navigationTitle("SUGGEST BOOK")
                 
                 // TODO: Present something
-                CapsuleButton(buttonTitle: "SUBMIT", enabled: $suggestViewModel.isSubmitEnabled, buttonAction: {})
+                CapsuleButton(buttonTitle: "SUBMIT",
+                              enabled: $suggestViewModel.isSubmitEnabled) {
+                    suggestionResponseIsPresented = true
+                    suggestViewModel.clearForm()
+                }
             }
             .background(Color.white.cornerRadius(5).shadow(radius: 2))
             .padding(20)
@@ -61,16 +68,10 @@ struct SuggestView: View {
             .toolbar {
                 LogoutButton(buttonAction: vm.signOut)
             }
-            .onAppear {
-                
-            }
             .sheet(isPresented: $showSheet) {
-                            // Pick an image from the photo library:
+                // Pick an image from the photo library:
                 ImagePicker(sourceType: .photoLibrary, selectedImage: $suggestViewModel.bookImage)
-
-                            //  If you wish to take a photo from camera instead:
-                            // ImagePicker(sourceType: .camera, selectedImage: self.$image)
-                    }
+            }
         }
     }
 }
