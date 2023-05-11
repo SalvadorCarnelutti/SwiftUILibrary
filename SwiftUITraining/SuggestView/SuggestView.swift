@@ -11,6 +11,8 @@ struct SuggestView: View {
     @State private var suggestionResponseIsPresented = false
     @StateObject private var suggestViewModel = SuggestViewModel()
     @EnvironmentObject var vm: UserStateViewModel
+    
+    @State private var showSheet = false
 
     var body: some View {
         NavigationView {
@@ -20,11 +22,18 @@ struct SuggestView: View {
                         ZStack {
                             Rectangle()
                                 .fill(Color.babyBlue)
-                                .frame(width: 94, height: 94)
                                 .shadow(radius: 1.5)
                             Image(systemName: "plus.circle")
                                 .foregroundColor(.white)
-                                .font(.system(size: 44.0, weight: .medium))
+                                .font(.system(size: 48.0, weight: .medium))
+                            Image(uiImage: suggestViewModel.bookImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.white)
+                        }
+                        .frame(width: 94, height: 94)
+                        .onTapGesture {
+                          showSheet = true
                         }
 
                         Spacer()
@@ -33,21 +42,12 @@ struct SuggestView: View {
                     SuggestionTextField(placeholderText: "Book's name", fieldBindString: $suggestViewModel.bookName)
                     SuggestionTextField(placeholderText: "Author", fieldBindString: $suggestViewModel.bookAuthor)
                     SuggestionTextField(placeholderText: "Year", fieldBindString: $suggestViewModel.bookYear)
-                    SuggestionTextField(placeholderText: "Description", fieldBindString: $suggestViewModel.bookDescription)
                 }
                 .padding(20)
                 .navigationTitle("SUGGEST BOOK")
                 
-                Button(action: {
-                    // TODO: Present something
-//                        suggestViewModel.postBookSuggestion {
-//                            suggestionResponseIsPresented.toggle()
-//                        }
-                }) {
-                    Text("SUBMIT").font(.headline)
-                }
-                .padding(.bottom, 22)
-                .disabled(suggestViewModel.isSubmitDisabled)
+                // TODO: Present something
+                CapsuleButton(buttonTitle: "SUBMIT", enabled: $suggestViewModel.isSubmitEnabled, buttonAction: {})
             }
             .background(Color.white.cornerRadius(5).shadow(radius: 2))
             .padding(20)
@@ -61,6 +61,16 @@ struct SuggestView: View {
             .toolbar {
                 LogoutButton(buttonAction: vm.signOut)
             }
+            .onAppear {
+                
+            }
+            .sheet(isPresented: $showSheet) {
+                            // Pick an image from the photo library:
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $suggestViewModel.bookImage)
+
+                            //  If you wish to take a photo from camera instead:
+                            // ImagePicker(sourceType: .camera, selectedImage: self.$image)
+                    }
         }
     }
 }

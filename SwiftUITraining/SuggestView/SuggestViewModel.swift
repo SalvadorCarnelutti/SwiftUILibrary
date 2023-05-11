@@ -5,17 +5,22 @@
 //  Created by Salvador Carnelutti on 22/02/2021.
 //
 
-import Foundation
+import UIKit
 import Combine
 
 class SuggestViewModel: ObservableObject {
     private var postResponseSuccessful = false
+    @Published var bookImage = UIImage() {
+        didSet {
+            hasImage = true
+        }
+    }
+    @Published var hasImage = false
     @Published var bookName = ""
     @Published var bookAuthor = ""
     @Published var bookYear = ""
-    @Published var bookDescription = ""
     
-    @Published var isSubmitDisabled = true
+    @Published var isSubmitEnabled = false
     
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -48,12 +53,17 @@ class SuggestViewModel: ObservableObject {
     }
     
     private func publishIsSubmitDisabled() {
-        Publishers.CombineLatest4($bookName, $bookAuthor, $bookYear, $bookDescription)
+        /*
+         .allSatisfy can't be used because Apple's documentation states:
+         "If the predicate returns false, the publisher produces a false value and finishes."
+         And we wan't to continously keep the stream alive to notice further changes.
+         */
+        Publishers.CombineLatest4($hasImage, $bookName, $bookAuthor, $bookYear)
             .map { b1, b2, b3, b4 in
-                b1.isEmpty || b2.isEmpty || b3.isEmpty || b4.isEmpty
+                b1 && !b2.isEmpty && !b3.isEmpty && !b4.isEmpty
             }
             .receive(on: RunLoop.main)
-            .assign(to: \.isSubmitDisabled, on: self)
+            .assign(to: \.isSubmitEnabled, on: self)
             .store(in: &cancellableSet)
     }
 }

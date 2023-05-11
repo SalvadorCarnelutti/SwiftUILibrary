@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LibraryView: View {
-    // For more about published values:
     /*
+     For more about published values:
      https://levelup.gitconnected.com/state-vs-stateobject-vs-observedobject-vs-environmentobject-in-swiftui-81e2913d63f9
      */
     @EnvironmentObject var vm: UserStateViewModel

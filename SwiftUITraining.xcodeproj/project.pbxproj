@@ -44,6 +44,7 @@
 		B41862382A0C25A30029E5CD /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41862372A0C25A30029E5CD /* LogoutButton.swift */; };
 		B418623A2A0C28B80029E5CD /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41862392A0C28B80029E5CD /* LoginForm.swift */; };
 		B418623D2A0C29800029E5CD /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418623C2A0C29800029E5CD /* UserStateViewModel.swift */; };
+		B4B14AC52A0C8DC300023DDD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */; };
 		B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE972A0BE20900B992D6 /* UIApplication.swift */; };
 		B4FEBE9A2A0C056200B992D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE992A0C056200B992D6 /* User.swift */; };
 		D8D90E5218BAF393AD7BA76E /* Pods_SwiftUITraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B40E750A87F4166E80256A7 /* Pods_SwiftUITraining.framework */; };
@@ -115,6 +116,7 @@
 		B41862372A0C25A30029E5CD /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		B41862392A0C28B80029E5CD /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
 		B418623C2A0C29800029E5CD /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
+		B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B4FEBE972A0BE20900B992D6 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		B4FEBE992A0C056200B992D6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA1EBF95B472D5CDC2EC8BC1 /* Pods-SwiftUITrainingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITrainingTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUITrainingTests/Pods-SwiftUITrainingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				B418623C2A0C29800029E5CD /* UserStateViewModel.swift */,
+				B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				0CF3E2102538EFD500F9BEB4 /* LibraryView.swift in Sources */,
 				A0615D5725E42463002B9400 /* SuggestViewModel.swift in Sources */,
 				A0615D5C25E42611002B9400 /* BookSuggestion.swift in Sources */,
+				B4B14AC52A0C8DC300023DDD /* ImagePicker.swift in Sources */,
 				0CF3E20E2538EFD500F9BEB4 /* SwiftUITrainingApp.swift in Sources */,
 				A067B8F225D8343F005EDC6A /* BookComment.swift in Sources */,
 				B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */,

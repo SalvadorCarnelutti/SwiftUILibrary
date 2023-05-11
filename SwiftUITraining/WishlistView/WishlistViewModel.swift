@@ -68,7 +68,6 @@ class WishlistViewModel: ObservableObject {
             let user = user,
             let self = self else { return }
 
-            // Get the access token to attach it to a REST or gRPC request.
             let accessToken = user.accessToken.tokenString
             
             var request =  URLRequest(url: URL(string: Self.viewedURL)!)
