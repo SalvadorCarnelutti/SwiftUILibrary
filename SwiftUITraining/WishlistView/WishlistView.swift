@@ -16,7 +16,6 @@ struct WishlistView: View {
             NavigationView {
                 VStack {
                     BookTableView(books: wishlistViewModel.wishlistBooks)
-                        .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                         .navigationTitle("WISHLIST")
                         .onAppear {
                             wishlistViewModel.getWishlistBooks()
@@ -28,6 +27,7 @@ struct WishlistView: View {
                             LogoutButton(buttonAction: vm.signOut)
                         }
                 }
+                .background(Color.lavender)
             }
         }
     }

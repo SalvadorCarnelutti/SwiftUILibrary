@@ -1,5 +1,5 @@
 //
-//  SuggestionView.swift
+//  RecentBooksView.swift
 //  SwiftUITraining
 //
 //  Created by Salvador Carnelutti on 01/03/2021.
@@ -31,6 +31,7 @@ struct RecentBooksView: View {
                     .padding(EdgeInsets(top: 30, leading: 20, bottom: 10, trailing: 20))
                 }.frame(height: 120)
             }
+            .background(Color.white.shadow(radius: 2))
         }
     }
 }
