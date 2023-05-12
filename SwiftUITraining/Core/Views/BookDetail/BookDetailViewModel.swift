@@ -11,16 +11,12 @@ import GoogleSignIn
 class BookDetailViewModel: ObservableObject {
     private static let wishURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/addVolume"
     private static let viewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/addVolume"
-    private var lastBookComment: BookComment?
-    private var thirdBookComment: BookComment?
     private var tasks: Set<AnyCancellable> = []
 
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
-    @Published private var book: Book
+    private var book: Book
     @Published var bookComments: [BookComment] = [] {
         didSet {
-            lastBookComment = bookComments.last
-            thirdBookComment = Array(bookComments.prefix(3)).last
             commentsFullyShown = bookComments.count <= 3
             loading = false
         }
@@ -121,19 +117,5 @@ class BookDetailViewModel: ObservableObject {
         
     func getBookComments() {
         bookComments = BookComment.getMockedBookComments()
-    }
-
-    func commentHasDivider(_ bookComment: BookComment) -> Bool {
-        (commentsFullyShown && !isLastBookComment(bookComment)) || !commentsFullyShown
-    }
-}
-
-private extension BookDetailViewModel {
-    func isLastBookComment(_ bookComment: BookComment) -> Bool {
-        return bookComment == lastBookComment
-    }
-    
-    func isThirdBookComment(_ bookComment: BookComment) -> Bool {
-        return bookComment == thirdBookComment
     }
 }

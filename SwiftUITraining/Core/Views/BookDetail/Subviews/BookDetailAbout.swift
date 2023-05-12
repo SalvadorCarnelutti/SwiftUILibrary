@@ -49,10 +49,9 @@ struct BookDetailAbout: View {
     }
 }
 
-//struct BookDetailAbout_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookDetailAbout(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()),
-//                        addAction: BookDetailAbout.mockVoidFunction,
-//                        rentAction: BookDetailAbout.mockVoidFunction)
-//    }
-//}
+struct BookDetailAbout_Previews: PreviewProvider {
+    static var previews: some View {
+        BookDetailAbout(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()),
+                        addAction: BookDetailAbout.mockVoidFunction)
+    }
+}

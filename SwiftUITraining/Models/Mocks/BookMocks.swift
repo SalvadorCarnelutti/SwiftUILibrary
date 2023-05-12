@@ -13,19 +13,12 @@ extension Book {
                                     publishedDate: "2013",
                                     pageCount: 384,
                                     imageLinks: ImageLinks(thumbnail: Self.mockThumbnailUrl)))
-//        return Book(id: "1",
-//                    author: "Don Norman",
-//                    title: "The Design of Everyday Things",
-//                    genre: "Thesis",
-//                    year: "1998",
-//                    image: "https://images-na.ssl-images-amazon.com/images/I/410RTQezHYL._SX326_BO1,204,203,200_.jpg",
-//                    status: "Available")
     }
-//    
-    static func getMockedBooks() -> [Book] {
+    
+    static func getMockedBooks(count: Int = 9) -> [Book] {
         var mockedBooks: [Book] = []
         
-        for i in 1...9 {
+        for i in 1...count {
             mockedBooks.append(getMockedBook(id: i))
         }
         
@@ -33,13 +26,6 @@ extension Book {
     }
 //    
     static func getMockedWishlistBook(id: Int = 1) -> Book {
-//        return Book(id: "2",
-//                    author: "Garcia Marquez",
-//                    title: "100 Años de soledad",
-//                    genre: "Magical Realism",
-//                    year: "1967",
-//                    image: "https://images-na.ssl-images-amazon.com/images/I/51egIZUl88L._SX336_BO1,204,203,200_.jpg",
-//                    status: "Unavailable")
         Book(id: String(id),
              volumeInfo: VolumeInfo(title: "The Design of Everyday Things",
                                     publishedDate: "2013",
@@ -47,10 +33,10 @@ extension Book {
                                     imageLinks: ImageLinks(thumbnail: Self.mockThumbnailUrl)))
     }
     
-    static func getMockedWishlistBooks() -> [Book] {
+    static func getMockedWishlistBooks(count: Int = 2) -> [Book] {
         var mockedWishlistBooks: [Book] = []
         
-        for i in 1...2 {
+        for i in 1...count {
             mockedWishlistBooks.append(getMockedWishlistBook(id: i))
         }
         

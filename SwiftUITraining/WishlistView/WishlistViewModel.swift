@@ -10,7 +10,7 @@ import Foundation
 import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
-    // TODO: Change loading behaviour for rhis screen, fix wishlist and suggest navbar color, remove wishlist button from wishlist view
+    // TODO: Change loading behaviour for this screen, fix wishlist and suggest navbar color, remove wishlist button from wishlist view and extract commentView from Comments
     private static var wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
     private static var viewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/volumes"
     private var tasks: Set<AnyCancellable> = []

@@ -12,10 +12,10 @@ struct BookDetailComments: View {
     
     var body: some View {
         if !bookDetailViewModel.bookComments.isEmpty {
-            ScrollView {
-                LazyVStack {
-                    ForEach(bookDetailViewModel.displayedBookComments) { bookComment in
-                        LazyVStack(alignment: .leading) {
+            VStack {
+                List {
+                    Section {
+                        ForEach(bookDetailViewModel.displayedBookComments) { bookComment in
                             HStack {
                                 VStack {
                                     Image(systemName: "person.crop.circle")
@@ -31,23 +31,26 @@ struct BookDetailComments: View {
                                         Text(bookComment.content)
                                     }
                                     .padding(.bottom, 12)
-                                    Divider()
-                                        .opacity(bookDetailViewModel.commentHasDivider(bookComment) ? 1.0 : 0.0)
                                 }
                             }
                         }
-                    }
-                    HStack {
-                        if bookDetailViewModel.canDisplayMore {
-                            Button("View all") {
-                                bookDetailViewModel.commentsFullyShown.toggle()
+                    } footer: {
+                        HStack {
+                            if bookDetailViewModel.canDisplayMore {
+                                Spacer()
+                                Button("View All") {
+                                    bookDetailViewModel.commentsFullyShown.toggle()
+                                }
+                                .foregroundColor(Color.deepSkyBlue)
+                                Spacer()
                             }
-                            .foregroundColor(Color.deepSkyBlue)
-                            .padding(12)
                         }
+                        .listSectionSeparator(.hidden, edges: .bottom)
                     }
                 }
-                .padding()
+                .padding(.trailing, 15)
+                .cornerRadius(5)
+                .listStyle(.inset)
             }
             .background(Color.white.cornerRadius(5).shadow(radius: 2))
             .padding(.horizontal)

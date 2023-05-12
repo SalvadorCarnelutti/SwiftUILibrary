@@ -6,10 +6,10 @@
 //
 
 extension BookComment {
-    static func getMockedBookComments() -> [BookComment] {
+    static func getMockedBookComments(count: Int = 7) -> [BookComment] {
         var mockedComments: [BookComment] = []
         
-        for i in 1...7 {
+        for i in 1...count {
             mockedComments.append(BookComment(id: i,
                                               username: "John Doe",
                                               content: "I recommend this book! It's really interesting."))
