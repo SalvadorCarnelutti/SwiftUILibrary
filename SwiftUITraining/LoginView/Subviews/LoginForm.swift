@@ -41,6 +41,8 @@ struct LoginForm: View {
 
 struct LoginForm_Previews: PreviewProvider {
     static var previews: some View {
+        let vm = UserStateViewModel.getMock(loggedIn: true)
         LoginForm()
+            .environmentObject(vm)
     }
 }

@@ -44,6 +44,7 @@
 		B41862382A0C25A30029E5CD /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41862372A0C25A30029E5CD /* LogoutButton.swift */; };
 		B418623A2A0C28B80029E5CD /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41862392A0C28B80029E5CD /* LoginForm.swift */; };
 		B418623D2A0C29800029E5CD /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418623C2A0C29800029E5CD /* UserStateViewModel.swift */; };
+		B45893412A0DE4760014CBFB /* UserStateViewModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45893402A0DE4760014CBFB /* UserStateViewModelMocks.swift */; };
 		B4B14AC52A0C8DC300023DDD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */; };
 		B4B14AC72A0D905900023DDD /* UIIamge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B14AC62A0D905900023DDD /* UIIamge.swift */; };
 		B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE972A0BE20900B992D6 /* UIApplication.swift */; };
@@ -117,6 +118,7 @@
 		B41862372A0C25A30029E5CD /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		B41862392A0C28B80029E5CD /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
 		B418623C2A0C29800029E5CD /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
+		B45893402A0DE4760014CBFB /* UserStateViewModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModelMocks.swift; sourceTree = "<group>"; };
 		B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B4B14AC62A0D905900023DDD /* UIIamge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIamge.swift; sourceTree = "<group>"; };
 		B4FEBE972A0BE20900B992D6 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				0C5B129725508BA400B8A9CB /* BookMocks.swift */,
 				A067B8FB25D84799005EDC6A /* BookCommentMocks.swift */,
+				B45893402A0DE4760014CBFB /* UserStateViewModelMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				A04366CC25F803F500EBFAD8 /* LoadingView.swift in Sources */,
 				A0282DD825E8172E002A60A4 /* RemoteImage.swift in Sources */,
 				B41862382A0C25A30029E5CD /* LogoutButton.swift in Sources */,
+				B45893412A0DE4760014CBFB /* UserStateViewModelMocks.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
 				B418623D2A0C29800029E5CD /* UserStateViewModel.swift in Sources */,
 				B4B14AC72A0D905900023DDD /* UIIamge.swift in Sources */,

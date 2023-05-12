@@ -31,9 +31,16 @@ struct CapsuleButton: View {
 
 struct CapsuleButton_Previews: PreviewProvider {
     static var previews: some View {
-        CapsuleButton(buttonTitle: "Button",
-                      buttonColor: Color.black,
-                      enabled: .constant(false),
-                      buttonAction: {})
+        VStack {
+            CapsuleButton(buttonTitle: "Button",
+                          buttonColor: Color.deepSkyBlue,
+                          enabled: .constant(false),
+                          buttonAction: {})
+            CapsuleButton(buttonTitle: "Button",
+                          buttonColor: Color.deepSkyBlue,
+                          enabled: .constant(true),
+                          buttonAction: {})
+
+        }
     }
 }

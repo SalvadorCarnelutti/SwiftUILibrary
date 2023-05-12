@@ -33,10 +33,12 @@ struct WishlistView: View {
     }
 }
 
-//struct WishlistView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let mockViewModel = WishlistViewModel(wishlistBooks: Book.getMockedWishlistBooks())
-//        
-//        WishlistView(wishlistViewModel: mockViewModel)
-//    }
-//}
+struct WishlistView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockViewModel = WishlistViewModel(wishlistBooks: Book.getMockedWishlistBooks())
+        let vm = UserStateViewModel.getMock(loggedIn: true)
+        
+        WishlistView(wishlistViewModel: mockViewModel)
+            .environmentObject(vm)
+    }
+}

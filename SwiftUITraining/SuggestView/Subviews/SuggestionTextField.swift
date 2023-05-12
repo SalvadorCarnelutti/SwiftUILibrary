@@ -32,6 +32,9 @@ struct SuggestionTextField: View {
 
 struct SuggestionTextField_Previews: PreviewProvider {
     static var previews: some View {
-        SuggestionTextField(placeholderText: "Field name", footerText: "", fieldBindString: .constant(""))
+        SuggestionTextField(placeholderText: "Field name",
+                            footerText: "Required field",
+                            fieldBindString: .constant(""))
+        .padding()
     }
 }

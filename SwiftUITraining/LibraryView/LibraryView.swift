@@ -32,10 +32,12 @@ struct LibraryView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let mockViewModel = LibraryViewModel(books: Book.getMockedBooks())
-//        
-//        LibraryView(libraryViewModel: mockViewModel)
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockViewModel = LibraryViewModel(books: Book.getMockedBooks())
+        let vm = UserStateViewModel.getMock(loggedIn: false)
+        
+        LibraryView(libraryViewModel: mockViewModel)
+            .environmentObject(vm)
+    }
+}

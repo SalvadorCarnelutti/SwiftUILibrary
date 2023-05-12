@@ -36,10 +36,10 @@ struct RecentBooksView: View {
     }
 }
 
-//struct RecentBooksView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let mockedLinks = Book.getMockedWishlistBooks().map { $0.image }
-//        
-//        RecentBooksView(books: mockedBooks)
-//    }
-//}
+struct RecentBooksView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockedBooks = Book.getMockedWishlistBooks()
+        
+        RecentBooksView(books: mockedBooks)
+    }
+}

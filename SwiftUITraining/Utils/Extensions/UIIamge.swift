@@ -18,7 +18,7 @@ extension UIImage {
         !isEqualToImage(image)
     }
     
-    var isNonEmpty: Bool {
+    var isNotEmpty: Bool {
         isNotEqualToImage(UIImage())
     }
 }

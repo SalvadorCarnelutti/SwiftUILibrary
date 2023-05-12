@@ -25,9 +25,9 @@ struct BookTableView: View {
     }
 }
 
-//struct BookTableView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let mockedBooks = Book.getMockedBooks()
-//        BookTableView(books: mockedBooks)
-//    }
-//}
+struct BookTableView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockedBooks = Book.getMockedBooks()
+        BookTableView(books: mockedBooks)
+    }
+}

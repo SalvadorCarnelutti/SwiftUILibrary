@@ -40,8 +40,8 @@ struct BookCellView: View {
     }
 }
 
-//struct BookCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookCellView(book: Book.getMockedBook())
-//    }
-//}
+struct BookCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        BookCellView(book: Book.getMockedBook())
+    }
+}

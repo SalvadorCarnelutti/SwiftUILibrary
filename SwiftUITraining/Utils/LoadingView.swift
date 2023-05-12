@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ActivityIndicator: UIViewRepresentable {
-
     @Binding var isAnimating: Bool
     let style: UIActivityIndicatorView.Style
 
@@ -22,7 +21,6 @@ struct ActivityIndicator: UIViewRepresentable {
 }
 
 struct LoadingView<Content>: View where Content: View {
-
     @Binding var isShowing: Bool
     var content: () -> Content
 
@@ -36,7 +34,8 @@ struct LoadingView<Content>: View where Content: View {
 
                 VStack {
                     Text("Loading...")
-                    ActivityIndicator(isAnimating: .constant(true), style: .large)
+                    ActivityIndicator(isAnimating: .constant(true),
+                                      style: .large)
                 }
                 .frame(width: geometry.size.width / 2,
                        height: geometry.size.height / 5)
@@ -53,7 +52,10 @@ struct LoadingView<Content>: View where Content: View {
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
         LoadingView(isShowing: .constant(true)) {
-            Text("Test")
+            NavigationView {
+                Text("Test to se how it gets blurred when loading")
+                    .frame(alignment: .center)
+            }
         }
     }
 }

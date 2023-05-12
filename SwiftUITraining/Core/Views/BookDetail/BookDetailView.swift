@@ -46,10 +46,10 @@ struct BookDetailView: View {
     }
 }
 
-//struct SwiftUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            BookDetailView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
-//        }
-//    }
-//}
+struct SwiftUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            BookDetailView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
+        }
+    }
+}

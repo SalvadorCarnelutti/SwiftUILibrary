@@ -37,7 +37,7 @@ struct SuggestView: View {
                         Spacer()
                     }
                     .padding(.bottom)
-                    SuggestionFormFields(suggestViewModel: suggestViewModel)
+                    SuggestFormFields(suggestViewModel: suggestViewModel)
                 }
                 .padding(20)
                 
@@ -62,14 +62,15 @@ struct SuggestView: View {
             })
             .sheet(isPresented: $showSheet) {
                 // Pick an image from the photo library:
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $bookImage)
+                ImagePicker(sourceType: .photoLibrary,
+                            selectedImage: $bookImage)
             }
             /*
              For some reason onChange gets triggered after clearForm, even though the empty image was set before
              We only call imageAssigned when a nonEmpty image is set then
              */
             .onChange(of: bookImage) { newImage in
-                if newImage.isNonEmpty {
+                if newImage.isNotEmpty {
                     suggestViewModel.imageAssigned()
                 }
             }
@@ -79,7 +80,10 @@ struct SuggestView: View {
 
 struct SuggestView_Previews: PreviewProvider {
     static var previews: some View {
+        let vm = UserStateViewModel.getMock(loggedIn: true)
+        
         SuggestView()
+            .environmentObject(vm)
     }
 }
 
@@ -103,7 +107,7 @@ struct PickerImage: View {
     }
 }
 
-struct SuggestionFormFields: View {
+struct SuggestFormFields: View {
     @ObservedObject var suggestViewModel: SuggestViewModel
     
     var body: some View {

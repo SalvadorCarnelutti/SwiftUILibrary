@@ -50,7 +50,8 @@ struct RemoteImage: View {
             .resizable()
     }
 
-    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image(systemName: "multiply.circle")) {
+    init(url: String, loading: Image = Image(systemName: "photo"),
+         failure: Image = Image(systemName: "multiply.circle")) {
         _loader = StateObject(wrappedValue: Loader(url: url))
         self.loading = loading
         self.failure = failure
@@ -75,5 +76,7 @@ struct RemoteImage: View {
 struct RemoteImage_Previews: PreviewProvider {
     static var previews: some View {
         RemoteImage(url: "https://images-na.ssl-images-amazon.com/images/I/51egIZUl88L._SX336_BO1,204,203,200_.jpg")
+            .frame(width: 200, height: 300, alignment: .center)
+            .aspectRatio(contentMode: .fit)
     }
 }

@@ -11,8 +11,6 @@ import GoogleSignIn
 class BookDetailViewModel: ObservableObject {
     private static let wishURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/addVolume"
     private static let viewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/addVolume"
-//    private lazy var _commentsURL = "https://...\(_book.id)"
-    private static let commentsURL = "https://myjson.dit.upm.es/api/bins/hgy9"
     private var lastBookComment: BookComment?
     private var thirdBookComment: BookComment?
     private var tasks: Set<AnyCancellable> = []
@@ -136,11 +134,11 @@ class BookDetailViewModel: ObservableObject {
         isThirdBookComment(bookComment) && !commentsFullyShown
     }
         
-//    static func getMockedViewModel() -> BookDetailViewModel {
-//        let mockedViewModel = BookDetailViewModel(book: Book.getMockedBook())
-//        mockedViewModel.bookComments = BookComment.getMockedBookComments()
-//        return mockedViewModel
-//    }
+    static func getMockedViewModel() -> BookDetailViewModel {
+        let mockedViewModel = BookDetailViewModel(book: Book.getMockedBook())
+        mockedViewModel.bookComments = BookComment.getMockedBookComments()
+        return mockedViewModel
+    }
 }
 
 private extension BookDetailViewModel {
