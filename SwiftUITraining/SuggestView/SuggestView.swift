@@ -14,7 +14,7 @@ struct SuggestView: View {
     
     @State private var showSheet = false
     /*
-     didSet does not work with State properties, we must use the onChange modifier
+     didSet does not work with State properties, we must use the onChange modifier to listen to stream changes
      https://www.hackingwithswift.com/quick-start/swiftui/how-to-run-some-code-when-state-changes-using-onchange
      */
     @State private var bookImage = UIImage()
@@ -84,41 +84,5 @@ struct SuggestView_Previews: PreviewProvider {
         
         SuggestView()
             .environmentObject(vm)
-    }
-}
-
-struct PickerImage: View {
-    let bookImage: UIImage
-    
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color.babyBlue)
-                .shadow(radius: 1.5)
-            Image(systemName: "plus.circle")
-                .foregroundColor(.white)
-                .font(.system(size: 48.0, weight: .medium))
-            Image(uiImage: bookImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(.white)
-        }
-        .frame(width: 94, height: 94)
-    }
-}
-
-struct SuggestFormFields: View {
-    @ObservedObject var suggestViewModel: SuggestViewModel
-    
-    var body: some View {
-        SuggestionTextField(placeholderText: "Book's name",
-                            footerText: "Only alphabet characters",
-                            fieldBindString: $suggestViewModel.bookName)
-        SuggestionTextField(placeholderText: "Author",
-                            footerText: "Only alphabet characters",
-                            fieldBindString: $suggestViewModel.bookAuthor)
-        SuggestionTextField(placeholderText: "Year",
-                            footerText: "4 digit year",
-                            fieldBindString: $suggestViewModel.bookYear)
     }
 }

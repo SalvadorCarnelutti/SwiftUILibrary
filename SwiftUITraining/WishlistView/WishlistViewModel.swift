@@ -10,6 +10,7 @@ import Foundation
 import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
+    // TODO: Change loading behaviour for rhis screen, fix wishlist and suggest navbar color, remove wishlist button from wishlist view
     private static var wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
     private static var viewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/volumes"
     private var tasks: Set<AnyCancellable> = []
@@ -26,7 +27,6 @@ class WishlistViewModel: ObservableObject {
             loading = false
         }
     }
-
         
     init(wishlistBooks: [Book] = []) {
         self.wishlistBooks = wishlistBooks
