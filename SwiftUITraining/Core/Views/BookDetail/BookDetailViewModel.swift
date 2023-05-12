@@ -17,7 +17,7 @@ class BookDetailViewModel: ObservableObject {
 
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
     @Published private var book: Book
-    @Published private(set) var bookComments: [BookComment] = [] {
+    @Published var bookComments: [BookComment] = [] {
         didSet {
             lastBookComment = bookComments.last
             thirdBookComment = Array(bookComments.prefix(3)).last
@@ -91,6 +91,10 @@ class BookDetailViewModel: ObservableObject {
         }
     }
     
+    var canDisplayMore: Bool {
+        !commentsFullyShown
+    }
+    
     var getBookTitle: String {
         book.title
     }
@@ -115,29 +119,12 @@ class BookDetailViewModel: ObservableObject {
         commentsFullyShown ? bookComments : Array(bookComments.prefix(3))
     }
         
-//    func getBookComments() {
-//        URLSession.shared.dataTaskPublisher(for: URL(string: Self.commentsURL)!)
-//            .map { $0.data }
-//            .decode(type: [BookComment].self, decoder: JSONDecoder())
-//            .replaceError(with: [])
-//            .eraseToAnyPublisher()
-//            .receive(on: RunLoop.main)
-//            .assign(to: \BookDetailViewModel.bookComments, on: self)
-//            .store(in: &tasks)
-//    }
+    func getBookComments() {
+        bookComments = BookComment.getMockedBookComments()
+    }
 
     func commentHasDivider(_ bookComment: BookComment) -> Bool {
         (commentsFullyShown && !isLastBookComment(bookComment)) || !commentsFullyShown
-    }
-    
-    func canDisplayMore(_ bookComment: BookComment) -> Bool {
-        isThirdBookComment(bookComment) && !commentsFullyShown
-    }
-        
-    static func getMockedViewModel() -> BookDetailViewModel {
-        let mockedViewModel = BookDetailViewModel(book: Book.getMockedBook())
-        mockedViewModel.bookComments = BookComment.getMockedBookComments()
-        return mockedViewModel
     }
 }
 

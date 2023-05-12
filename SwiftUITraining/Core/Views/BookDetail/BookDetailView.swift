@@ -34,8 +34,7 @@ struct BookDetailView: View {
         .listStyle(GroupedListStyle())
         .onAppear {
             if !didAppear {
-                // TODO: Fetch comments
-//                bookDetailViewModel.getBookComments()
+                bookDetailViewModel.getBookComments()
                 didAppear = true
             }
         }

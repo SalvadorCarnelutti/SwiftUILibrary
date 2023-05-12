@@ -47,10 +47,10 @@
 		B45893432A0E7A790014CBFB /* SuggestFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45893422A0E7A790014CBFB /* SuggestFormFields.swift */; };
 		B45893452A0E7C5D0014CBFB /* PickerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45893442A0E7C5D0014CBFB /* PickerImage.swift */; };
 		B45893472A0E84B60014CBFB /* SuggestViewModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45893462A0E84B60014CBFB /* SuggestViewModelMocks.swift */; };
+		B45893492A0E89040014CBFB /* BookDetailViewModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45893482A0E89040014CBFB /* BookDetailViewModelMocks.swift */; };
 		B4B14AC52A0C8DC300023DDD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */; };
 		B4B14AC72A0D905900023DDD /* UIIamge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B14AC62A0D905900023DDD /* UIIamge.swift */; };
 		B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE972A0BE20900B992D6 /* UIApplication.swift */; };
-		B4FEBE9A2A0C056200B992D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE992A0C056200B992D6 /* User.swift */; };
 		D8D90E5218BAF393AD7BA76E /* Pods_SwiftUITraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B40E750A87F4166E80256A7 /* Pods_SwiftUITraining.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,10 +123,10 @@
 		B45893422A0E7A790014CBFB /* SuggestFormFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestFormFields.swift; sourceTree = "<group>"; };
 		B45893442A0E7C5D0014CBFB /* PickerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerImage.swift; sourceTree = "<group>"; };
 		B45893462A0E84B60014CBFB /* SuggestViewModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestViewModelMocks.swift; sourceTree = "<group>"; };
+		B45893482A0E89040014CBFB /* BookDetailViewModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModelMocks.swift; sourceTree = "<group>"; };
 		B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B4B14AC62A0D905900023DDD /* UIIamge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIamge.swift; sourceTree = "<group>"; };
 		B4FEBE972A0BE20900B992D6 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		B4FEBE992A0C056200B992D6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA1EBF95B472D5CDC2EC8BC1 /* Pods-SwiftUITrainingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITrainingTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUITrainingTests/Pods-SwiftUITrainingTests.release.xcconfig"; sourceTree = "<group>"; };
 		FE10AC97511CC3506B3B553D /* Pods_SwiftUITraining_SwiftUITrainingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUITraining_SwiftUITrainingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,7 +185,6 @@
 				0C5B129625508B8D00B8A9CB /* Mocks */,
 				0CF3E2402538F88E00F9BEB4 /* Book.swift */,
 				A067B8F125D8343F005EDC6A /* BookComment.swift */,
-				B4FEBE992A0C056200B992D6 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +215,7 @@
 				A067B8FB25D84799005EDC6A /* BookCommentMocks.swift */,
 				B45893402A0DE4760014CBFB /* UserStateViewModelMocks.swift */,
 				B45893462A0E84B60014CBFB /* SuggestViewModelMocks.swift */,
+				B45893482A0E89040014CBFB /* BookDetailViewModelMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -659,7 +659,6 @@
 				B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */,
 				A0FB6DAF25ED680D00F4FCC8 /* RecentBooksView.swift in Sources */,
 				A0615D6D25E44B1D002B9400 /* WishlistView.swift in Sources */,
-				B4FEBE9A2A0C056200B992D6 /* User.swift in Sources */,
 				0C5B129825508BA400B8A9CB /* BookMocks.swift in Sources */,
 				A067B8E825D32660005EDC6A /* BookDetailViewModel.swift in Sources */,
 				A0E7DE3A25C9D1AD0059853C /* LibraryViewModel.swift in Sources */,
@@ -688,6 +687,7 @@
 				B45893432A0E7A790014CBFB /* SuggestFormFields.swift in Sources */,
 				B45893452A0E7C5D0014CBFB /* PickerImage.swift in Sources */,
 				0C78E1132539DB750000E671 /* BookCellView.swift in Sources */,
+				B45893492A0E89040014CBFB /* BookDetailViewModelMocks.swift in Sources */,
 				A0615D5225E039E4002B9400 /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

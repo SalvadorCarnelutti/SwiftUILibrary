@@ -18,7 +18,6 @@ struct BookDetailComments: View {
                         LazyVStack(alignment: .leading) {
                             HStack {
                                 VStack {
-                                    // Maybe switch for RemoteImage
                                     Image(systemName: "person.crop.circle")
                                         .foregroundColor(.blue)
                                         .font(.system(size: 44.0))
@@ -28,22 +27,23 @@ struct BookDetailComments: View {
                                 VStack {
                                     VStack(alignment: .leading, spacing: 5) {
                                         Text(bookComment.username)
-//                                        Text(bookComment.user.username)
                                             .font(.headline)
                                         Text(bookComment.content)
                                     }
                                     .padding(.bottom, 12)
                                     Divider()
                                         .opacity(bookDetailViewModel.commentHasDivider(bookComment) ? 1.0 : 0.0)
-                                    if bookDetailViewModel.canDisplayMore(bookComment) {
-                                        Button("View All") {
-                                            bookDetailViewModel.commentsFullyShown.toggle()
-                                        }
-                                        .foregroundColor(Color.deepSkyBlue)
-                                        .padding(5)
-                                    }
                                 }
                             }
+                        }
+                    }
+                    HStack {
+                        if bookDetailViewModel.canDisplayMore {
+                            Button("View all") {
+                                bookDetailViewModel.commentsFullyShown.toggle()
+                            }
+                            .foregroundColor(Color.deepSkyBlue)
+                            .padding(12)
                         }
                     }
                 }
