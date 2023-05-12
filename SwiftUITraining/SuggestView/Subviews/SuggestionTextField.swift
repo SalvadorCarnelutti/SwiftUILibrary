@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SuggestionTextField: View {
     let placeholderText: String
-    /* This is different from @State private var fieldBindString: String
-     as this passes directly the bind instead of the current value passed
+    let footerText: String
+    /* This is different from @State private var fieldBindString: String as this passes directly
+     the bind instead of the current value passed
  */
     let fieldBindString: Binding<String>
 
@@ -18,6 +19,12 @@ struct SuggestionTextField: View {
         VStack {
             TextField(placeholderText, text: fieldBindString)
             Divider()
+            HStack {
+                Text(footerText)
+                    .font(.footnote)
+                    .foregroundColor(.charcoal)
+                Spacer()
+            }
         }
         .padding(.vertical, 8)
     }
@@ -25,6 +32,6 @@ struct SuggestionTextField: View {
 
 struct SuggestionTextField_Previews: PreviewProvider {
     static var previews: some View {
-        SuggestionTextField(placeholderText: "Field name", fieldBindString: .constant(""))
+        SuggestionTextField(placeholderText: "Field name", footerText: "", fieldBindString: .constant(""))
     }
 }

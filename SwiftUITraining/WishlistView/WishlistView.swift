@@ -16,18 +16,18 @@ struct WishlistView: View {
             NavigationView {
                 VStack {
                     BookTableView(books: wishlistViewModel.wishlistBooks)
-                        .navigationTitle("WISHLIST")
-                        .onAppear {
-                            wishlistViewModel.getWishlistBooks()
-                            wishlistViewModel.getRecentlyViewedBooks()
-                        }
                     RecentBooksView(books: wishlistViewModel.recentlyViewedBooks)
                     Spacer()
-                        .toolbar {
-                            LogoutButton(buttonAction: vm.signOut)
-                        }
+                }
+                .navigationTitle("WISHLIST")
+                .toolbar {
+                    LogoutButton(buttonAction: vm.signOut)
                 }
                 .background(Color.lavender)
+                .onAppear {
+                    wishlistViewModel.getWishlistBooks()
+                    wishlistViewModel.getRecentlyViewedBooks()
+                }
             }
         }
     }

@@ -9,12 +9,6 @@ import UIKit
 import Combine
 
 class SuggestViewModel: ObservableObject {
-    private var postResponseSuccessful = true
-    @Published var bookImage = UIImage() {
-        didSet {
-            hasImage = true
-        }
-    }
     @Published var hasImage = false
     @Published var bookName = ""
     @Published var bookAuthor = ""
@@ -28,16 +22,11 @@ class SuggestViewModel: ObservableObject {
         publishIsSubmitEnabled()
     }
     
-    var alertTitle: String {
-        "Work in progress"
-    }
-    
-    var alertMessage: String {
-        "There is no Google Books API endpoint for suggesting a new book"
+    func imageAssigned() {
+        hasImage = true
     }
     
     func clearForm() {
-        bookImage = UIImage()
         hasImage = false
         bookName = ""
         bookAuthor = ""

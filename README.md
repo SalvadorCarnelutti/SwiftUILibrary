@@ -20,7 +20,7 @@ Project is created with:
 * MVVM design pattern
 * Swift UI framework
 * Combine framework
-* Codeable protocol
+* Codable protocol
 * URLSession
 * Myjson JSON store (https://myjson.dit.upm.es)
 	

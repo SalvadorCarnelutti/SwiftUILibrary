@@ -21,11 +21,11 @@ struct LibraryView: View {
                 BookTableView(books: libraryViewModel.books)
                     .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                     .navigationTitle("LIBRARY")
-                    .onAppear {
-                        libraryViewModel.getBooks()
-                    }
                     .toolbar {
                         LogoutButton(buttonAction: vm.signOut)
+                    }
+                    .onAppear {
+                        libraryViewModel.getBooks()
                     }
             }
         }

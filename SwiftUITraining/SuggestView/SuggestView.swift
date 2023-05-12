@@ -13,64 +13,65 @@ struct SuggestView: View {
     @EnvironmentObject var vm: UserStateViewModel
     
     @State private var showSheet = false
+    /*
+     didSet does not work with State properties, we must use the onChange modifier
+     https://www.hackingwithswift.com/quick-start/swiftui/how-to-run-some-code-when-state-changes-using-onchange
+     */
+    @State private var bookImage = UIImage()
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     HStack {
-                        ZStack {
-                            Rectangle()
-                                .fill(Color.babyBlue)
-                                .shadow(radius: 1.5)
-                            Image(systemName: "plus.circle")
-                                .foregroundColor(.white)
-                                .font(.system(size: 48.0, weight: .medium))
-                            Image(uiImage: suggestViewModel.bookImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 94, height: 94)
-                        .onTapGesture {
-                          showSheet = true
-                        }
-
+                        PickerImage(bookImage: bookImage)
+                            .onTapGesture {
+                              showSheet = true
+                            }
+                        Spacer()
+                    }
+                    HStack {
+                        Text("An image must be provided")
+                            .font(.footnote)
+                            .foregroundColor(.charcoal)
                         Spacer()
                     }
                     .padding(.bottom)
-                    SuggestionTextField(placeholderText: "Book's name",
-                                        fieldBindString: $suggestViewModel.bookName)
-                    SuggestionTextField(placeholderText: "Author",
-                                        fieldBindString: $suggestViewModel.bookAuthor)
-                    SuggestionTextField(placeholderText: "Year",
-                                        fieldBindString: $suggestViewModel.bookYear)
+                    SuggestionFormFields(suggestViewModel: suggestViewModel)
                 }
                 .padding(20)
-                .navigationTitle("SUGGEST BOOK")
                 
-                // TODO: Present something
                 CapsuleButton(buttonTitle: "SUBMIT",
                               enabled: $suggestViewModel.isSubmitEnabled) {
                     suggestionResponseIsPresented = true
+                    bookImage = UIImage()
                     suggestViewModel.clearForm()
                 }
+            }
+            .navigationTitle("SUGGEST BOOK")
+            .toolbar {
+                LogoutButton(buttonAction: vm.signOut)
             }
             .background(Color.white.cornerRadius(5).shadow(radius: 2))
             .padding(20)
             .background(Color.lavender)
-            // Maybe it would be nice that if post is successful, all fields are emptied?
             .alert(isPresented: $suggestionResponseIsPresented, content: {
-                Alert(title: Text(suggestViewModel.alertTitle),
-                      message: Text(suggestViewModel.alertMessage),
+                Alert(title: Text("Work in progress"),
+                      message: Text("There is no Google Books API endpoint for suggesting a new book"),
                       dismissButton: .default(Text("Ok")))
             })
-            .toolbar {
-                LogoutButton(buttonAction: vm.signOut)
-            }
             .sheet(isPresented: $showSheet) {
                 // Pick an image from the photo library:
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $suggestViewModel.bookImage)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $bookImage)
+            }
+            /*
+             For some reason onChange gets triggered after clearForm, even though the empty image was set before
+             We only call imageAssigned when a nonEmpty image is set then
+             */
+            .onChange(of: bookImage) { newImage in
+                if newImage.isNonEmpty {
+                    suggestViewModel.imageAssigned()
+                }
             }
         }
     }
@@ -79,5 +80,41 @@ struct SuggestView: View {
 struct SuggestView_Previews: PreviewProvider {
     static var previews: some View {
         SuggestView()
+    }
+}
+
+struct PickerImage: View {
+    let bookImage: UIImage
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(Color.babyBlue)
+                .shadow(radius: 1.5)
+            Image(systemName: "plus.circle")
+                .foregroundColor(.white)
+                .font(.system(size: 48.0, weight: .medium))
+            Image(uiImage: bookImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(.white)
+        }
+        .frame(width: 94, height: 94)
+    }
+}
+
+struct SuggestionFormFields: View {
+    @ObservedObject var suggestViewModel: SuggestViewModel
+    
+    var body: some View {
+        SuggestionTextField(placeholderText: "Book's name",
+                            footerText: "Only alphabet characters",
+                            fieldBindString: $suggestViewModel.bookName)
+        SuggestionTextField(placeholderText: "Author",
+                            footerText: "Only alphabet characters",
+                            fieldBindString: $suggestViewModel.bookAuthor)
+        SuggestionTextField(placeholderText: "Year",
+                            footerText: "4 digit year",
+                            fieldBindString: $suggestViewModel.bookYear)
     }
 }

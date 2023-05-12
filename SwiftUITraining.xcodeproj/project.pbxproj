@@ -45,6 +45,7 @@
 		B418623A2A0C28B80029E5CD /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41862392A0C28B80029E5CD /* LoginForm.swift */; };
 		B418623D2A0C29800029E5CD /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418623C2A0C29800029E5CD /* UserStateViewModel.swift */; };
 		B4B14AC52A0C8DC300023DDD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */; };
+		B4B14AC72A0D905900023DDD /* UIIamge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B14AC62A0D905900023DDD /* UIIamge.swift */; };
 		B4FEBE982A0BE20900B992D6 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE972A0BE20900B992D6 /* UIApplication.swift */; };
 		B4FEBE9A2A0C056200B992D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEBE992A0C056200B992D6 /* User.swift */; };
 		D8D90E5218BAF393AD7BA76E /* Pods_SwiftUITraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B40E750A87F4166E80256A7 /* Pods_SwiftUITraining.framework */; };
@@ -117,6 +118,7 @@
 		B41862392A0C28B80029E5CD /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
 		B418623C2A0C29800029E5CD /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		B4B14AC42A0C8DC300023DDD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B4B14AC62A0D905900023DDD /* UIIamge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIamge.swift; sourceTree = "<group>"; };
 		B4FEBE972A0BE20900B992D6 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		B4FEBE992A0C056200B992D6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA1EBF95B472D5CDC2EC8BC1 /* Pods-SwiftUITrainingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUITrainingTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUITrainingTests/Pods-SwiftUITrainingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				A0E85CCB25CF4E700014D575 /* Color.swift */,
 				A0615D5125E039E4002B9400 /* String.swift */,
 				B4FEBE972A0BE20900B992D6 /* UIApplication.swift */,
+				B4B14AC62A0D905900023DDD /* UIIamge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				B41862382A0C25A30029E5CD /* LogoutButton.swift in Sources */,
 				0C5B128C255089EF00B8A9CB /* BookDetailView.swift in Sources */,
 				B418623D2A0C29800029E5CD /* UserStateViewModel.swift in Sources */,
+				B4B14AC72A0D905900023DDD /* UIIamge.swift in Sources */,
 				A0615D4525E03600002B9400 /* SuggestionTextField.swift in Sources */,
 				A03FD2D125E024400004532F /* SuggestView.swift in Sources */,
 				B418623A2A0C28B80029E5CD /* LoginForm.swift in Sources */,
