@@ -15,7 +15,7 @@ struct BookCellView: View {
             HStack(alignment: .top) {
                 RemoteImage(url: book.image)
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 55)
+                    .frame(height: 70)
                     .padding(.trailing, 20)
                     .padding(.leading, 30)
                     .shadow(radius: 3.0)
@@ -43,5 +43,6 @@ struct BookCellView: View {
 struct BookCellView_Previews: PreviewProvider {
     static var previews: some View {
         BookCellView(book: Book.getMockedBook())
+            .padding()
     }
 }

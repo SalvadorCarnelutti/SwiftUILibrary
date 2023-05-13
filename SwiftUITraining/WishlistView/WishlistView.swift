@@ -35,7 +35,8 @@ struct WishlistView: View {
 
 struct WishlistView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockViewModel = WishlistViewModel(wishlistBooks: Book.getMockedWishlistBooks())
+        let mockViewModel = WishlistViewModel(wishlistBooks: Book.getMockedWishlistBooks(count: 2),
+                                              recentlyViewedBooks: Book.getMockedBooks(count: 8))
         let vm = UserStateViewModel.getMock(loggedIn: true)
         
         WishlistView(wishlistViewModel: mockViewModel)

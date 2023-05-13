@@ -28,8 +28,9 @@ class WishlistViewModel: ObservableObject {
         }
     }
         
-    init(wishlistBooks: [Book] = []) {
+    init(wishlistBooks: [Book] = [], recentlyViewedBooks: [Book] = []) {
         self.wishlistBooks = wishlistBooks
+        self.recentlyViewedBooks = recentlyViewedBooks
     }
         
     func getWishlistBooks() {

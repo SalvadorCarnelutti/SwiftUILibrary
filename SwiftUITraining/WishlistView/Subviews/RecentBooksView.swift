@@ -24,7 +24,7 @@ struct RecentBooksView: View {
                         ForEach(books) { book in
                             RemoteImage(url: book.image)
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 55)
+                                .frame(height: 65)
                                 .shadow(radius: 3.0)
                         }
                     }

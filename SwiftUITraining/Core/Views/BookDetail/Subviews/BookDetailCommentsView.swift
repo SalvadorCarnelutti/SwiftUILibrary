@@ -19,8 +19,8 @@ struct BookDetailCommentsView: View {
                             BookDetailCommentView(bookComment: bookComment)
                         }
                     } footer: {
-                        if bookDetailViewModel.canDisplayMore {
-                            HStack {
+                        HStack {
+                            if bookDetailViewModel.canDisplayMore {
                                 Spacer()
                                 Button("View All") {
                                     bookDetailViewModel.commentsFullyShown.toggle()
@@ -28,8 +28,8 @@ struct BookDetailCommentsView: View {
                                 .foregroundColor(Color.deepSkyBlue)
                                 Spacer()
                             }
-                            .listSectionSeparator(.hidden, edges: .bottom)
                         }
+                        .listSectionSeparator(.hidden, edges: .bottom)
                     }
                 }
                 .padding(.trailing, 15)

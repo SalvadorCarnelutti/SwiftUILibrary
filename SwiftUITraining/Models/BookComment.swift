@@ -7,8 +7,6 @@
 
 struct BookComment: Codable, Equatable, Identifiable {
     var id: Int
-//    var user: User
-//    var book: Book
     var username: String
     var content: String
 }

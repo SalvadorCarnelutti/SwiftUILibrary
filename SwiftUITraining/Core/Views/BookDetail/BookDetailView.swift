@@ -10,13 +10,12 @@ import SwiftUI
 struct BookDetailView: View {
     @State private var unavailableIsPresented = false
     @StateObject var bookDetailViewModel: BookDetailViewModel
-    @State var didAppear = false
-    
+        
     var body: some View {
         LoadingView(isShowing: $bookDetailViewModel.loading) {
             VStack {
                 BookDetailAboutView(bookDetailViewModel: bookDetailViewModel,
-                                addAction: addAction)
+                                    addAction: addAction)
                 .padding()
                 .background(Color.white.cornerRadius(5).shadow(radius: 2))
                 .padding()
@@ -31,12 +30,8 @@ struct BookDetailView: View {
                   message: Text("Try again later"),
                   dismissButton: .default(Text("Ok")))
         })
-        .listStyle(GroupedListStyle())
         .onAppear {
-            if !didAppear {
-                bookDetailViewModel.getBookComments()
-                didAppear = true
-            }
+            bookDetailViewModel.getBookComments()
         }
     }
     

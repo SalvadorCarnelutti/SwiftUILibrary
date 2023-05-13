@@ -9,8 +9,7 @@ import SwiftUI
 
 struct BookDetailAboutView: View {
     @ObservedObject var bookDetailViewModel: BookDetailViewModel
-    let addAction: () -> ()
-    static func mockVoidFunction() -> () {}
+    let addAction: (() -> ())?
     
     var body: some View {
         VStack {
@@ -37,22 +36,25 @@ struct BookDetailAboutView: View {
                 .padding(.leading, 20)
                 Spacer()
             }
-            Button(action: { addAction()}) {
-                Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color.deepSkyBlue)
+            if let buttonAction = addAction {
+                Button(action: { buttonAction() }) {
+                    Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color.deepSkyBlue)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+                .clipShape(Capsule())
+                .overlay(Capsule().stroke(Color.deepSkyBlue, lineWidth: 2))
+                .padding(.vertical, 12)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 12)
-            .clipShape(Capsule())
-            .overlay(Capsule().stroke(Color.deepSkyBlue, lineWidth: 2))
-            .padding(.vertical, 12)
         }
     }
 }
 
 struct BookDetailAboutView_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetailAboutView(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()),
-                        addAction: BookDetailAboutView.mockVoidFunction)
+        let vm = BookDetailViewModel(book: Book.getMockedBook())
+        
+        BookDetailAboutView(bookDetailViewModel: vm, addAction: {})
         .padding()
     }
 }
