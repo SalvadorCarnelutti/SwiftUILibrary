@@ -14,9 +14,10 @@ struct LibraryView: View {
      */
     @EnvironmentObject var vm: UserStateViewModel
     @StateObject var libraryViewModel: LibraryViewModel
+    @State private var isFirstAppear = true
     
     var body: some View {
-        LoadingView(isShowing: $libraryViewModel.loading) {
+        LoadingView(isShowing: $libraryViewModel.isLoading) {
             NavigationView {
                 BookTableView(books: libraryViewModel.books, wishlistable: true)
                     .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
@@ -25,7 +26,10 @@ struct LibraryView: View {
                         LogoutButton(buttonAction: vm.signOut)
                     }
                     .onAppear {
-                        libraryViewModel.getBooks()
+                        if isFirstAppear {
+                            isFirstAppear = false
+                            libraryViewModel.getBooks()
+                        }
                     }
             }
         }

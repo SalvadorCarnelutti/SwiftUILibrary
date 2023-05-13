@@ -12,7 +12,7 @@ struct WishlistView: View {
     @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
-        LoadingView(isShowing: $wishlistViewModel.loading) {
+        LoadingView(isShowing: $wishlistViewModel.isLoading) {
             NavigationView {
                 VStack {
                     BookTableView(books: wishlistViewModel.wishlistBooks, wishlistable: false)

@@ -11,7 +11,7 @@ import GoogleSignIn
 class BookDetailViewModel: ObservableObject {
     private static let wishURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/addVolume"
     private static let viewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/addVolume"
-    private var tasks: Set<AnyCancellable> = []
+    private var cancellableSet: Set<AnyCancellable> = []
 
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
     private(set) var book: Book
@@ -56,7 +56,7 @@ class BookDetailViewModel: ObservableObject {
                 .compactMap { String(data: $0, encoding:. utf8) }
                 .sink(receiveCompletion: { error in },
                       receiveValue: { value in })
-                .store(in: &self.tasks)
+                .store(in: &self.cancellableSet)
         }
     }
     
@@ -85,7 +85,7 @@ class BookDetailViewModel: ObservableObject {
                 .compactMap { String(data: $0, encoding:. utf8) }
                 .sink(receiveCompletion: { error in },
                       receiveValue: { value in })
-                .store(in: &self.tasks)
+                .store(in: &self.cancellableSet)
         }
     }
     

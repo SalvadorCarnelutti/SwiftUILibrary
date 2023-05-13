@@ -12,12 +12,12 @@ final class LibraryViewModel: ObservableObject {
     private static let url = "https://www.googleapis.com/books/v1/volumes?q=flowers&By=newest"
     @Published var books: [Book] {
         didSet {
-            loading = false
+            isLoading = false
         }
     }
-    @Published var loading: Bool = true
+    @Published var isLoading: Bool = true
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
-    private var tasks: Set<AnyCancellable> = []
+    private var cancellableSet: Set<AnyCancellable> = []
     
     init(books: [Book] = []) {
         self.books = books
@@ -33,6 +33,6 @@ final class LibraryViewModel: ObservableObject {
             .eraseToAnyPublisher()
             .receive(on: RunLoop.main)
             .assign(to: \LibraryViewModel.books, on: self)
-            .store(in: &tasks)
+            .store(in: &cancellableSet)
     }
 }

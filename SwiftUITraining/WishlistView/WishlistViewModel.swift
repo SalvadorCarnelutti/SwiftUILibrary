@@ -10,32 +10,37 @@ import Foundation
 import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
-    // TODO: Change loading behaviour for this screen, fix wishlist and suggest navbar color
-    private static var wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
+    // TODO: Fix wishlist and suggest navbar color
+    private static var wishlistedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
     private static var recentlyViewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/volumes"
-    private var tasks: Set<AnyCancellable> = []
+    private var cancellableSet: Set<AnyCancellable> = []
     
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
-    @Published var loading: Bool = true
+    @Published var isLoading: Bool = true
     @Published var wishlistBooks: [Book] = [] {
         didSet {
-            loading = false
+            isWishlistedLoading = false
         }
     }
     @Published var recentlyViewedBooks: [Book] = [] {
         didSet {
-            loading = false
+            isRecentlyViewedLoading = false
         }
     }
+    
+    @Published private var isWishlistedLoading: Bool = true
+    @Published private var isRecentlyViewedLoading: Bool = true
         
     init(wishlistBooks: [Book] = [], recentlyViewedBooks: [Book] = []) {
         self.wishlistBooks = wishlistBooks
         self.recentlyViewedBooks = recentlyViewedBooks
+        self.publishIsLoading()
     }
         
     func getWishlistBooks() {
         guard let currentUser = GIDSignIn.sharedInstance.currentUser else { return }
         
+        isWishlistedLoading = true
         currentUser.refreshTokensIfNeeded { [weak self] user, error in
             guard error == nil,
             let user = user,
@@ -44,7 +49,7 @@ class WishlistViewModel: ObservableObject {
             // Get the access token to attach it to a REST or gRPC request.
             let accessToken = user.accessToken.tokenString
             
-            var request =  URLRequest(url: URL(string: Self.wishlistURL)!)
+            var request =  URLRequest(url: URL(string: Self.wishlistedURL)!)
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             
             URLSession.shared.dataTaskPublisher(for: request)
@@ -57,13 +62,14 @@ class WishlistViewModel: ObservableObject {
                 .eraseToAnyPublisher()
                 .receive(on: RunLoop.main)
                 .assign(to: \WishlistViewModel.wishlistBooks, on: self)
-                .store(in: &self.tasks)
+                .store(in: &self.cancellableSet)
         }
     }
     
     func getRecentlyViewedBooks() {
         guard let currentUser = GIDSignIn.sharedInstance.currentUser else { return }
         
+        isRecentlyViewedLoading = true
         currentUser.refreshTokensIfNeeded { [weak self] user, error in
             guard error == nil,
             let user = user,
@@ -84,7 +90,23 @@ class WishlistViewModel: ObservableObject {
                 .eraseToAnyPublisher()
                 .receive(on: RunLoop.main)
                 .assign(to: \WishlistViewModel.recentlyViewedBooks, on: self)
-                .store(in: &self.tasks)
+                .store(in: &self.cancellableSet)
         }
     }
+    
+    private func publishIsLoading() {
+        /*
+         .allSatisfy can't be used because Apple's documentation states:
+         "If the predicate returns false, the publisher produces a false value and finishes."
+         And we want to continously keep the stream alive to notice further changes.
+         */
+        Publishers.CombineLatest($isWishlistedLoading, $isRecentlyViewedLoading)
+            .map { l1, l2 in
+                l1 || l2
+            }
+            .receive(on: RunLoop.main)
+            .assign(to: \.isLoading, on: self)
+            .store(in: &cancellableSet)
+    }
+
 }
