@@ -7,6 +7,7 @@
 
 extension Book {
     private static let mockThumbnailUrl = "https://books.google.com/books/publisher/content?id=nVQPAAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73iRHWnQxXfaklTbkp7SjbauKWZXDDG-6wl3z6zpkRM5Bx1QntZoDjpmvt7lT1gvGeMLENq-KEhOOaYwZg4Ab46yvIhIgQbkAwLlw8glDQ5v4ZZD60R0bi6FS4CGnDV5s4kVZlL"
+    
     static func getMockedBook(id: Int = 1) -> Book {
         Book(id: String(id),
              volumeInfo: VolumeInfo(title: "The Design of Everyday Things",
@@ -24,7 +25,7 @@ extension Book {
         
         return mockedBooks
     }
-//    
+    
     static func getMockedWishlistBook(id: Int = 1) -> Book {
         Book(id: String(id),
              volumeInfo: VolumeInfo(title: "The Design of Everyday Things",

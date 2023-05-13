@@ -1,5 +1,5 @@
 //
-//  LoginForm.swift
+//  LoginFormView.swift
 //  SwiftUITraining
 //
 //  Created by Salvador on 5/10/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import GoogleSignInSwift
 
-struct LoginForm: View {
+struct LoginFormView: View {
     @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
@@ -39,10 +39,10 @@ struct LoginForm: View {
     }
 }
 
-struct LoginForm_Previews: PreviewProvider {
+struct LoginFormView_Previews: PreviewProvider {
     static var previews: some View {
         let vm = UserStateViewModel.getMock(loggedIn: true)
-        LoginForm()
+        LoginFormView()
             .environmentObject(vm)
     }
 }

@@ -16,7 +16,7 @@ struct LoginView: View {
         if vm.loggedIn {
             TabsView()
         } else {
-            LoginForm()
+            LoginFormView()
         }
     }
 }

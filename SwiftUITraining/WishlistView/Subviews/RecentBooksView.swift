@@ -11,7 +11,7 @@ struct RecentBooksView: View {
     let books: [Book]
     
     var body: some View {
-        if !books.isEmpty {
+        if books.isNotEmpty {
             ZStack(alignment: .topLeading) {
                 HStack {
                     Text("Recently viewed").font(.headline)

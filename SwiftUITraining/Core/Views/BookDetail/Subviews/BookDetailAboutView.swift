@@ -1,5 +1,5 @@
 //
-//  BookDetailAbout.swift
+//  BookDetailAboutView.swift
 //  SwiftUITraining
 //
 //  Created by Salvador Carnelutti on 16/03/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BookDetailAbout: View {
+struct BookDetailAboutView: View {
     @ObservedObject var bookDetailViewModel: BookDetailViewModel
     let addAction: () -> ()
     static func mockVoidFunction() -> () {}
@@ -49,9 +49,10 @@ struct BookDetailAbout: View {
     }
 }
 
-struct BookDetailAbout_Previews: PreviewProvider {
+struct BookDetailAboutView_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetailAbout(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()),
-                        addAction: BookDetailAbout.mockVoidFunction)
+        BookDetailAboutView(bookDetailViewModel: BookDetailViewModel(book: Book.getMockedBook()),
+                        addAction: BookDetailAboutView.mockVoidFunction)
+        .padding()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SuggestFormFields.swift
+//  SuggestFormFieldsView.swift
 //  SwiftUITraining
 //
 //  Created by Salvador on 5/12/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SuggestFormFields: View {
+struct SuggestFormFieldsView: View {
     @ObservedObject var suggestViewModel: SuggestViewModel
     
     var body: some View {
@@ -23,15 +23,15 @@ struct SuggestFormFields: View {
     }
 }
 
-struct SuggestFormFields_Previews: PreviewProvider {
+struct SuggestFormFieldsView_Previews: PreviewProvider {
     static var previews: some View {
         let vm = SuggestViewModel.getMockedSuggestViewModel()
         
         VStack {
-            SuggestFormFields(suggestViewModel: SuggestViewModel())
+            SuggestFormFieldsView(suggestViewModel: SuggestViewModel())
                 .padding()
             Spacer()
-            SuggestFormFields(suggestViewModel: vm)
+            SuggestFormFieldsView(suggestViewModel: vm)
                 .padding()
         }
     }

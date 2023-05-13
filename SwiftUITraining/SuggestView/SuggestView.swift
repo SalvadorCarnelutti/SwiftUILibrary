@@ -24,7 +24,7 @@ struct SuggestView: View {
             ScrollView {
                 VStack {
                     HStack {
-                        PickerImage(bookImage: bookImage)
+                        UploadImageView(bookImage: bookImage)
                             .onTapGesture {
                               showSheet = true
                             }
@@ -37,7 +37,7 @@ struct SuggestView: View {
                         Spacer()
                     }
                     .padding(.bottom)
-                    SuggestFormFields(suggestViewModel: suggestViewModel)
+                    SuggestFormFieldsView(suggestViewModel: suggestViewModel)
                 }
                 .padding(20)
                 

@@ -1,5 +1,5 @@
 //
-//  PickerImage.swift
+//  UploadImageView.swift
 //  SwiftUITraining
 //
 //  Created by Salvador on 5/12/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PickerImage: View {
+struct UploadImageView: View {
     let bookImage: UIImage
     
     var body: some View {
@@ -28,12 +28,12 @@ struct PickerImage: View {
 }
 
 
-struct PickerImage_Previews: PreviewProvider {
+struct UploadImageView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            PickerImage(bookImage: UIImage())
+            UploadImageView(bookImage: UIImage())
                 .padding(.vertical)
-            PickerImage(bookImage: UIImage(systemName: "book.closed.fill")!)
+            UploadImageView(bookImage: UIImage(systemName: "book.closed.fill")!)
         }
     }
 }

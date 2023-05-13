@@ -15,12 +15,12 @@ struct BookDetailView: View {
     var body: some View {
         LoadingView(isShowing: $bookDetailViewModel.loading) {
             VStack {
-                BookDetailAbout(bookDetailViewModel: bookDetailViewModel,
+                BookDetailAboutView(bookDetailViewModel: bookDetailViewModel,
                                 addAction: addAction)
                 .padding()
                 .background(Color.white.cornerRadius(5).shadow(radius: 2))
                 .padding()
-                BookDetailComments(bookDetailViewModel: bookDetailViewModel)
+                BookDetailCommentsView(bookDetailViewModel: bookDetailViewModel)
                     .padding(.bottom, 10)
             }
         }
