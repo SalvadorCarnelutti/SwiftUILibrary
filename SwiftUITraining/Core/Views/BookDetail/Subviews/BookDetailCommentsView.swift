@@ -44,7 +44,7 @@ struct BookDetailCommentsView: View {
 
 struct BookDetailCommentsView_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetailCommentsView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
+        BookDetailCommentsView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel(wishlistable: true))
     }
 }
 

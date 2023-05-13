@@ -10,9 +10,9 @@ import Foundation
 import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
-    // TODO: Change loading behaviour for this screen, fix wishlist and suggest navbar color, remove wishlist button from wishlist view from Comments
+    // TODO: Change loading behaviour for this screen, fix wishlist and suggest navbar color
     private static var wishlistURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
-    private static var viewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/volumes"
+    private static var recentlyViewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/volumes"
     private var tasks: Set<AnyCancellable> = []
     
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
@@ -71,7 +71,7 @@ class WishlistViewModel: ObservableObject {
 
             let accessToken = user.accessToken.tokenString
             
-            var request =  URLRequest(url: URL(string: Self.viewedURL)!)
+            var request =  URLRequest(url: URL(string: Self.recentlyViewedURL)!)
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             
             URLSession.shared.dataTaskPublisher(for: request)

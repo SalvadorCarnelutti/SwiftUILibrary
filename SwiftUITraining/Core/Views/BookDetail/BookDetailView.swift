@@ -14,11 +14,24 @@ struct BookDetailView: View {
     var body: some View {
         LoadingView(isShowing: $bookDetailViewModel.loading) {
             VStack {
-                BookDetailAboutView(bookDetailViewModel: bookDetailViewModel,
-                                    addAction: addAction)
+                VStack {
+                    BookDetailAboutView(book: bookDetailViewModel.book)
+                    
+                    if bookDetailViewModel.wishlistable {
+                        Button(action: { addAction() }) {
+                            Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color.deepSkyBlue)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .clipShape(Capsule())
+                        .overlay(Capsule().stroke(Color.deepSkyBlue, lineWidth: 2))
+                        .padding(.vertical, 12)
+                    }
+                }
                 .padding()
                 .background(Color.white.cornerRadius(5).shadow(radius: 2))
                 .padding()
+                
                 BookDetailCommentsView(bookDetailViewModel: bookDetailViewModel)
                     .padding(.bottom, 10)
             }
@@ -43,7 +56,7 @@ struct BookDetailView: View {
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BookDetailView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel())
+            BookDetailView(bookDetailViewModel: BookDetailViewModel.getMockedViewModel(wishlistable: true))
         }
     }
 }

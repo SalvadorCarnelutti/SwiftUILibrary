@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct BookCellView: View {
-    var book: Book
+    let book: Book
+    let wishlistable: Bool
     
     var body: some View {
-        NavigationLink(destination: BookDetailView(bookDetailViewModel: BookDetailViewModel(book: book))) {
+        let bookDetailViewModel = BookDetailViewModel(book: book, wishlistable: wishlistable)
+        
+        NavigationLink(destination: BookDetailView(bookDetailViewModel: bookDetailViewModel)) {
             HStack(alignment: .top) {
                 RemoteImage(url: book.image)
                     .aspectRatio(contentMode: .fit)
@@ -42,7 +45,7 @@ struct BookCellView: View {
 
 struct BookCellView_Previews: PreviewProvider {
     static var previews: some View {
-        BookCellView(book: Book.getMockedBook())
+        BookCellView(book: Book.getMockedBook(), wishlistable: true)
             .padding()
     }
 }

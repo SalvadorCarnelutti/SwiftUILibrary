@@ -8,53 +8,38 @@
 import SwiftUI
 
 struct BookDetailAboutView: View {
-    @ObservedObject var bookDetailViewModel: BookDetailViewModel
-    let addAction: (() -> ())?
+    let book: Book
     
     var body: some View {
-        VStack {
-            HStack(alignment: .top) {
-                RemoteImage(url: bookDetailViewModel.getBookURL)
-                    .frame(width: 70, height: 105)
-                    .shadow(radius: 3.0)
-                
-                VStack(alignment: .leading) {
-                    Text(bookDetailViewModel.getBookTitle)
-                        .font(.title2)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .lineLimit(nil)
+        HStack(alignment: .top) {
+            RemoteImage(url: book.image)
+                .frame(width: 70, height: 105)
+                .shadow(radius: 3.0)
+            
+            VStack(alignment: .leading) {
+                Text(book.title)
+                    .font(.title2)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(nil)
 
-                    Text(bookDetailViewModel.getBookAuthor)
-                        .foregroundColor(Color.charcoal)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .lineLimit(nil)
-                    Text(bookDetailViewModel.getBookYear)
-                        .foregroundColor(Color.charcoal)
-                    Text(bookDetailViewModel.getBookPageCount)
-                        .foregroundColor(Color.charcoal)
-                }
-                .padding(.leading, 20)
-                Spacer()
+                Text(book.author)
+                    .foregroundColor(Color.charcoal)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(nil)
+                Text(book.year)
+                    .foregroundColor(Color.charcoal)
+                Text(book.pageCount)
+                    .foregroundColor(Color.charcoal)
             }
-            if let buttonAction = addAction {
-                Button(action: { buttonAction() }) {
-                    Text("ADD TO WISHLIST").font(.headline).foregroundColor(Color.deepSkyBlue)
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-                .clipShape(Capsule())
-                .overlay(Capsule().stroke(Color.deepSkyBlue, lineWidth: 2))
-                .padding(.vertical, 12)
-            }
+            .padding(.leading, 20)
+            Spacer()
         }
     }
 }
 
 struct BookDetailAboutView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = BookDetailViewModel(book: Book.getMockedBook())
-        
-        BookDetailAboutView(bookDetailViewModel: vm, addAction: {})
+        BookDetailAboutView(book: Book.getMockedBook())
         .padding()
     }
 }

@@ -15,7 +15,7 @@ struct WishlistView: View {
         LoadingView(isShowing: $wishlistViewModel.loading) {
             NavigationView {
                 VStack {
-                    BookTableView(books: wishlistViewModel.wishlistBooks)
+                    BookTableView(books: wishlistViewModel.wishlistBooks, wishlistable: false)
                     RecentBooksView(books: wishlistViewModel.recentlyViewedBooks)
                     Spacer()
                 }

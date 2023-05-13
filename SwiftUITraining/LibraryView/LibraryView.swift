@@ -18,7 +18,7 @@ struct LibraryView: View {
     var body: some View {
         LoadingView(isShowing: $libraryViewModel.loading) {
             NavigationView {
-                BookTableView(books: libraryViewModel.books)
+                BookTableView(books: libraryViewModel.books, wishlistable: true)
                     .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                     .navigationTitle("LIBRARY")
                     .toolbar {

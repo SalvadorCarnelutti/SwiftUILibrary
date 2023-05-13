@@ -14,7 +14,8 @@ class BookDetailViewModel: ObservableObject {
     private var tasks: Set<AnyCancellable> = []
 
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
-    private var book: Book
+    private(set) var book: Book
+    let wishlistable: Bool
     @Published var bookComments: [BookComment] = [] {
         didSet {
             commentsFullyShown = bookComments.count <= 3
@@ -24,8 +25,9 @@ class BookDetailViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var commentsFullyShown: Bool = false
 
-    init(book: Book) {
+    init(book: Book, wishlistable: Bool) {
         self.book = book
+        self.wishlistable = wishlistable
         postBookViewed()
     }
     
@@ -93,22 +95,6 @@ class BookDetailViewModel: ObservableObject {
     
     var getBookTitle: String {
         book.title
-    }
-    
-    var getBookAuthor: String {
-        book.author
-    }
-    
-    var getBookYear: String {
-        book.year
-    }
-    
-    var getBookPageCount: String {
-        book.pageCount
-    }
-    
-    var getBookURL: String {
-        book.image
     }
     
     var displayedBookComments: [BookComment] {

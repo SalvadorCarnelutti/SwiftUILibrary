@@ -9,13 +9,14 @@ import SwiftUI
 
 struct BookTableView: View {
     let books: [Book]
+    let wishlistable: Bool
     
     var body: some View {
         ScrollView {
             LazyVStack {
                 Color.clear.padding(.bottom, 20)
                 ForEach(books) { book in
-                    BookCellView(book: book)
+                    BookCellView(book: book, wishlistable: wishlistable)
                         .padding(.bottom, 5)
                 }
                 Color.clear.padding(.bottom, 10)
@@ -28,6 +29,6 @@ struct BookTableView: View {
 struct BookTableView_Previews: PreviewProvider {
     static var previews: some View {
         let mockedBooks = Book.getMockedBooks()
-        BookTableView(books: mockedBooks)
+        BookTableView(books: mockedBooks, wishlistable: true)
     }
 }
