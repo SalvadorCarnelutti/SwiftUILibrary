@@ -25,8 +25,7 @@ struct WishlistView: View {
                 }
                 .background(Color.lavender)
                 .onAppear {
-                    wishlistViewModel.getWishlistBooks()
-                    wishlistViewModel.getRecentlyViewedBooks()
+                    wishlistViewModel.getBooks()
                 }
             }
         }

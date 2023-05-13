@@ -10,7 +10,7 @@ import Foundation
 
 final class LibraryViewModel: ObservableObject {
     private static let url = "https://www.googleapis.com/books/v1/volumes?q=flowers&By=newest"
-    @Published var books: [Book] {
+    private(set) var books: [Book] {
         didSet {
             isLoading = false
         }
