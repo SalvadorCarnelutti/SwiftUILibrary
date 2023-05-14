@@ -1,8 +1,8 @@
 Some core screens:
 
 <p align = "center">
-<img src="README-images/Home.png" width="300"> <img src="README-images/Wishlist.png" width="300">
-<img src="README-images/Suggest.png" width="300">
+<img src="README-images/Login.png" width="300"> <img src="README-images/Home.png" width="300">
+<img src="README-images/Book-Detail.png" width="300"> <img src="README-images/Wishlist.png" width="300">
 </p>
 
 ## Table of contents
