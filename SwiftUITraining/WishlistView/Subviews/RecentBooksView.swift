@@ -18,7 +18,6 @@ struct RecentBooksView: View {
                     Spacer()
                 }
                 .padding(.leading)
-                .offset(x: 10)
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         ForEach(books) { book in

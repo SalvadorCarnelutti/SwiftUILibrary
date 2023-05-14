@@ -10,13 +10,13 @@ import Foundation
 import GoogleSignIn
 
 class WishlistViewModel: ObservableObject {
-    // TODO: Fix wishlist and suggest navbar color
+    // TODO: Fix loader issue pushing things up
     private static var wishlistedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/2/volumes"
     private static var recentlyViewedURL = "https://www.googleapis.com/books/v1/mylibrary/bookshelves/3/volumes"
     private var cancellableSet: Set<AnyCancellable> = []
     
     // Publishers must be stored or otherwise ARC swoops by and deallocates them immediately
-    @Published var isLoading: Bool = true
+    @Published var isLoading: Bool = false
     private(set) var wishlistBooks: [Book] = []
     private(set) var recentlyViewedBooks: [Book] = []
     
@@ -36,7 +36,6 @@ class WishlistViewModel: ObservableObject {
 
             let accessToken = user.accessToken.tokenString
             
-            // 
             Publishers.Zip(self.wishlistedPublisher(accessToken: accessToken), self.recentlyViewedPublisher(accessToken: accessToken))
                 // Published changes must be done on the main thread
                 .receive(on: RunLoop.main)

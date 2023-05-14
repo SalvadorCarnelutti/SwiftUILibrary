@@ -54,7 +54,7 @@ struct SuggestView: View {
             }
             .background(Color.white.cornerRadius(5).shadow(radius: 2))
             .padding(20)
-            .background(Color.lavender)
+            .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
             .alert(isPresented: $suggestionResponseIsPresented, content: {
                 Alert(title: Text("Work in progress"),
                       message: Text("There is no Google Books API endpoint for suggesting a new book"),

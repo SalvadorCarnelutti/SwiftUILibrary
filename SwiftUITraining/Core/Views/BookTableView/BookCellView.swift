@@ -18,7 +18,7 @@ struct BookCellView: View {
             HStack(alignment: .top) {
                 RemoteImage(url: book.image)
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 70)
+                    .frame(height: 80)
                     .padding(.trailing, 20)
                     .padding(.leading, 30)
                     .shadow(radius: 3.0)

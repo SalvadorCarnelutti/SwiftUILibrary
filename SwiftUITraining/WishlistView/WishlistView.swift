@@ -23,7 +23,7 @@ struct WishlistView: View {
                 .toolbar {
                     LogoutButton(buttonAction: vm.signOut)
                 }
-                .background(Color.lavender)
+                .background(Color.lavender.edgesIgnoringSafeArea(.bottom))
                 .onAppear {
                     wishlistViewModel.getBooks()
                 }
