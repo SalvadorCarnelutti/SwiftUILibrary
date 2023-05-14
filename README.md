@@ -53,7 +53,7 @@ There are several improvements that could be done:
 * Make the suggest submital actually do something
 
 ## User Notes
-All interaction made thorugh the app will be reflected on the Google account's used. Please use a Google account that you feel comfortable your *My library* changing.
+All interaction made thorugh the app will be reflected on the Google account's used. Please use a Google account that you feel comfortable your **My library** changing.
 
 Also, be aware that for the Google API services to be fully functional, your Google account mail address has to be addded to the Google's console project test users.
 
