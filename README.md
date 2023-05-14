@@ -57,6 +57,8 @@ All interaction made thorugh the app will be reflected on the Google account's u
 
 Also, be aware that for the Google API services to be fully functional, your Google account mail address has to be addded to the Google's console project test users.
 
+The most used API documentation links used on the coding side inside Xcode were [this one](https://developers.google.com/books/docs/v1/using) for the Google Books APIs and [this one](https://developers.google.com/identity/sign-in/ios/start-integrating) for Google Identity's.
+
 ## Owner Notes
 This is a note for myself the owner of the project, for when anyone asks me to be added as a test user:
 
