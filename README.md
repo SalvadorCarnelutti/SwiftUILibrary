@@ -30,6 +30,7 @@ Project is created with:
 * SwiftUI framework
 * Combine framework
 * Codable protocol
+* CocoaPods dependency manager
 * URLSession
 * Google Books APIs (https://developers.google.com/books)
 * Google Identity (https://developers.google.com/identity)
